@@ -30,7 +30,7 @@
         {% for services in services %}
         <div class="col-md-4">
           <div class="card mb-4">
-            <img src="{{services.img.url}}" class="card-img-top" alt="Service 1" height="200">
+            <img src="{{services.img.url}}" class="card-img-top img-fluid" alt="Service 1">
             <div class="card-body">
               <h5 class="card-title"><strong>{{services.name}}</strong></h5>
                <p class="card-text text-justify">{{services.description|slice:":255"}}</p>

@@ -1,6 +1,27 @@
 {% extends "base.html" %}
   {% block services %}
-  
+
+  <!-- Services Section -->
+  <section id="services" class="py-5 bg-light">
+    <div class="container">
+      <h2>हमारे स्तंभ</h2>
+      <div class="row">
+        {% for parichay_data in parichay_data %}
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <img src="{{services.img.url}}" class="card-img-top img-fluid" alt="Service 1">
+            <div class="card-body">
+              <h5 class="card-title"><strong>{{parichay_data.name}}</strong></h5>
+               <p class="card-text text-justify">{{parichay_data.description|slice:":255"}}</p>
+               <a href="/service_details/{{parichay_data.id}}/">Read more</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
   <!-- Services Section -->
   <section id="services" class="py-5 bg-light">
     <div class="container">

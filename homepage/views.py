@@ -35,8 +35,6 @@ def homepage(request):
         parichay_data=LookupField.objects.filter(code='parichay')
         services = Service.objects.all().order_by('-id')
         barcode = LookupField.objects.get(code='BAR_CODE')
-        # motive = LookupField.objects.get(code='motive')
-        # motive = 'mmmmmmmmmmmmmm'
         shloka = LookupField.objects.filter(code='SHLOKA')
         context = {
             'title_data':title_logo_data,
@@ -45,7 +43,6 @@ def homepage(request):
             'parichay_data':parichay_data,
             'services':services,
             'barcode':barcode,
-            # 'motive':motive,
             'shloka':shloka,
         }
         return render(request, 'index.html',context)

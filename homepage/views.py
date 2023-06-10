@@ -46,6 +46,16 @@ def homepage(request):
     }
     return render(request, 'index.html',context)
 
+def biography(request,id):
+    title_logo_data=LookupField.objects.get(code='TITLE')
+    biography = LookupField.objects.get(id=id)
+
+    context = {
+        'biography':biography,
+        'title_data':title_logo_data,
+    }
+    return render(request,'service_detail.html',context)
+
 def service_details(request,id):
     title_logo_data=LookupField.objects.get(code='TITLE')
     services = Service.objects.get(id=id)

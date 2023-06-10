@@ -31,7 +31,7 @@ def homepage(request):
     title_logo_data=LookupField.objects.get(code='TITLE')
     banner1 = LookupField.objects.get(code='HOME_BANNER1')
     about_data=LookupField.objects.get(code='ABOUT')
-    services = Service.objects.all().order_by('-id')[:6]
+    services = Service.objects.all().order_by('-id')
     barcode = LookupField.objects.get(code='BAR_CODE')
     shloka = LookupField.objects.filter(code='SHLOKA')
     context = {

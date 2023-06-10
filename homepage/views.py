@@ -54,7 +54,7 @@ def biography(request,id):
         'biography':biography,
         'title_data':title_logo_data,
     }
-    return render(request,'service_detail.html',context)
+    return render(request,'biography.html.html',context)
 
 def service_details(request,id):
     title_logo_data=LookupField.objects.get(code='TITLE')

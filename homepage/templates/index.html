@@ -10,7 +10,7 @@
         {% for parichay_data in parichay_data %}
         <div class="col-md-4">
           <div class="card mb-4">
-            <img src="{{parichay_data.img.url}}" class="card-img-top" alt="Service 1" height="300">
+            <img src="{{parichay_data.img.url}}" class="card-img-top img-fluid" alt="Service 1">
             <div class="card-body">
               <h5 class="card-title"><strong>{{parichay_data.title}}</strong></h5>
                <p class="card-text text-justify">{{parichay_data.desc|slice:":255"}}</p>

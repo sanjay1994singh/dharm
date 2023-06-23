@@ -76,7 +76,7 @@ def add_gallery(request):
         image_files = request.FILES.getlist('image_files')
         try:
             for i in range(len(image_files)):
-                LookupField.objects.create(code=code,title=title,desc=description,img=image_files[i])
+                Gallery.objects.create(code=code,title=title,desc=description,img=image_files[i])
             return redirect('/')
         except Exception as e:
             print(e,'-------------e')
@@ -85,7 +85,7 @@ def add_gallery(request):
     
 
 def gallery(request):
-    gallery = LookupField.objects.filter(code='gallery')
+    gallery = Gallery.objects.filter(code='gallery')
     context = {
         'gallery':gallery
     }

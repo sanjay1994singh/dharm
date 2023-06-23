@@ -85,8 +85,10 @@ def add_gallery(request):
     
 
 def gallery(request):
+    title_logo_data = LookupField.objects.get(code='TITLE')
     gallery = Gallery.objects.filter(code='gallery')
     context = {
+        'title_data':title_logo_data,
         'gallery':gallery
     }
     return render(request, 'new_gallery.html', context)

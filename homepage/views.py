@@ -81,7 +81,7 @@ def add_gallery(request):
         except Exception as e:
             print(e,'-------------e')
     else:
-        return render(request, 'pdf_form.html')
+        return render(request, 'add_gallery.html')
     
 
 def gallery(request):

@@ -67,7 +67,7 @@ def service_details(request,id):
     }
     return render(request,'service_detail.html',context)
 
-def viewPdf(request):
+def add_gallery(request):
     if request.method == 'POST':
         form = request.POST
         code = form.get('code')

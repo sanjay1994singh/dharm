@@ -66,3 +66,27 @@ def service_details(request,id):
         'title_data':title_logo_data,
     }
     return render(request,'service_detail.html',context)
+
+def viewPdf(request):
+    if request.method == 'POST':
+        form = request.POST
+        code = form.get('code')
+        title = form.get('title')
+        description = form.get('Description')
+        image_files = request.FILES.getlist('image_files')
+        try:
+            for i in range(len(image_files)):
+                LookupField.objects.create(code=code,title=title,desc=description,img=image_files[i])
+            return redirect('/')
+        except Exception as e:
+            print(e,'-------------e')
+    else:
+        return render(request, 'pdf_form.html')
+    
+
+def gallery(request):
+    gallery = LookupField.objects.filter(code='gallery')
+    context = {
+        'gallery':gallery
+    }
+    return render(request, 'new_gallery.html',context)

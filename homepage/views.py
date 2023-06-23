@@ -89,4 +89,4 @@ def gallery(request):
     context = {
         'gallery':gallery
     }
-    return render(request, 'new_gallery.html',context)
+    return render(request, 'new_gallery.html', context)

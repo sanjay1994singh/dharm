@@ -3,6 +3,8 @@ from django.shortcuts import redirect, render
 from accounts.models import EnquiryDetails
 from homepage.models import LookupField,Gallery
 from services.models import Service
+from django.http import FileResponse
+import os
 
 # Create your views here.
 def homepage(request):
@@ -92,3 +94,11 @@ def gallery(request):
         'gallery':gallery
     }
     return render(request, 'new_gallery.html', context)
+
+def viewPdf(request):
+    try:
+        patrika = LookupField.objects.get(code='patrika')
+        pdf_file_path = str(patrika.pdf.url)
+        return redirect(pdf_file_path)
+    except Exception as e:
+        print(e,'------------------e')

@@ -1,9 +1,18 @@
-{% extends "base.html" %}
+{% extends "navbar.html" %}
+
+{% block message %}
+<div class="container mx-auto bg-light">
+    <p class="text-justify fs-4"><strong>समाज को धर्म पूर्वक जोड़कर सनातन - संस्कारों का संरक्षण करना आज की महती आवश्यकता है।
+    हमारा राष्ट्र 'भारतवर्ष' अखंड हिंदू राष्ट्र बन कर पुनः विश्व गुरु के रूप में स्थापित हो एवं श्रीरामजन्मभूमि की
+    भांति श्रीकृष्णजन्मभूमि भी अपने गौरवशाली रूप में स्थापित हो - धर्म रक्षा संघ के इस पावन प्रयास में आइए ! हम सब
+    एकजुट होकर तन-मन-धन से संकल्प पूर्वक प्रस्तुत हों ।</strong></p>
+</div>
+{% endblock %}
 
 {% block biography %}
 
    <!-- Services Section -->
-   <section id="services" class="py-5 bg-light">
+   <section id="main-body" class="py-5 bg-light">
     <div class="container">
       <h2>हमारे स्तंभ</h2>
       <div class="row">
@@ -23,12 +32,10 @@
     </div>
   </section>
 
-
 {% endblock biography %}
 
   {% block services %}
 
- 
   <!-- Services Section -->
   <section id="services" class="py-5 bg-light">
     <div class="container">

@@ -102,3 +102,24 @@ def viewPdf(request):
         return redirect(pdf_file_path)
     except Exception as e:
         print(e,'------------------e')
+
+def photo_gallery(request):
+    title_logo_data = LookupField.objects.get(code='TITLE')
+    gallery = Gallery.objects.filter(code='image')
+
+    context = {
+        'title_data':title_logo_data,
+        'gallery':gallery
+    }
+    return render(request,'photo_gallery.html',context)
+
+def samachar_gallery(request):
+    title_logo_data = LookupField.objects.get(code='TITLE')
+    gallery = Gallery.objects.filter(code='samachar')
+
+    context = {
+        'title_data':title_logo_data,
+        'gallery':gallery
+    }
+
+    return render(request,'samachar_gallery.html',context)

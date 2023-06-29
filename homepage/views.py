@@ -32,6 +32,10 @@ def homepage(request):
     
     else:
         title_logo_data=LookupField.objects.get(code='TITLE')
+        try:
+            suchana=LookupField.objects.get(code='suchana')
+        except:
+            pass
         banner1 = LookupField.objects.get(code='HOME_BANNER1')
         about_data=LookupField.objects.get(code='ABOUT')
         parichay_data=LookupField.objects.filter(code='parichay')
@@ -46,6 +50,7 @@ def homepage(request):
             'services':services,
             'barcode':barcode,
             'shloka':shloka,
+            'suchana':suchana,
         }
         return render(request, 'index.html',context)
 

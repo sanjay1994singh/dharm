@@ -108,7 +108,7 @@
                 <a class="nav-link" href="#">ऑनलाइन सदस्यता</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">फॉलो</a>
+                <a class="nav-link" href="return false;" data-bs-toggle="modal" data-bs-target="#exampleModal">संस्था सूची</a>
               </li>
             </ul>
             <form class="d-flex">
@@ -121,7 +121,7 @@
 
     <!-- this is main banner  -->
     {% if banner1.img.url %}
-    
+
         <header class="jumbotron">
             <div class="fluid-container">
             <!-- <h1>Welcome to our Charity Organization</h1> -->
@@ -192,7 +192,27 @@
 
     {% endblock content %}
 
-    
+    <!-- ---------------------------------------------------------- -->
+    <!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">संस्था सूची</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <!-- ---------------------------------------------------------- -->
 
     <div id="donate" class="col-lg-8 text-center mx-auto">
         <p class="mt-4">सहयोग राशी /Donate Now</p>

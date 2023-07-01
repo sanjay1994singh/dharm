@@ -31,11 +31,12 @@ def homepage(request):
         return redirect('/')
     
     else:
+        suchana = ''
         title_logo_data=LookupField.objects.get(code='TITLE')
         try:
             suchana=LookupField.objects.get(code='suchana')
         except:
-            pass
+            suchana = ''
         banner1 = LookupField.objects.get(code='HOME_BANNER1')
         about_data=LookupField.objects.get(code='ABOUT')
         parichay_data=LookupField.objects.filter(code='parichay')

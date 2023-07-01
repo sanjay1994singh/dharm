@@ -21,3 +21,11 @@ class Gallery(models.Model):
 
     def __str__(self):
         return self.title
+    
+class Org(models.Model):
+    title  = models.CharField(max_length=1000)
+    desc = models.TextField()
+    date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title

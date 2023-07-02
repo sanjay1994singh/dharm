@@ -21,9 +21,9 @@
       <h2>हमारे स्तंभ</h2>
       <div class="row">
         {% for parichay_data in parichay_data %}
-        <div class="col-md-4">
+        <div class="col-md-3">
           <div class="card mb-4">
-            <img src="{{parichay_data.img.url}}" class="card-img-top" alt="Service 1" height="350">
+            <img src="{{parichay_data.img.url}}" class="card-img-top" alt="Service 1" height="300">
             <div class="card-body">
               <h5 class="card-title"><strong>{{parichay_data.title}}</strong></h5>
                <p class="card-text" style="text-align: justify;">{{parichay_data.desc|slice:":255"}}</p>
@@ -46,9 +46,9 @@
       <h2>हमारी सेवाएं </h2>
       <div class="row">
         {% for services in services %}
-        <div class="col-md-4">
+        <div class="col-md-3">
           <div class="card mb-4">
-            <img src="{{services.img.url}}" class="card-img-top" alt="Service 1" height="350">
+            <img src="{{services.img.url}}" class="card-img-top" alt="Service 1" height="300">
             <div class="card-body">
               <h5 class="card-title"><strong>{{services.name}}</strong></h5>
                <p class="card-text" style="text-align: justify;">{{services.description|slice:":255"}}</p>

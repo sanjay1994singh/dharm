@@ -1,0 +1,42 @@
+{% extends "navbar.html" %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="hori card text-center">
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Image</th>
+                        <th>post</th>
+                        <th>address</th>
+                        <th>contact</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for list_data in list_data %}
+                    <tr>
+                        <td>{{list_data.name}}</td>
+                        <td><img height="80px" src="{{list_data.image.url}}" width="100px"></td>
+                        <td>{{list_data.post}}</td>
+                        <td>{{list_data.address}}</td>
+                        <td>{{list_data.contact}}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block js %}
+<script>
+    $(document).ready( function () {
+        $('#myTable').DataTable();
+    });
+</script>
+{% endblock js %}

@@ -38,9 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts',
+    'account',
     'homepage',
     'services',
+    'razorpay',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+RAZOR_KEY_ID = 'rzp_test_5oHU1szIwHcSIn'
+RAZOR_KEY_SECRET = '0Hp2F9uxYKowoM0j3Ooxlr06'

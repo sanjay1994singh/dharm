@@ -9,6 +9,8 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.css" />
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.js" defer></script>
 
     <title>Dharm Raksha</title>
     <style>
@@ -111,7 +113,7 @@
                 <a class="nav-link" href="#">ऑनलाइन सदस्यता</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="return false;" data-bs-toggle="modal" data-bs-target="#exampleModal">संगठन की सूची</a>
+                <a id="sangthan_ki_suchi" class="nav-link" href="return false;" data-bs-toggle="modal" data-bs-target="#exampleModal">संगठन की सूची</a>
               </li>
             </ul>
             <form class="d-flex">
@@ -203,8 +205,8 @@
         <h5 class="modal-title" id="exampleModalLabel">संस्था सूची</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        <p class="text-center">अभी कोई सूची उपलब्ध नहीं है</p> 
+      <div class="modal-body" id="suchi_list">
+        <p class="text-center">अभी कोई सूची उपलब्ध नहीं है</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -286,8 +288,37 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        $('#sangthan_ki_suchi').click(function(){
+            $('#suchi_list').html('')
+            var url = '/get_sangth/'
+            $.ajax({
+                url: url,
+                method: 'GET',
+                success: function (response) {
+                    var responseData = response.post_name;
+                    for(let i of responseData){
+                        var html = '';
+                        html += '<p style="cursor:pointer;" onclick="view_sangthan_list('+i['type_id']+')" class="text-center list-group-item-success">'+i['type_name']+'</p>'
+                        $('#suchi_list').append(html)
+                    }
+                },
+                error: function (xhr, status, error) {
+                    // Handle error here
+                    console.log(error);
+                }
+            });
+        })
 
+        function view_sangthan_list(id){
+            window.location.href = '/sangthan_list/'+id+'/'
+        }
+
+
+    </script>
     {% block js %}
+
     {% endblock js %}
 </body>
 

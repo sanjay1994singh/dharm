@@ -1,0 +1,141 @@
+{% extends "navbar.html" %}
+{% block content %}
+<div class="container">
+    <h2>Member Registration</h2>
+    <form id="registrationForm">{% csrf_token %}
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input class="form-control" id="name" name="name" placeholder="Enter your name" required type="text">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input class="form-control" id="email" name="email" placeholder="Enter your email" required type="email">
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input class="form-control" id="phone" name="phone" placeholder="Enter your phone number" type="text">
+        </div>
+        <div class="form-group">
+            <label for="address">Address</label>
+            <textarea class="form-control" id="address" name="address" placeholder="Enter your address"
+                      rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="pincode">Pincode</label>
+            <input class="form-control" id="pincode" name="pincode" placeholder="enter pincode" type="number">
+        </div>
+        <div class="form-group">
+            <label for="city">City</label>
+            <input class="form-control" id="city" name="city" placeholder="enter city" type="number">
+        </div>
+        <div class="form-group">
+            <label for="district">District</label>
+            <input class="form-control" id="district" name="district" placeholder="enter city" type="text">
+        </div>
+        <div class="form-group">
+            <label for="state">State</label>
+            <input class="form-control" id="state" name="state" placeholder="enter state" type="text" value="">
+        </div>
+        <div class="form-group">
+            <label for="country">country</label>
+            <input class="form-control" id="country" name="country" placeholder="enter country" type="text"
+                   value="India">
+        </div>
+        <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input class="form-control" id="dob" name="dob" placeholder="Enter your date of birth" type="date">
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            <select class="form-control" id="gender" name="gender">
+                <option value="">Select your gender</option>
+                {% for gender in gender_type %}
+                    <option value="{{gender.id}}">{{gender.gender}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="id_number">Aadhar Number</label>
+            <input class="form-control" id="id_number" name="id_number" placeholder="Enter your id number" type="text" maxlength="20">
+        </div>
+        <div class="form-group">
+            {% for member in member_type %}
+            <input class="form-check-input" onclick="pay_money('{{member.price}}')" value="{{member.type}}" id="termsCheck" required type="radio" name="type_member">
+            <label class="form-check-label" for="termsCheck">{{member.type}}</label>
+            {% endfor %}
+        </div>
+        <button id="rzp-button1" class="btn btn-primary" type="button">Pay and register: <span id="show_amy"></span></button>
+    </form>
+</div>
+{% endblock content %}
+
+{% block js %}
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->
+<script>
+    function pay_money(price){
+        $('#show_amy').html('')
+        $('#show_amy').html(price)
+    }
+</script>
+  <script>
+    var options = {
+      "key": "rzp_test_5oHU1szIwHcSIn", // Enter the Key ID generated from the Dashboard
+      "amount": "{{payment.amount}}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      "currency": "INR",
+      "name": "Dharm Raksha Sangh",
+      "description": "We all are one",
+      "image": "https://example.com/your_logo",
+      "order_id": "{{payment.id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      "handler": function (response) {
+
+        console.log(response);
+        var url = '/account/success/';
+        var myObject = {
+          'razorpay_order_id': response.razorpay_order_id,
+          'razorpay_payment_id': response.razorpay_payment_id,
+          'razorpay_signature':response.razorpay_signature,
+          'course_id':'{{course.id}}',
+          'price':'{{course.price}}',
+          'discount':'{{course.discount}}',
+          'totalprice':'{{course.totalprice}}',
+          'quantity':'1',
+          'payment_status':'success'
+        }
+
+        $.ajax({
+            url: url,
+            method: 'GET',
+            // contentType: 'application/json',
+            data: myObject,
+            success: function (response) {
+                var responseData = response;
+                if(responseData.msg == 'success'){
+                  window.location.href = '/'
+                }
+            },
+            error: function (xhr, status, error) {
+                // Handle error here
+                console.log(error);
+            }
+        });
+
+      },
+    };
+
+    var rzp1 = new Razorpay(options);
+    rzp1.on('payment.failed', function (response) {
+      alert(response.error.code);
+      alert(response.error.description);
+      alert(response.error.source);
+      alert(response.error.step);
+      alert(response.error.reason);
+      alert(response.error.metadata.order_id);
+      alert(response.error.metadata.payment_id);
+    });
+    document.getElementById('rzp-button1').onclick = function (e) {
+      rzp1.open();
+      e.preventDefault();
+    }
+  </script>
+{% endblock js %}

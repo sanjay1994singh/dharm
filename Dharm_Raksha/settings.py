@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'account',
     'homepage',
     'services',
-    'razorpay',
 ]
 
 MIDDLEWARE = [

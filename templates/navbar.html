@@ -11,6 +11,8 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.css" />
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
     <title>Dharm Raksha</title>
     <style>
@@ -61,6 +63,28 @@
           padding: 20px 0;
           color: #fff;
           background-color: #333;
+        }
+
+        .floating-button-div {
+          position: fixed;
+          top: 40%;
+          right: 20px;
+        }
+
+        .blue-color {
+          color:blue;
+        }
+
+        .green-color {
+            color:green;
+        }
+
+        .fa.fa-instagram {
+          color: transparent;
+          background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+          background: -webkit-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+          background-clip: text;
+          -webkit-background-clip: text;
         }
       </style>
 </head>
@@ -196,6 +220,30 @@
 
     <!-- ---------------------------------------------------------- -->
     <!-- Button trigger modal -->
+    <div class="floating-button-div">
+      <a href="https://www.facebook.com/dharmrakshasangha/followers" target="_blank" class="facebook-button">
+        <i class="blue-color fa fa-facebook-f facebook" style="font-size:24px"></i><br/>
+      </a>
+
+      <a href="https://www.instagram.com/p/CibtjmbMN4z/" target="_blank" class="facebook-button">
+        <i class="fa fa-instagram" style="font-size:24px"></i><br/>
+      </a>
+
+      <a href="https://www.facebook.com/dharmrakshasangha/followers" target="_blank" class="facebook-button">
+        <i class="green-color fa fa-whatsapp" style="font-size:24px"></i><br/>
+      </a>
+
+      <a href="https://twitter.com/home" target="_blank" class="facebook-button">
+        <i class="blue-color fa fa-twitter" style="font-size:24px"></i><br/>
+      </a>
+
+      
+      
+      
+      
+      
+      
+    </div>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -314,6 +362,17 @@
         function view_sangthan_list(id){
             window.location.href = '/sangthan_list/'+id+'/'
         }
+
+        //follow button js
+
+        // var floatingButtonContainer = document.querySelector('.floating-button-div');
+        // var scrollY = window.scrollY;
+
+
+        // window.addEventListener('scroll', function() {
+        //   scrollY = window.scrollY;
+        //   floatingButtonContainer.style.top = scrollY + window.innerHeight - 300 + 'px';
+        // });
 
 
     </script>

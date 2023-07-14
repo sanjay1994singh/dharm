@@ -3,7 +3,19 @@
 {% block content %}
 <div class="container-fluid">
     <div class="row">
-        <div class="hori card text-center">
+        {% for list_data in list_data %}
+        <div class="card mt-3" style="width: 18rem;">
+            <img src="{{list_data.image.url}}" class="card-img-top" height="150" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Name: &nbsp; &nbsp; <b>{{list_data.name}}</b></h5>
+              <p class="card-text">Post: &nbsp; &nbsp; <b>{{list_data.post}}</b></p>
+              <p class="card-text">Address: &nbsp; &nbsp; <b>{{list_data.address}}</b></p>
+              <p class="card-text">contact: &nbsp; &nbsp; <b>{{list_data.contact}}</b></p>
+            </div>
+          </div>
+          {% endfor %}
+          
+        <!-- <div class="hori card text-center">
             <div class="card-body">
                 <table class="table table-striped">
                     <thead>
@@ -28,7 +40,7 @@
                     </tbody>
                 </table>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 {% endblock content %}

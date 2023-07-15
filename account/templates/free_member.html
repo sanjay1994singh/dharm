@@ -1,0 +1,72 @@
+{% extends "navbar.html" %}
+{% block content %}
+
+<div class="col-lg-6 mx-auto p-2">
+    <div class="text-center">
+        {% for member in member_type %}
+        <a href="/account/add-member/{{member.id}}/">
+            <input type="button" class="btn btn-primary" id="" value="{{member.type}}">
+        </a>
+        {% endfor %}
+    </div>
+    
+    <h2>Member Registration</h2>
+    <form id="registrationForm">{% csrf_token %}
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input class="form-control" id="name" name="name" placeholder="Enter your name" required type="text">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input class="form-control" id="email" name="email" placeholder="Enter your email" required type="email">
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input class="form-control" id="phone" name="phone" placeholder="Enter your phone number" type="text">
+        </div>
+        <div class="form-group">
+            <label for="address">Address</label>
+            <textarea class="form-control" id="address" name="address" placeholder="Enter your address"
+                      rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="pincode">Pincode</label>
+            <input class="form-control" id="pincode" name="pincode" placeholder="enter pincode" type="number">
+        </div>
+        <div class="form-group">
+            <label for="city">City</label>
+            <input class="form-control" id="city" name="city" placeholder="enter city" type="number">
+        </div>
+        <div class="form-group">
+            <label for="district">District</label>
+            <input class="form-control" id="district" name="district" placeholder="enter city" type="text">
+        </div>
+        <div class="form-group">
+            <label for="state">State</label>
+            <input class="form-control" id="state" name="state" placeholder="enter state" type="text" value="">
+        </div>
+        <div class="form-group">
+            <label for="country">country</label>
+            <input class="form-control" id="country" name="country" placeholder="enter country" type="text"
+                   value="India">
+        </div>
+        <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input class="form-control" id="dob" name="dob" placeholder="Enter your date of birth" type="date">
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            <select class="form-control" id="gender" name="gender">
+                <option value="">Select your gender</option>
+                {% for gender in gender_type %}
+                    <option value="{{gender.id}}">{{gender.gender}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="id_number">Aadhar Number</label>
+            <input class="form-control" id="id_number" name="id_number" placeholder="Enter your id number" type="text" maxlength="20">
+        </div>
+    </form>
+</div>
+{% endblock content %}

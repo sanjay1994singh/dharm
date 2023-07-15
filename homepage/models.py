@@ -50,3 +50,6 @@ class Sangthan(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True, default=1)
     address = models.TextField()
     contact = models.CharField(max_length=20, null=True)
+
+    def __str__(self):
+        return self.post

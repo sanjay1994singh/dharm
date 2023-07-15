@@ -1,3 +1,4 @@
+from homepage.models import LookupField
 import razorpay
 from django.shortcuts import render
 from .models import CustomUser,MemberType,Gender
@@ -7,7 +8,15 @@ from django.shortcuts import redirect
 
 def join_member(request):
     member_type = MemberType.objects.all()
+
+    title_logo_data = LookupField.objects.get(code='TITLE')
+    banner1 = LookupField.objects.get(code='HOME_BANNER1')
+    barcode = LookupField.objects.get(code='BAR_CODE')
+    
     context = {
+        'title_data': title_logo_data,
+        'banner1': banner1,
+        'barcode': barcode,
         'member_type':member_type
     }
     return render(request,'join_member.html',context)
@@ -43,6 +52,9 @@ def add_member(request,id):
                                         id_number=id_number,
                                         )
     else:
+        title_logo_data = LookupField.objects.get(code='TITLE')
+        banner1 = LookupField.objects.get(code='HOME_BANNER1')
+        barcode = LookupField.objects.get(code='BAR_CODE')
         member = MemberType.objects.get(id=id)
         mem_type = member.type
         if mem_type == 'हितचिंतक':
@@ -58,6 +70,9 @@ def add_member(request,id):
         order_id = payment['id']
 
         context = {
+            'title_data': title_logo_data,
+            'banner1': banner1,
+            'barcode': barcode,
             'payment':payment,
             'member_type':member_type,
             'member_price':amount,
@@ -96,10 +111,17 @@ def free_member(request):
                                         id_number=id_number,
                                         )
     else:
+        title_logo_data = LookupField.objects.get(code='TITLE')
+        banner1 = LookupField.objects.get(code='HOME_BANNER1')
+        barcode = LookupField.objects.get(code='BAR_CODE')
+
         member_type = MemberType.objects.all()
         free_member = MemberType.objects.get(price__lt=1)
         id = free_member.id
         context = {
+            'title_data': title_logo_data,
+            'banner1': banner1,
+            'barcode': barcode,
             'member_type':member_type,
             'free_member': id,
         }

@@ -10,7 +10,7 @@
         {% endfor %}
     </div>
     
-    <h2>Member Registration</h2>
+    <h2 class="text-center">Member Registration</h2>
     <form id="registrationForm" method="post">{% csrf_token %}
         <input type="hidden" name="free_member" value="{{free_member}}">
         <div class="form-group">

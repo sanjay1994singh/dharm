@@ -196,7 +196,7 @@ def get_sangth(request):
 def sangthan_list(request, id):
     title_logo_data = LookupField.objects.get(code='TITLE')
     post_ids = Post.objects.filter(type_id=id).values_list('id', flat=True)
-    list_data = Sangthan.objects.filter(post_id__in=post_ids)
+    list_data = Sangthan.objects.filter(post_id__in=post_ids).order_by('id')
     context = {
         'list_data': list_data,
         'title_data':title_logo_data

@@ -80,6 +80,7 @@ def free_member(request):
         dob = form.get('dob')
         gender = form.get('gender')
         id_number = form.get('id_number')
+        free_member = form.get('free_member')
         obj = CustomUser.objects.create(name=name,
                                         email=email,
                                         phone=phone,
@@ -91,13 +92,16 @@ def free_member(request):
                                         country=country,
                                         dob=dob,
                                         gender_id=gender,
-                                        # member_type_id=member_type,
+                                        member_type_id=free_member,
                                         id_number=id_number,
                                         )
     else:
         member_type = MemberType.objects.all()
+        free_member = MemberType.objects.get(price__lt=1)
+        id = free_member.id
         context = {
-            'member_type':member_type
+            'member_type':member_type,
+            'free_member': id,
         }
         return render(request,'free_member.html',context)
 

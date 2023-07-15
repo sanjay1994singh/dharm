@@ -37,6 +37,9 @@ def add_member(request,id):
         dob = form.get('dob')
         gender = form.get('gender')
         id_number = form.get('id_number')
+        order_id = form.get('razorpay_order_id')
+        razorpay_signature = form.get('razorpay_signature')
+        payment_id = form.get('razorpay_payment_id')
         obj = CustomUser.objects.create(name=name,
                                         email=email,
                                         phone=phone,
@@ -50,6 +53,9 @@ def add_member(request,id):
                                         gender_id=gender,
                                         member_type_id=member_type,
                                         id_number=id_number,
+                                        order_id=order_id,
+                                        transaction_id=razorpay_signature,
+                                        payment_id=payment_id,
                                         )
     else:
         title_logo_data = LookupField.objects.get(code='TITLE')
@@ -126,25 +132,3 @@ def free_member(request):
             'free_member': id,
         }
         return render(request,'free_member.html',context)
-
-def success(request):
-    if request.method == 'GET':
-        form = request.GET
-        razorpay_order_id = form.get('razorpay_order_id', None)
-        razorpay_payment_id = form.get('razorpay_payment_id', None)
-        razorpay_signature = form.get('razorpay_signature', None)
-        price = form.get('price', None)
-        payment_status = form.get('payment_status', None)
-        try:
-            pass
-        except Exception as e:
-            print(e, '=====================error in payment success function')
-
-        if course_obj:
-            msg = 'success'
-        else:
-            msg = 'failed'
-
-        json_data = {'msg': msg}
-
-        return JsonResponse(json_data)

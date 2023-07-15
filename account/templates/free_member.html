@@ -10,7 +10,7 @@
         {% endfor %}
     </div>
     
-    <h2 class="text-center">Member Registration</h2>
+    <h2 class="text-center mt-2">Member Registration</h2>
     <form id="registrationForm" method="post">{% csrf_token %}
         <input type="hidden" name="free_member" value="{{free_member}}">
         <div class="form-group">
@@ -69,7 +69,8 @@
             <input class="form-control" id="id_number" name="id_number" placeholder="Enter your id number" type="text" maxlength="20">
         </div>
         <div class="form-group mt-3">
-           <input type="submit" class="btn btn-primary" value="register now">
+            <center><input type="submit" class="btn btn-primary" value="register now"></center>
+           
         </div>
     </form>
 </div>

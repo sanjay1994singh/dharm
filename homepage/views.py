@@ -147,7 +147,7 @@ def sangthan_suchi(request):
         form_image = request.FILES
         name = form.get('name')
         post_name = form.get('post_name')
-        image = form.FILES('image')
+        image = request.FILES.get('image')
         address = form.get('address')
         mobile = form.get('mobile')
         obj = Sangthan.objects.create(name=name, post_id=post_name, address=address, contact=mobile)

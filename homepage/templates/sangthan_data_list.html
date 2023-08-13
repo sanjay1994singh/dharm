@@ -3,9 +3,10 @@
 {% block content %}
 <div class="container-fluid">
     <div class="row">
+        <h1 class="text-center"></h1>
         {% for list_data in list_data %}
         <div class="card mt-3 col-lg-3">
-            <img alt="..." class="card-img-top" height="250" src="{{list_data.image.url}}">
+            <img alt="..." class="card-img-top" height="300" src="{{list_data.image.url}}">
             <div class="card-body">
                 <table>
                     <tr>
@@ -18,10 +19,13 @@
                         <td><p>{{list_data.post}}</p></td>
                     </tr>
 
+                    {% if list_data.address %}
                     <tr>
                         <td><h5>पता</h5></td>
                         <td><p>{{list_data.address}}</p></td>
                     </tr>
+                    {% endif %}
+
                     {% if list_data.contact %}
                     <tr>
                         <td><h5>संपर्क</h5></td>

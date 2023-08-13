@@ -48,7 +48,7 @@
         {% for services in services %}
         <div class="col-md-3">
           <div class="card mb-4">
-            <img src="{{services.img.url}}" class="card-img-top" alt="Service 1" height="300">
+            <img src="{% if services.img %}{{services.img.url}}{% endif %}" class="card-img-top" alt="Service 1" height="250">
             <div class="card-body">
               <h5 class="card-title"><strong>{{services.name}}</strong></h5>
                <p class="card-text" style="text-align: justify;">{{services.description|slice:":255"}}</p>

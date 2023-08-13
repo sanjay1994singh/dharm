@@ -147,12 +147,11 @@ def sangthan_suchi(request):
         form_image = request.FILES
         name = form.get('name')
         post_name = form.get('post_name')
-        image = form.get('image')
+        image = form.Files('image')
         address = form.get('address')
         mobile = form.get('mobile')
         obj = Sangthan.objects.create(name=name, post_id=post_name, address=address, contact=mobile)
         if obj:
-            obj = Sangthan.objects.get(id=obj.pk)
             obj.image = image
             obj.save()
         return redirect('/')

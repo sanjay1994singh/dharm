@@ -134,5 +134,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-RAZOR_KEY_ID = 'rzp_test_5oHU1szIwHcSIn'
-RAZOR_KEY_SECRET = '0Hp2F9uxYKowoM0j3Ooxlr06'
+# RAZOR_KEY_ID = 'rzp_test_5oHU1szIwHcSIn'
+# RAZOR_KEY_SECRET = '0Hp2F9uxYKowoM0j3Ooxlr06'
+
+RAZOR_KEY_ID = 'rzp_test_rZ0K5Es4kPAFv2'
+RAZOR_KEY_SECRET = 'vbOQfPpw1PfMUKHgytLgTwRy'

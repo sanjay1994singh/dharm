@@ -7,13 +7,15 @@ from django.shortcuts import redirect, render
 from homepage.models import LookupField, Gallery, SangthanType, Sangthan, Post
 from services.models import Service
 
+from account.models import EnquiryDetails
+
 
 # Create your views here.
 def homepage(request):
     if request.method == 'POST':
         form = request.POST
-        name = form.get('name')
-        email = form.get('email')
+        name = form.get('enq_name')
+        email = form.get('enq_email')
         whatsapp = form.get('whatsapp')
         message = form.get('message')
         enquiry = EnquiryDetails.objects.create(name=name, email=email, whatsapp=whatsapp, message=message)

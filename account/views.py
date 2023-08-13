@@ -1,9 +1,12 @@
-from homepage.models import LookupField
 import razorpay
-from django.shortcuts import render
-from .models import CustomUser,MemberType,Gender
 from django.conf import settings
 from django.shortcuts import redirect
+from django.shortcuts import render
+from homepage.models import LookupField
+
+from .models import CustomUser, MemberType, Gender
+
+
 # Create your views here.
 
 def join_member(request):
@@ -12,17 +15,17 @@ def join_member(request):
     title_logo_data = LookupField.objects.get(code='TITLE')
     banner1 = LookupField.objects.get(code='HOME_BANNER1')
     barcode = LookupField.objects.get(code='BAR_CODE')
-    
+
     context = {
         'title_data': title_logo_data,
         'banner1': banner1,
         'barcode': barcode,
-        'member_type':member_type
+        'member_type': member_type
     }
-    return render(request,'join_member.html',context)
+    return render(request, 'join_member.html', context)
 
 
-def add_member(request,id):
+def add_member(request, id):
     if request.method == 'POST':
         form = request.POST
         name = form.get('name')
@@ -51,7 +54,7 @@ def add_member(request,id):
                                         country=country,
                                         dob=dob,
                                         gender_id=gender,
-                                        member_type_id=member_type,
+                                        member_type_id=id,
                                         id_number=id_number,
                                         order_id=order_id,
                                         transaction_id=razorpay_signature,
@@ -65,9 +68,9 @@ def add_member(request,id):
         mem_type = member.type
         if mem_type == 'हितचिंतक':
             return redirect('/account/free-member/')
-        
+
         member_type = MemberType.objects.all()
-       
+
         gender_type = Gender.objects.all()
         amount = member.price
 
@@ -79,13 +82,14 @@ def add_member(request,id):
             'title_data': title_logo_data,
             'banner1': banner1,
             'barcode': barcode,
-            'payment':payment,
-            'member_type':member_type,
-            'member_price':amount,
-            'gender_type':gender_type,
+            'payment': payment,
+            'member_type': member_type,
+            'member_price': amount,
+            'gender_type': gender_type,
         }
-        return render(request,'add_member.html',context)
-    
+        return render(request, 'add_member.html', context)
+
+
 def free_member(request):
     if request.method == 'POST':
         form = request.POST
@@ -128,7 +132,21 @@ def free_member(request):
             'title_data': title_logo_data,
             'banner1': banner1,
             'barcode': barcode,
-            'member_type':member_type,
+            'member_type': member_type,
             'free_member': id,
         }
-        return render(request,'free_member.html',context)
+        return render(request, 'free_member.html', context)
+
+
+def privacy_policy(request):
+    return render(request, 'privacy_policy.html')
+
+def terms_conditions(request):
+    return render(request, 'term_conditions.html')
+
+def cancellation_refund(request):
+    return render(request, 'cancelation_refund.html')
+
+def shipping_delivery(request):
+    return render(request, 'shipping.html')
+

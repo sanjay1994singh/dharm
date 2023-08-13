@@ -5,7 +5,7 @@
     <div class="text-center">
         {% for member in member_type %}
         <a href="/account/add-member/{{member.id}}/">
-            <button class="btn btn-primary" type="button">{{member.type}} - {% if member.price != 1.00 %} वार्षिक शुल्क : {{member.price}} {% else %}निःशुल्क {% endif %}</button>
+            <button class="btn btn-primary" type="button">{{member.type}} - {% if member.price != 0.00 %} वार्षिक शुल्क : {{member.price}} {% else %} निःशुल्क {% endif %}</button>
         </a>
         {% endfor %}
     </div>

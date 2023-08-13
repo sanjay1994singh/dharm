@@ -6,7 +6,7 @@
         <h1 class="text-center"></h1>
         {% for list_data in list_data %}
         <div class="card mt-3 col-lg-3">
-            <img alt="..." class="card-img-top" height="300" src="{{list_data.image.url}}">
+            <img alt="..." class="card-img-top" height="300" src="{% if list_data.image %}{{list_data.image.url}}{% endif %}">
             <div class="card-body">
                 <table>
                     <tr>

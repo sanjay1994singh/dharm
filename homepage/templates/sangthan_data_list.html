@@ -29,7 +29,7 @@
                     {% if list_data.contact %}
                     <tr>
                         <td><h5>संपर्क</h5></td>
-                        <td><p>&nbsp; &nbsp;{{list_data.contact}}</p></td>
+                        <td><p>&nbsp; &nbsp;{% if list_data.contact|length > 5 %}{{list_data.contact}}{% endif %}</p></td>
                     </tr>
                     {% endif %}
                 </table>

@@ -13,7 +13,7 @@
                         <td><h5>नाम</h5></td>
                         <td><p>{{list_data.name}}</p></td>
                     </tr>
-                    {% if list_data.post == 'संरक्षक' %}
+                    {% if list_data.post != 'संरक्षक' %}
                     <tr>
                         <td><h5>पद</h5></td>
                         <td><p>{{list_data.post}}</p></td>

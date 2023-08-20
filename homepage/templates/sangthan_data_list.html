@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container">
     <div class="row mx-auto">
-        <h1 class="text-center"></h1>
+        <h1 class="text-center" id="heading_id"></h1>
         {% for list_data in list_data %}
         <div class="card mt-3 col-lg-3">
             <img alt="..." class="card-img-top" height="300" src="{% if list_data.image %}{{list_data.image.url}}{% endif %}">
@@ -13,11 +13,12 @@
                         <td><h5>नाम</h5></td>
                         <td><p>{{list_data.name}}</p></td>
                     </tr>
-
+                    {% if list_data.post == 'संरक्षक' %}
                     <tr>
                         <td><h5>पद</h5></td>
                         <td><p>{{list_data.post}}</p></td>
                     </tr>
+                    {% endif %}
 
                     {% if list_data.address %}
                     <tr>

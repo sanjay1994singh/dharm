@@ -1,13 +1,9 @@
-import os
-from django.http import FileResponse
+from account.models import EnquiryDetails
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
-
 # from account.models import EnquiryDetails
 from homepage.models import LookupField, Gallery, SangthanType, Sangthan, Post
 from services.models import Service
-
-from account.models import EnquiryDetails
 
 
 # Create your views here.
@@ -201,6 +197,14 @@ def sangthan_list(request, id):
     list_data = Sangthan.objects.filter(post_id__in=post_ids).order_by('id')
     context = {
         'list_data': list_data,
-        'title_data':title_logo_data
+        'title_data': title_logo_data
     }
     return render(request, 'sangthan_data_list.html', context)
+
+
+def contact(request):
+    title_logo_data = LookupField.objects.get(code='TITLE')
+    context = {
+        'title_data': title_logo_data
+    }
+    return render(request, 'contact_us.html', context)

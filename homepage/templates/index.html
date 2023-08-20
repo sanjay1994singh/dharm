@@ -97,30 +97,30 @@
 {% block enquiry %}
 
 <!-- Contact Section -->
-      <section id="contact" class="py-5 bg-light">
-        <div class="container">
-          <h2>Contact Us</h2>
-          <p>Get in touch with us for any inquiries or support.</p>
-          <form id="save_form_id" method="post" enctype="multipart/form-data">{% csrf_token %}
-            <div class="form-group">
-              <label for="name">Your Name</label>
-              <input type="text" class="form-control" id="enq_name" name="name" required>
-            </div>
-            <div class="form-group">
-              <label for="email">Your Email</label>
-              <input type="email" class="form-control" id="enq_email" name="email" required>
-            </div>
-            <div class="form-group">
-              <label for="whatsapp">Your Whatsapp Number</label>
-              <input type="number" class="form-control" id="whatsapp" name="whatsapp" required>
-            </div>
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
-            </div>
-            <button type="submit" id="save_form" class="btn btn-primary">Submit</button>
-          </form>
-        </div>
-      </section>
+<!--      <section id="contact" class="py-5 bg-light">-->
+<!--        <div class="container">-->
+<!--          <h2>Contact Us</h2>-->
+<!--          <p>Get in touch with us for any inquiries or support.</p>-->
+<!--          <form id="save_form_id" method="post" enctype="multipart/form-data">{% csrf_token %}-->
+<!--            <div class="form-group">-->
+<!--              <label for="name">Your Name</label>-->
+<!--              <input type="text" class="form-control" id="enq_name" name="name" required>-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--              <label for="email">Your Email</label>-->
+<!--              <input type="email" class="form-control" id="enq_email" name="email" required>-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--              <label for="whatsapp">Your Whatsapp Number</label>-->
+<!--              <input type="number" class="form-control" id="whatsapp" name="whatsapp" required>-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--              <label for="message">Message</label>-->
+<!--              <textarea class="form-control" id="message" name="message" rows="5" required></textarea>-->
+<!--            </div>-->
+<!--            <button type="submit" id="save_form" class="btn btn-primary">Submit</button>-->
+<!--          </form>-->
+<!--        </div>-->
+<!--      </section>-->
 
 {% endblock enquiry %}

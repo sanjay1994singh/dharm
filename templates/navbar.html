@@ -92,9 +92,13 @@
 
 
     </style>
+    {% block css %}
+    {% endblock css %}
 </head>
 
 <body>
+ <p class="bg-danger text-end p-2 text-light">Contact Number : +91-9837164790, 9084624790</p>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="/"><img alt="" height="100"
@@ -147,6 +151,9 @@
                     <a class="nav-link" data-bs-target="#exampleModal" data-bs-toggle="modal" href="return false;"
                        id="sangthan_ki_suchi">संगठन की सूची</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact/">Contact us</a>
+                </li>
 
                 <li class="nav-item dropdown">
                     <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
@@ -178,7 +185,6 @@
         </div>
     </div>
 </nav>
-
 <!-- this is main banner  -->
 {% if banner1.img.url %}
 

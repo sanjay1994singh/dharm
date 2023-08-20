@@ -94,8 +94,8 @@
           line-height: 1.8;
         }
 
-        .nav-link{
-
+        .bg_color{
+            background-color:#eb3434;
         }
     </style>
     {% block css %}
@@ -103,12 +103,12 @@
 </head>
 
 <body>
- <p class="bg-danger fw-bold text-end p-2 text-light">Contact Number : +91-9837164790, 9084624790</p>
+ <p class="bg-warning fw-bold text-end p-2">Contact Number : +91-9837164790, 9084624790</p>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-info text-white">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/"><img alt="" height="100"
-                                              src="{{title_data.img.url}}"/><strong>{{title_data.title}}</strong></a>
+        <a class="navbar-brand" href="/">
+            <img alt="" height="100"  src="{{title_data.img.url}}"/><strong class="text-light">{{title_data.title}}</strong></a>
         <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
                 class="navbar-toggler"
                 data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
@@ -117,22 +117,22 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a aria-current="page" class="nav-link fw-bold active" href="/">होम</a>
+                    <a aria-current="page" class="text-light nav-link fw-bold active" href="/">होम</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fw-bold" href="/">धर्म की बात</a>
+                    <a class="text-light nav-link fw-bold" href="/">धर्म की बात</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fw-bold" href="#services">हमारे प्रकल्प</a>
+                    <a class="text-light nav-link fw-bold" href="#services">हमारे प्रकल्प</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fw-bold" href="#">कार्यक्रम</a>
+                    <a class="text-light nav-link fw-bold" href="#">कार्यक्रम</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fw-bold" href="/viewPdf/">व्रत एवं त्यौहार 2023-24</a>
+                    <a class="text-light nav-link fw-bold" href="/viewPdf/">व्रत एवं त्यौहार 2023-24</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a aria-expanded="false" class="nav-link fw-bold dropdown-toggle" data-bs-toggle="dropdown" href="#"
+                    <a aria-expanded="false" class="text-light nav-link fw-bold dropdown-toggle" data-bs-toggle="dropdown" href="#"
                        id="navbarDropdown"
                        role="button">
                         मीडिया गैलरी
@@ -148,18 +148,18 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link fw-bold" href="/account/join-member/">ऑनलाइन सदस्यता</a>
+                    <a class="text-light nav-link fw-bold" href="/account/join-member/">ऑनलाइन सदस्यता</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fw-bold" data-bs-target="#exampleModal" data-bs-toggle="modal" href="return false;"
+                    <a class="text-light nav-link fw-bold" data-bs-target="#exampleModal" data-bs-toggle="modal" href="return false;"
                        id="sangthan_ki_suchi">संगठन की सूची</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fw-bold" href="/contact/">संपर्क करें</a>
+                    <a class="text-light nav-link fw-bold" href="/contact/">संपर्क करें</a>
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
+                    <a aria-expanded="false" class="text-light nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
                        id="navbarDropdown"
                        role="button">
                         Privacy Policy

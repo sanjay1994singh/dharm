@@ -90,14 +90,20 @@
             width:98.9vw;
         }
 
+        .line-height {
+          line-height: 1.8;
+        }
 
+        .nav-link{
+
+        }
     </style>
     {% block css %}
     {% endblock css %}
 </head>
 
 <body>
- <p class="bg-danger text-end p-2 text-light">Contact Number : +91-9837164790, 9084624790</p>
+ <p class="bg-danger fw-bold text-end p-2 text-light">Contact Number : +91-9837164790, 9084624790</p>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -111,33 +117,30 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a aria-current="page" class="nav-link active" href="/">होम</a>
+                    <a aria-current="page" class="nav-link fw-bold active" href="/">होम</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#about">हमारे बारे में</a>
+                    <a class="nav-link fw-bold" href="/">धर्म की बात</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#main-body">हमारे स्तंभ</a>
+                    <a class="nav-link fw-bold" href="#services">हमारे प्रकल्प</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#services">हमारे प्रकल्प</a>
+                    <a class="nav-link fw-bold" href="#">कार्यक्रम</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">कार्यक्रम</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/viewPdf/">मांगलिक पत्रिका-23-24</a>
+                    <a class="nav-link fw-bold" href="/viewPdf/">व्रत एवं त्यौहार 2023-24</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
+                    <a aria-expanded="false" class="nav-link fw-bold dropdown-toggle" data-bs-toggle="dropdown" href="#"
                        id="navbarDropdown"
                        role="button">
                         मीडिया गैलरी
                     </a>
                     <ul aria-labelledby="navbarDropdown" class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/photo-gallery/">फोटो गैलरी</a></li>
-                        <li><a class="dropdown-item" href="/video-gallery/">वीडियो गैलरी</a></li>
-                        <li><a class="dropdown-item" href="/samachar-gallery/">समाचार गैलरी</a></li>
+                        <li><a class="dropdown-item fw-bold" href="/photo-gallery/">फोटो गैलरी</a></li>
+                        <li><a class="dropdown-item fw-bold" href="/video-gallery/">वीडियो गैलरी</a></li>
+                        <li><a class="dropdown-item fw-bold" href="/samachar-gallery/">समाचार गैलरी</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -145,14 +148,14 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/account/join-member/">ऑनलाइन सदस्यता</a>
+                    <a class="nav-link fw-bold" href="/account/join-member/">ऑनलाइन सदस्यता</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-bs-target="#exampleModal" data-bs-toggle="modal" href="return false;"
+                    <a class="nav-link fw-bold" data-bs-target="#exampleModal" data-bs-toggle="modal" href="return false;"
                        id="sangthan_ki_suchi">संगठन की सूची</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/contact/">संपर्क करें</a>
+                    <a class="nav-link fw-bold" href="/contact/">संपर्क करें</a>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -186,17 +189,10 @@
     </div>
 </nav>
 <!-- this is main banner  -->
-{% if banner1.img.url %}
 
-<header class="jumbotron">
-    <div class="fluid-container">
-        <!-- <h1>Welcome to our Charity Organization</h1> -->
-        <!-- <p>We strive to make a positive impact on the community.</p> -->
-        <img alt="" class="banner_img mb-3" src="{{banner1.img.url}}">
-    </div>
-</header>
+ {% block main_banner%}
+ {% endblock main_banner%}
 
-{% endif %}
 
 <!--end main banner section -->
 {% block message %}
@@ -233,7 +229,7 @@
 <section class="mt-4" id="about">
     <div class="container">
         <h2>हमारे बारे में </h2>
-        <p class="h5" style="text-align: justify;">{{about_data.desc}}</p>
+        <h5 class="line-height" style="text-align: justify;">{{about_data.desc}}</h5>
     </div>
 </section>
 {% endif %}
@@ -350,9 +346,6 @@
         //   scrollY = window.scrollY;
         //   floatingButtonContainer.style.top = scrollY + window.innerHeight - 300 + 'px';
         // });
-
-
-
 
 </script>
 {% block js %}

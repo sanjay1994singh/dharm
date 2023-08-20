@@ -1,4 +1,20 @@
 {% extends "navbar.html" %}
+
+ {% block main_banner%}
+
+    {% if banner1.img %}
+
+    <header class="jumbotron">
+        <div class="fluid-container">
+            <!-- <h1>Welcome to our Charity Organization</h1> -->
+            <!-- <p>We strive to make a positive impact on the community.</p> -->
+            <img alt="" class="banner_img mb-3" height="250" src="{{banner1.img.url}}">
+        </div>
+    </header>
+
+    {% endif %}
+
+ {% endblock main_banner%}
 {% block content %}
 
 <div class="col-lg-8 mx-auto p-2">

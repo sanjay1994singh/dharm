@@ -204,7 +204,12 @@ def sangthan_list(request, id):
 
 def contact(request):
     title_logo_data = LookupField.objects.get(code='TITLE')
+    try:
+        banner1 = LookupField.objects.get(code='sampark')
+    except:
+        banner1 = ''
     context = {
-        'title_data': title_logo_data
+        'title_data': title_logo_data,
+        'banner1': banner1,
     }
     return render(request, 'contact_us.html', context)

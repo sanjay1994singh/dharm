@@ -13,13 +13,14 @@ def join_member(request):
     member_type = MemberType.objects.all()
 
     title_logo_data = LookupField.objects.get(code='TITLE')
-    banner1 = LookupField.objects.get(code='HOME_BANNER1')
-    barcode = LookupField.objects.get(code='BAR_CODE')
+    try:
+        banner1 = LookupField.objects.get(code='sadasyata')
+    except:
+        banner1 = ''
 
     context = {
         'title_data': title_logo_data,
         'banner1': banner1,
-        'barcode': barcode,
         'member_type': member_type
     }
     return render(request, 'join_member.html', context)
@@ -62,15 +63,13 @@ def add_member(request, id):
                                         )
     else:
         title_logo_data = LookupField.objects.get(code='TITLE')
-        banner1 = LookupField.objects.get(code='HOME_BANNER1')
-        barcode = LookupField.objects.get(code='BAR_CODE')
+
         member = MemberType.objects.get(id=id)
         mem_type = member.type
         if mem_type == 'हितचिंतक':
             return redirect('/account/free-member/')
 
         member_type = MemberType.objects.all()
-
         gender_type = Gender.objects.all()
         amount = member.price
 
@@ -80,8 +79,6 @@ def add_member(request, id):
 
         context = {
             'title_data': title_logo_data,
-            'banner1': banner1,
-            'barcode': barcode,
             'payment': payment,
             'member_type': member_type,
             'member_price': amount,

@@ -37,14 +37,14 @@
    <section id="main-body" class="py-5 bg-light">
     <div class="container">
       <h2>हमारे स्तंभ</h2>
-      <div class="row">
+      <div class="row text-center">
         {% for parichay_data in parichay_data %}
         <div class="col-md-3">
           <div class="card mb-4">
             <img src="{{parichay_data.img.url}}" class="card-img-top" alt="Service 1" height="300">
             <div class="card-body">
               <p class="card-title"><strong>{{parichay_data.title}}</strong></p>
-               <p class="card-text" style="text-align: justify;">{{parichay_data.desc|slice:":255"}}</p>
+<!--               <p class="card-text" style="text-align: justify;">{{parichay_data.desc|slice:":255"}}</p>-->
                <a href="/biography/{{parichay_data.id}}/">Read more</a>
             </div>
           </div>
@@ -62,14 +62,14 @@
   <section id="services" class="py-5 bg-light">
     <div class="container">
       <h2>हमारे प्रकल्प</h2>
-      <div class="row">
+      <div class="row text-center">
         {% for services in services %}
         <div class="col-md-3">
           <div class="card mb-4">
             <img src="{% if services.img %}{{services.img.url}}{% endif %}" class="card-img-top" alt="Service 1" height="200">
             <div class="card-body">
-              <h5 class="card-title"><strong>{{services.name}}</strong></h5>
-               <p class="card-text" style="text-align: justify;">{{services.description|slice:":100"}}</p>
+              <h6 class="card-title"><strong>{{services.name}}</strong></h6>
+<!--               <p class="card-text" style="text-align: justify;">{{services.description|slice:":100"}}</p>-->
                <a href="/service_details/{{services.id}}/">Read more</a>
             </div>
           </div>

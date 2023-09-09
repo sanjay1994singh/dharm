@@ -1,8 +1,16 @@
 {% extends "navbar.html" %}
 
 {% block services %}
+<div class="text-center mt-5">
+    <input id="Rashi" name="jyotish" type="radio">&nbsp; &nbsp;<lable>राशिफल </lable> &nbsp; &nbsp;
+    <input id="Vastu" name="jyotish" type="radio">&nbsp; &nbsp;<lable>वास्तु उपाय</lable> &nbsp; &nbsp;
+    <input id="samadhan" name="jyotish" type="radio">&nbsp; &nbsp;<lable>ज्योतिष एवं वास्तु समाधान</lable> &nbsp;
+    &nbsp;
+</div>
+
+
 <div class="container mt-5">
-    <div class="row">
+    <div class="row mb-5" id="rashifal">
         {% for rashi in rashi %}
         <div class="col-md-6">
             <div class="card">
@@ -14,5 +22,75 @@
         </div>
         {% endfor %}
     </div>
+
+    <div class="row" id="vastupay">
+
+    </div>
+
+    <div class="" id="jyotiSamadhan">
+
+        <div class="col-lg-8 mx-auto">
+
+            <div class="mb-2">
+                <input class="form-control" id="name" name="name" placeholder="Enter name" type="text">
+            </div>
+
+            <div class="mb-2">
+                <input class="form-control" id="dob" name="dob" placeholder="Enter date of birth" type="text">
+            </div>
+
+            <div class="mb-2">
+                <input class="form-control" id="dob_place" name="dob_place" placeholder="Enter date of place" type="text">
+            </div>
+
+            <div class="mb-2">
+                <input class="form-control" id="dob_time" name="dob_time" placeholder="Enter date of time" type="text">
+            </div>
+
+            <div class="mb-2">
+                <input class="form-control" id="mobile" name="mobile" placeholder="Enter contact number" type="text">
+            </div>
+
+            <div class="mb-2">
+                <textarea class="form-control" cols="10" id="" name="" placeholder="Ask any question" rows="5"></textarea>
+            </div>
+
+            <div class="mb-5">
+                <center><button class="btn sm-btn btn-primary" type="submit">submit now</button></center>
+            </div>
+
+        </div>
+    </div>
 </div>
+
+
 {% endblock services %}
+
+
+{% block js %}
+    <script>
+        $(document).ready(function(){
+            $('#jyotiSamadhan').hide()
+        });
+
+
+        $('#samadhan').click(function(){
+            $('#rashifal').hide()
+            $('#vastupay').hide()
+            $('#jyotiSamadhan').show()
+        });
+
+        $('#Vastu').click(function(){
+            $('#rashifal').hide()
+            $('#vastupay').show()
+            $('#jyotiSamadhan').hide()
+        });
+
+        $('#Rashi').click(function(){
+            $('#rashifal').show()
+            $('#vastupay').hide()
+            $('#jyotiSamadhan').hide()
+        });
+    </script>
+{% endblock js %}
+

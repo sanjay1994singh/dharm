@@ -205,6 +205,8 @@
 
 {% endblock %}
 
+ {% block tv %}
+ {% endblock tv %}
 
 {% if shloka %}
 <!-- Slider -->
@@ -214,7 +216,7 @@
         <div class="carousel-inner">
             {% for i in shloka %}
             <div class="carousel-item {% if forloop.counter  == 1 %} active {% else %} {% endif %}">
-                <img alt="Slide 1" class="d-block w-100" height="150" src="{{i.img.url}}">
+                <img alt="Slide 1" class="d-block w-100" height="180" src="{{i.img.url}}">
             </div>
             {% endfor %}
         </div>
@@ -230,8 +232,7 @@
 </div>
 {% endif %}
 
- {% block tv %}
- {% endblock tv %}
+
 <!-- About Section -->
 {% if about_data.desc %}
 <section class="mt-4" id="about">

@@ -36,14 +36,19 @@ class Org(models.Model):
 
 class SangthanType(models.Model):
     type = models.CharField(max_length=50)
+
     def __str__(self):
         return self.type
 
+
 class Post(models.Model):
-    type = models.ForeignKey(SangthanType, on_delete=models.CASCADE,null=True,default=1)
+    type = models.ForeignKey(SangthanType, on_delete=models.CASCADE, null=True, default=1)
     post_name = models.CharField(max_length=100, null=True)
+
     def __str__(self):
         return self.post_name
+
+
 class Sangthan(models.Model):
     name = models.CharField(max_length=100, null=True)
     image = models.ImageField(upload_to='sangthan_image')

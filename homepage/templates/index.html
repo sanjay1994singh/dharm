@@ -1,92 +1,121 @@
 {% extends "navbar.html" %}
 
 
- {% block main_banner%}
+{% block main_banner%}
 
-    {% if banner1.img %}
+{% if banner1.img %}
 
-    <header class="jumbotron">
-        <div class="fluid-container">
-            <!-- <h1>Welcome to our Charity Organization</h1> -->
-            <!-- <p>We strive to make a positive impact on the community.</p> -->
-            <img alt="" class="banner_img mb-3" src="{{banner1.img.url}}">
-        </div>
-    </header>
+<header class="jumbotron">
+    <div class="fluid-container">
+        <!-- <h1>Welcome to our Charity Organization</h1> -->
+        <!-- <p>We strive to make a positive impact on the community.</p> -->
+        <img alt="" class="banner_img mb-3" src="{{banner1.img.url}}">
+    </div>
+</header>
 
-    {% endif %}
+{% endif %}
 
- {% endblock main_banner%}
+{% endblock main_banner%}
 
 
 {% block message %}
 
-<marquee behavior="" direction="" class="mb-3">{{suchana.desc}}</marquee>
+<marquee behavior="" class="mb-3" direction="">{{suchana.desc}}</marquee>
 
 <div class="container mx-auto bg-light">
-    <p class="fs-4" style="text-align: justify;"><strong>समाज को धर्म पूर्वक जोड़कर सनातन - संस्कारों का संरक्षण करना आज की महती आवश्यकता है।
-    हमारा राष्ट्र 'भारतवर्ष' अखंड हिंदू राष्ट्र बन कर पुनः विश्व गुरु के रूप में स्थापित हो एवं श्रीरामजन्मभूमि की
-    भांति श्रीकृष्ण जन्मभूमि भी अपने गौरवशाली रूप में स्थापित हो धर्म रक्षा संघ के इस पावन प्रयास में आइए, हम सब
-    एकजुट होकर तन-मन-धन से संकल्प पूर्वक प्रस्तुत हों ।</strong></p>
+    <p class="fs-4" style="text-align: justify;"><strong>समाज को धर्म पूर्वक जोड़कर सनातन - संस्कारों का संरक्षण करना आज
+        की महती आवश्यकता है।
+        हमारा राष्ट्र 'भारतवर्ष' अखंड हिंदू राष्ट्र बन कर पुनः विश्व गुरु के रूप में स्थापित हो एवं श्रीरामजन्मभूमि की
+        भांति श्रीकृष्ण जन्मभूमि भी अपने गौरवशाली रूप में स्थापित हो धर्म रक्षा संघ के इस पावन प्रयास में आइए, हम सब
+        एकजुट होकर तन-मन-धन से संकल्प पूर्वक प्रस्तुत हों ।</strong></p>
 </div>
 
 {% endblock %}
 
+
+{% block tv %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 border">
+            <div class="row mt-4">
+                <a href="/services/dharm_sandesh/" class="p-5 mx-auto col-lg-3 m-1 btn btn-primary">Dharm sandesh</a>
+                <a href="/services/dharmik_ayojan/" class="p-5 mx-auto col-lg-3 m-1 btn btn-primary">Dharmik Ayojan</a>
+                <a href="/services/rajat_shila/" class="p-5 mx-auto col-lg-3 m-1 btn btn-primary">Rajan Shila</a>
+            </div>
+
+            <div class="row mt-4">
+                <a href="/services/braj_yatra/" class="p-5 mx-auto col-lg-3 m-1 btn btn-primary">Braj Yatra</a>
+                <a href="/services/jyotish/" class="p-5 mx-auto col-lg-3 m-1 btn btn-primary">Jyotish / Vaastu</a>
+                <a href="/services/daan/" class="p-5 mx-auto col-lg-3 m-1 btn btn-primary">Daan</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 border">
+            <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+            </iframe>
+        </div>
+    </div>
+</div>
+{% endblock tv %}
+
+
 {% block biography %}
 
-   <!-- Services Section -->
-   <section id="main-body" class="py-5 bg-light">
+<!-- Services Section -->
+<section class="py-5 bg-light" id="main-body">
     <div class="container">
-      <h2>हमारे स्तंभ</h2>
-      <div class="row text-center">
-        {% for parichay_data in parichay_data %}
-        <div class="col-md-3">
-          <div class="card mb-4">
-            <img src="{{parichay_data.img.url}}" class="card-img-top" alt="Service 1" height="300">
-            <div class="card-body">
-              <p class="card-title"><strong>{{parichay_data.title}}</strong></p>
-<!--               <p class="card-text" style="text-align: justify;">{{parichay_data.desc|slice:":255"}}</p>-->
-               <a href="/biography/{{parichay_data.id}}/">Read more</a>
+        <h2>हमारे स्तंभ</h2>
+        <div class="row text-center">
+            {% for parichay_data in parichay_data %}
+            <div class="col-md-3">
+                <div class="card mb-4">
+                    <img alt="Service 1" class="card-img-top" height="300" src="{{parichay_data.img.url}}">
+                    <div class="card-body">
+                        <p class="card-title"><strong>{{parichay_data.title}}</strong></p>
+                        <!--               <p class="card-text" style="text-align: justify;">{{parichay_data.desc|slice:":255"}}</p>-->
+                        <a href="/biography/{{parichay_data.id}}/">Read more</a>
+                    </div>
+                </div>
             </div>
-          </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-      </div>
     </div>
-  </section>
+</section>
 
 {% endblock biography %}
 
-  {% block services %}
+{% block services %}
 
-  <!-- Services Section -->
-  <section id="services" class="py-5 bg-light">
+<!-- Services Section -->
+<section class="py-5 bg-light" id="services">
     <div class="container">
-      <h2>हमारे प्रकल्प</h2>
-      <div class="row text-center">
-        {% for services in services %}
-        <div class="col-md-3">
-          <div class="card mb-4">
-            <img src="{% if services.img %}{{services.img.url}}{% endif %}" class="card-img-top" alt="Service 1" height="200">
-            <div class="card-body">
-              <h6 class="card-title"><strong>{{services.name}}</strong></h6>
-<!--               <p class="card-text" style="text-align: justify;">{{services.description|slice:":100"}}</p>-->
-               <a href="/service_details/{{services.id}}/">Read more</a>
+        <h2>हमारे प्रकल्प</h2>
+        <div class="row text-center">
+            {% for services in services %}
+            <div class="col-md-3">
+                <div class="card mb-4">
+                    <img alt="Service 1" class="card-img-top" height="200"
+                         src="{% if services.img %}{{services.img.url}}{% endif %}">
+                    <div class="card-body">
+                        <h6 class="card-title"><strong>{{services.name}}</strong></h6>
+                        <!--               <p class="card-text" style="text-align: justify;">{{services.description|slice:":100"}}</p>-->
+                        <a href="/service_details/{{services.id}}/">Read more</a>
+                    </div>
+                </div>
             </div>
-          </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-      </div>
     </div>
-  </section>
-  {% endblock services %}
+</section>
+{% endblock services %}
 
 {% block donet %}
-<div id="donate" class="col-lg-8 text-center mx-auto">
-        <p class="mt-4">सहयोग राशी /Donate Now</p>
-        <h3>SCAN AND PAY</h3>
-        <div class="row mx-auto">
+<div class="col-lg-8 text-center mx-auto" id="donate">
+    <p class="mt-4">सहयोग राशी /Donate Now</p>
+    <h3>SCAN AND PAY</h3>
+    <div class="row mx-auto">
 
-          <div class="col-lg-4 mt-4">
+        <div class="col-lg-4 mt-4">
             Name: DHARM RAKSHA SANGH
             <br>
             Current A/c No: 101705500235
@@ -96,21 +125,21 @@
             IFC Code : ICIC0001017
             <br>
             Branch Vrindavan
-          </div>
+        </div>
 
-          <div class="col-lg-4">
-            <img src="{{barcode.img.url}}" alt="" height="200">
-          </div>
+        <div class="col-lg-4">
+            <img alt="" height="200" src="{{barcode.img.url}}">
+        </div>
 
-          <div class="col-lg-4 mt-4">
+        <div class="col-lg-4 mt-4">
             आयकर की धारा 80-G  एवं 12 -A के अंतर्गत कर राशि में छूट प्राप्त करने हेतु मान्य Vide URNO. AACTD6153HE20221
             Valid
             upto AY 2025
-              <p>PAN: AACTD6153H</p>
-          </div>
-
+            <p>PAN: AACTD6153H</p>
         </div>
-      </div>
+
+    </div>
+</div>
 {% endblock %}
 
 {% block enquiry %}

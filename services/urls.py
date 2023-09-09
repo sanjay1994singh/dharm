@@ -3,6 +3,11 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('puja_form/', views.puja_form, name='puja_form'),
-    path('Jyotish_form/', views.Jyotish_form, name='Jyotish_form'),
+    path('jyotish/', views.jyotish, name='jyotish'),
+
+    path('dharm_sandesh/', views.dharm_sandesh, name='dharm_sandesh'),
+    path('dharmik_ayojan/', views.dharmik_ayojan, name='dharmik_ayojan'),
+    path('rajat_shila/', views.rajat_shila, name='rajat_shila'),
+    path('braj_yatra/', views.braj_yatra, name='braj_yatra'),
+    path('daan/', views.daan, name='daan'),
 ]

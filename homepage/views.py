@@ -7,6 +7,16 @@ from services.models import Service
 
 
 # Create your views here.
+
+def dharm_kya_hai(request):
+    try:
+        dharm_ki_baat = LookupField.objects.get(code='dharm_ki_baat')
+    except:
+        dharm_ki_baat = ''
+    context = {'dharm_ki_baat': dharm_ki_baat, }
+    return render(request, 'dharm_kya_hai.html', context)
+
+
 def homepage(request):
     if request.method == 'POST':
         form = request.POST
@@ -23,11 +33,7 @@ def homepage(request):
             id = 0
             status = 'faild'
             msg = 'Your message not sent.'
-        json_data = {
-            'id': id,
-            'status': status,
-            'msg': msg,
-        }
+        json_data = {'id': id, 'status': status, 'msg': msg, }
         return redirect('/')
 
     else:
@@ -43,16 +49,9 @@ def homepage(request):
         services = Service.objects.all()
         barcode = LookupField.objects.get(code='BAR_CODE')
         shloka = LookupField.objects.filter(code='SHLOKA')
-        context = {
-            'title_data': title_logo_data,
-            'banner1': banner1,
-            'about_data': about_data,
-            'parichay_data': parichay_data,
-            'services': services,
-            'barcode': barcode,
-            'shloka': shloka,
-            'suchana': suchana,
-        }
+        context = {'title_data': title_logo_data, 'banner1': banner1, 'about_data': about_data,
+            'parichay_data': parichay_data, 'services': services, 'barcode': barcode, 'shloka': shloka,
+            'suchana': suchana, }
         return render(request, 'index.html', context)
 
 
@@ -60,10 +59,7 @@ def biography(request, id):
     title_logo_data = LookupField.objects.get(code='TITLE')
     biography = LookupField.objects.get(id=id)
 
-    context = {
-        'biography': biography,
-        'title_data': title_logo_data,
-    }
+    context = {'biography': biography, 'title_data': title_logo_data, }
     return render(request, 'biography.html', context)
 
 
@@ -71,10 +67,7 @@ def service_details(request, id):
     title_logo_data = LookupField.objects.get(code='TITLE')
     services = Service.objects.get(id=id)
 
-    context = {
-        'services': services,
-        'title_data': title_logo_data,
-    }
+    context = {'services': services, 'title_data': title_logo_data, }
     return render(request, 'service_detail.html', context)
 
 
@@ -98,10 +91,7 @@ def add_gallery(request):
 def gallery(request):
     title_logo_data = LookupField.objects.get(code='TITLE')
     gallery = Gallery.objects.filter(code='gallery')
-    context = {
-        'title_data': title_logo_data,
-        'gallery': gallery
-    }
+    context = {'title_data': title_logo_data, 'gallery': gallery}
     return render(request, 'new_gallery.html', context)
 
 
@@ -118,10 +108,7 @@ def photo_gallery(request):
     title_logo_data = LookupField.objects.get(code='TITLE')
     gallery = Gallery.objects.filter(code='image')
 
-    context = {
-        'title_data': title_logo_data,
-        'gallery': gallery
-    }
+    context = {'title_data': title_logo_data, 'gallery': gallery}
     return render(request, 'photo_gallery.html', context)
 
 
@@ -129,10 +116,7 @@ def samachar_gallery(request):
     title_logo_data = LookupField.objects.get(code='TITLE')
     gallery = Gallery.objects.filter(code='samachar')
 
-    context = {
-        'title_data': title_logo_data,
-        'gallery': gallery
-    }
+    context = {'title_data': title_logo_data, 'gallery': gallery}
 
     return render(request, 'samachar_gallery.html', context)
 
@@ -152,9 +136,7 @@ def sangthan_suchi(request):
             obj.save()
         return redirect('/')
     sangthan = SangthanType.objects.all()
-    context = {
-        'sangthan': sangthan,
-    }
+    context = {'sangthan': sangthan, }
     return render(request, 'sangthan_suchi.html', context)
 
 
@@ -169,9 +151,7 @@ def get_sangth_padname(request):
             data_dict['post_name'] = i.post_name
             data_list.append(data_dict)
 
-        json_data = {
-            'post_name': data_list
-        }
+        json_data = {'post_name': data_list}
         return JsonResponse(json_data)
 
 
@@ -185,9 +165,7 @@ def get_sangth(request):
             data_dict['type_name'] = i.type
             data_list.append(data_dict)
 
-        json_data = {
-            'post_name': data_list
-        }
+        json_data = {'post_name': data_list}
         return JsonResponse(json_data)
 
 
@@ -195,10 +173,7 @@ def sangthan_list(request, id):
     title_logo_data = LookupField.objects.get(code='TITLE')
     post_ids = Post.objects.filter(type_id=id).values_list('id', flat=True)
     list_data = Sangthan.objects.filter(post_id__in=post_ids).order_by('id')
-    context = {
-        'list_data': list_data,
-        'title_data': title_logo_data
-    }
+    context = {'list_data': list_data, 'title_data': title_logo_data}
     return render(request, 'sangthan_data_list.html', context)
 
 
@@ -208,8 +183,5 @@ def contact(request):
         banner1 = LookupField.objects.get(code='sampark')
     except:
         banner1 = ''
-    context = {
-        'title_data': title_logo_data,
-        'banner1': banner1,
-    }
+    context = {'title_data': title_logo_data, 'banner1': banner1, }
     return render(request, 'contact_us.html', context)

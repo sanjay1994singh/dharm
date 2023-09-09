@@ -1,0 +1,79 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+# According to pipenv documentation (https://pipenv.pypa.io/en/latest/advanced/#pipfile-vs-setuppy)
+# PIPENV_IGNORE_VIRTUALENVS can be used to indicate that pipenv should never report that it is running in a virtual environment.
+# So you may want to include it.
+.PIPENV_IGNORE_VIRTUALENVS
+
+# dotenv
+# Should be used to configure settings for your project.
+# Create a .env file and add it to your .gitignore.
+# Then, use python-decouple or python-dotenv to parse the .env file.
+.env
+
+# VS Code configuration files
+.vscode/
+
+# macOS
+.DS_Store
+
+# Editor-specific files
+*~
+*.swp
+*.swo
+
+# PyCharm files
+.idea/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/

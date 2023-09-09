@@ -1,0 +1,22 @@
+{% extends "navbar.html" %}
+
+  {% block services %}
+
+  <!-- Services Section -->
+  <section id="services" class="py-5 bg-light">
+    <div class="container text-center">
+      <h2><strong>{{dharm_ki_baat.name}}</strong></h2>
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <div class="card mb-4">
+            <img src="{{dharm_ki_baat.img.url}}" class="card-img-top img-fluid" alt="Service 1">
+            <div class="card-body">
+               <p class="card-text" style="text-align: justify;">{{dharm_ki_baat.desc}}</p>
+               <button class="btn btn-info" onclick="history.back()">Go back</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endblock services %}

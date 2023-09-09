@@ -2,4 +2,60 @@
 
 {% block services %}
 
+<div class="container">
+    <h1>List with Titles and Images</h1>
+    <ul class="list-group" id="list-container">
+        <!-- Your list items go here -->
+    </ul>
+    <nav aria-label="Page navigation">
+        <ul class="pagination" id="pagination"></ul>
+    </nav>
+</div>
 {% endblock services %}
+
+
+{% block js %}
+<script>
+        // Sample data for pagination
+        const itemsPerPage = 3; // Change this to your preferred number of items per page
+        const totalItems = 10; // Change this to the total number of items
+        const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+        // Function to populate the list with data
+        function populateList(page) {
+            // Clear the current list
+            $('#list-container').empty();
+
+            // Simulated data - Replace this with your actual data
+            for (let i = (page - 1) * itemsPerPage + 1; i <= page * itemsPerPage; i++) {
+                $('#list-container').append(`
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="https://via.placeholder.com/100" alt="Image ${i}" class="img-fluid">
+                            </div>
+                            <div class="col-md-9">
+                                <h3>Title ${i}</h3>
+                                <p>Description or additional information about item ${i}.</p>
+                            </div>
+                        </div>
+                    </li>
+                `);
+            }
+        }
+
+        // Initialize pagination
+        $('#pagination').twbsPagination({
+            totalPages: totalPages,
+            visiblePages: 5,
+            onPageClick: function (event, page) {
+                populateList(page);
+            }
+        });
+
+        // Initially populate the list with the first page of data
+        populateList(1);
+
+</script>
+{% endblock js %}
+

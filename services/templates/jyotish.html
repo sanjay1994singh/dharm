@@ -1,0 +1,18 @@
+{% extends "navbar.html" %}
+
+{% block services %}
+<div class="container mt-5">
+    <div class="row">
+        {% for rashi in rashi %}
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{rashi.title}}</h5>
+                    <p class="card-text">{{rashi.desc}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock services %}

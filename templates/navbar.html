@@ -216,7 +216,7 @@
         <div class="carousel-inner">
             {% for i in shloka %}
             <div class="carousel-item {% if forloop.counter  == 1 %} active {% else %} {% endif %}">
-                <img alt="Slide 1" class="d-block w-100" height="220" src="{{i.img.url}}">
+                <img alt="Slide 1" class="img-fluid d-block w-100" src="{{i.img.url}}">
             </div>
             {% endfor %}
         </div>

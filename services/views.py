@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .models import RajatShila, Rashi
+from .models import RajatShila, Rashi, DharmikAyojan
 
 
 def jyotish(request):
@@ -16,7 +16,11 @@ def dharm_sandesh(request):
 
 
 def dharmik_ayojan(request):
-    return render(request, 'dharmik_ayojan.html')
+    ayojan = DharmikAyojan.objects.all()
+    context = {
+        'ayojan': ayojan,
+    }
+    return render(request, 'dharmik_ayojan.html', context)
 
 
 def rajat_shila(request):

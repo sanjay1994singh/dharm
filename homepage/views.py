@@ -43,6 +43,13 @@ def homepage(request):
             suchana = LookupField.objects.get(code='suchana')
         except:
             suchana = ''
+
+        try:
+            tv = LookupField.objects.get(code='tv')
+        except:
+            tv = ''
+
+
         banner1 = LookupField.objects.get(code='HOME_BANNER1')
         about_data = LookupField.objects.get(code='ABOUT')
         parichay_data = LookupField.objects.filter(code='parichay')
@@ -51,7 +58,7 @@ def homepage(request):
         shloka = LookupField.objects.filter(code='SHLOKA')
         context = {'title_data': title_logo_data, 'banner1': banner1, 'about_data': about_data,
             'parichay_data': parichay_data, 'services': services, 'barcode': barcode, 'shloka': shloka,
-            'suchana': suchana, }
+            'suchana': suchana, 'tv': tv }
         return render(request, 'index.html', context)
 
 

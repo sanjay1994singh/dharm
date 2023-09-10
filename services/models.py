@@ -59,6 +59,7 @@ class Place(models.Model):
 
 
 class BrajYatraDetails(models.Model):
+    place = models.ForeignKey(Place, on_delete=models.CASCADE, null=True)
     temple_name = models.CharField(max_length=500, null=True, blank=True)
     desc = models.TextField(null=True, blank=True)
     image = models.FileField(upload_to='braj_yatra', null=True, blank=True)

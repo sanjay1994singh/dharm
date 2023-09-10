@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .models import RajatShila, Rashi, DharmikAyojan, DharmSandesh
+from .models import RajatShila, Rashi, DharmikAyojan, DharmSandesh, BrajYatra
 
 
 def jyotish(request):
@@ -38,7 +38,12 @@ def rajat_shila(request):
 
 
 def braj_yatra(request):
-    return render(request, 'braj_yatra.html')
+    yatra = BrajYatra.objects.all().order_by('-id')[:10]
+    print(yatra,'================yatra')
+    context = {
+        'yatra': yatra,
+    }
+    return render(request, 'braj_yatra.html', context)
 
 
 def daan(request):

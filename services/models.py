@@ -52,6 +52,21 @@ class RajatShila(models.Model):
         return self.title
 
 
+class Place(models.Model):
+    name = models.CharField(max_length=500, null=True, blank=True)
+    def __str__(self):
+        return self.name
+
+
+class BrajYatraDetails(models.Model):
+    temple_name = models.CharField(max_length=500, null=True, blank=True)
+    desc = models.TextField(null=True, blank=True)
+    image = models.FileField(upload_to='braj_yatra', null=True, blank=True)
+
+    def __str__(self):
+        return self.temple_name
+
+
 class BrajYatra(models.Model):
     temple_name = models.CharField(max_length=500, null=True, blank=True)
     desc = models.TextField(null=True, blank=True)

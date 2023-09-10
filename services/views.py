@@ -1,8 +1,7 @@
 from django.shortcuts import render
 
-from .models import RajatShila, Rashi, DharmikAyojan, DharmSandesh, BrajYatra
-
-
+from .models import RajatShila, Rashi, DharmikAyojan, DharmSandesh, Place
+from homepage.models import LookupField
 def jyotish(request):
     rashi = Rashi.objects.all()
     context = {
@@ -38,7 +37,7 @@ def rajat_shila(request):
 
 
 def braj_yatra(request):
-    yatra = BrajYatra.objects.all().order_by('-id')[:10]
+    yatra = Place.objects.all().order_by('-id')[:10]
     print(yatra,'================yatra')
     context = {
         'yatra': yatra,
@@ -47,4 +46,8 @@ def braj_yatra(request):
 
 
 def daan(request):
-    return render(request, 'daan.html')
+    barcode = LookupField.objects.get(code='BAR_CODE')
+    context = {
+        'barcode': barcode,
+    }
+    return render(request, 'daan.html', context)

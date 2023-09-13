@@ -36,21 +36,27 @@
 {% block tv %}
 <div class="container mb-3">
     <div class="row mx-auto">
-        <div class="col-lg-8">
-            <div class="row mt-4">
-                <a href="/services/dharm_sandesh/" class="p-5 mx-auto col-lg-3 m-1 btn btn-primary">Dharm sandesh</a>
-                <a href="/services/dharmik_ayojan/" class="p-5 mx-auto col-lg-3 m-1 btn btn-primary">Dharmik Ayojan</a>
-                <a href="/services/rajat_shila/" class="p-5 mx-auto col-lg-3 m-1 btn btn-primary">Rajan Shila</a>
+        <div class="col-lg-6 mt-4">
+            <div class="row mt-5">
+                {% for i in six_box1 %}
+                <a href="{{i.title}}" class=" mx-auto col-lg-3 m-1 btn btn-primary"><img class="img-fluid" src="{{i.image.url}}"/></a>
+                {% endfor %}
+<!--                <a href="/services/dharm_sandesh/" class="p-5 mx-auto col-lg-3 m-1 btn btn-primary">Dharm sandesh</a>-->
+<!--                <a href="/services/dharmik_ayojan/" class="p-5 mx-auto col-lg-3 m-1 btn btn-primary">Dharmik Ayojan</a>-->
+<!--                <a href="/services/rajat_shila/" class="p-5 mx-auto col-lg-3 m-1 btn btn-primary">Rajan Shila</a>-->
             </div>
 
-            <div class="row mt-4">
-                <a href="/services/braj_yatra/" class="p-5 mx-auto col-lg-3 m-1 btn btn-primary">Braj Yatra</a>
-                <a href="/services/jyotish/" class="p-5 mx-auto col-lg-3 m-1 btn btn-primary">Jyotish / Vaastu</a>
-                <a href="/services/daan/" class="p-5 mx-auto col-lg-3 m-1 btn btn-primary">Daan</a>
+            <div class="row mt-5">
+                {% for i in six_box2 %}
+                <a href="{{i.title}}" class=" mx-auto col-lg-3 m-1 btn btn-primary"><img class="img-fluid" src="{{i.image.url}}"/></a>
+                {% endfor %}
+<!--                <a href="/services/braj_yatra/" class="p-5 mx-auto col-lg-3 m-1 btn btn-primary">Braj Yatra</a>-->
+<!--                <a href="/services/jyotish/" class="p-5 mx-auto col-lg-3 m-1 btn btn-primary">Jyotish / Vaastu</a>-->
+<!--                <a href="/services/daan/" class="p-5 mx-auto col-lg-3 m-1 btn btn-primary">Daan</a>-->
             </div>
         </div>
 
-        <div class="col-lg-4 mt-3 p-3">
+        <div class="col-lg-6 mt-3 p-3">
             <div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
                 <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="{{tv.desc}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>

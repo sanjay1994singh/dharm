@@ -10,4 +10,6 @@ urlpatterns = [
     path('rajat_shila/', views.rajat_shila, name='rajat_shila'),
     path('braj_yatra/', views.braj_yatra, name='braj_yatra'),
     path('daan/', views.daan, name='daan'),
+
+    path('jyotish_samadhan/', views.jyotish_samadhan, name='jyotish_samadhan'),
 ]

@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.shortcuts import redirect, render
 # from account.models import EnquiryDetails
 from homepage.models import LookupField, Gallery, SangthanType, Sangthan, Post
-from services.models import Service
+from services.models import Service, SixBox
 
 
 # Create your views here.
@@ -49,16 +49,28 @@ def homepage(request):
         except:
             tv = ''
 
-
         banner1 = LookupField.objects.get(code='HOME_BANNER1')
         about_data = LookupField.objects.get(code='ABOUT')
         parichay_data = LookupField.objects.filter(code='parichay')
         services = Service.objects.all()
         barcode = LookupField.objects.get(code='BAR_CODE')
         shloka = LookupField.objects.filter(code='SHLOKA')
-        context = {'title_data': title_logo_data, 'banner1': banner1, 'about_data': about_data,
-            'parichay_data': parichay_data, 'services': services, 'barcode': barcode, 'shloka': shloka,
-            'suchana': suchana, 'tv': tv }
+
+        six_box1 = SixBox.objects.all()[:3]
+        six_box2 = SixBox.objects.all()[3:6]
+
+        context = {'title_data': title_logo_data,
+                   'banner1': banner1,
+                   'about_data': about_data,
+                   'parichay_data': parichay_data,
+                   'services': services,
+                   'barcode': barcode,
+                   'shloka': shloka,
+                   'suchana': suchana,
+                   'tv': tv,
+                   'six_box1': six_box1,
+                   'six_box2': six_box2,
+                   }
         return render(request, 'index.html', context)
 
 

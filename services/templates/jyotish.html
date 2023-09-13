@@ -1,5 +1,18 @@
 {% extends "navbar.html" %}
+{% block css %}
+<style>
+    /* Adjust the size of the datepicker */
+    .ui-datepicker {
+        font-size: 14px; /* Change font size */
+    }
 
+    /* Adjust the size of the datepicker input field */
+    #datepicker {
+        width: 200px; /* Change width */
+        height: 30px; /* Change height */
+    }
+</style>
+{% endblock css %}
 {% block services %}
 <div class="text-center mt-5">
     <input id="Rashi" name="jyotish" type="radio">&nbsp; &nbsp;<lable>राशिफल </lable> &nbsp; &nbsp;
@@ -31,33 +44,35 @@
 
         <div class="col-lg-8 mx-auto">
 
-            <div class="mb-2">
-                <input class="form-control" id="name" name="name" placeholder="Enter name" type="text">
-            </div>
+            <form action="" id="my-form">{% csrf_token %}
+                <div class="mb-2">
+                    <input class="form-control" id="name" name="name" placeholder="Enter name" type="text">
+                </div>
 
-            <div class="mb-2">
-                <input class="form-control" id="dob" name="dob" placeholder="Enter date of birth" type="text">
-            </div>
+                <div class="mb-2">
+                    <input class="form-control" id="dob" name="dob" placeholder="Enter date of birth" type="text">
+                </div>
 
-            <div class="mb-2">
-                <input class="form-control" id="dob_place" name="dob_place" placeholder="Enter date of place" type="text">
-            </div>
+                <div class="mb-2">
+                    <input class="form-control" id="dob_place" name="dob_place" placeholder="Enter date of place" type="text">
+                </div>
 
-            <div class="mb-2">
-                <input class="form-control" id="dob_time" name="dob_time" placeholder="Enter date of time" type="text">
-            </div>
+                <div class="mb-2">
+                    <input class="form-control" id="dob_time" name="dob_time" placeholder="Enter date of time example: 12:15 AM" type="text">
+                </div>
 
-            <div class="mb-2">
-                <input class="form-control" id="mobile" name="mobile" placeholder="Enter contact number" type="text">
-            </div>
+                <div class="mb-2">
+                    <input class="form-control" id="mobile" name="mobile" placeholder="Enter contact number" type="text">
+                </div>
 
-            <div class="mb-2">
-                <textarea class="form-control" cols="10" id="" name="" placeholder="Ask any question" rows="5"></textarea>
-            </div>
+                <div class="mb-2">
+                    <textarea class="form-control" cols="10" id="question" name="question" placeholder="Ask any question" rows="5"></textarea>
+                </div>
 
-            <div class="mb-5">
-                <center><button class="btn sm-btn btn-primary" type="submit">submit now</button></center>
-            </div>
+                <div class="mb-5">
+                    <center><button class="btn sm-btn btn-primary" type="submit">submit now</button></center>
+                </div>
+            </form>
 
         </div>
     </div>
@@ -71,6 +86,14 @@
     <script>
         $(document).ready(function(){
             $('#jyotiSamadhan').hide()
+
+            var currentDate = new Date();
+            $("#dob").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd/mm/yy'
+            });
+
         });
 
 
@@ -92,5 +115,30 @@
             $('#jyotiSamadhan').hide()
         });
     </script>
+
+    <script>
+        $(document).ready(function () {
+            $('#my-form').submit(function (e) {
+                e.preventDefault();  // Prevent the default form submission
+
+                var formData = $(this).serialize();  // Serialize the form data
+
+                $.ajax({
+                    url: '/services/jyotish_samadhan/',
+                    type: 'POST',
+                    data: formData,
+                    dataType: 'json',
+                    success: function (data) {
+                        alert(data.status)
+                        location.href = '/'
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+        </script>
+
 {% endblock js %}
 

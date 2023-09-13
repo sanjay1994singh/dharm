@@ -1,7 +1,10 @@
+from django.http import JsonResponse
 from django.shortcuts import render
-
-from .models import RajatShila, Rashi, DharmikAyojan, DharmSandesh, Place
 from homepage.models import LookupField
+from datetime import datetime
+from .models import RajatShila, Rashi, DharmikAyojan, DharmSandesh, Place, JyotishSamadhan
+
+
 def jyotish(request):
     rashi = Rashi.objects.all()
     context = {
@@ -38,7 +41,7 @@ def rajat_shila(request):
 
 def braj_yatra(request):
     yatra = Place.objects.all().order_by('-id')[:10]
-    print(yatra,'================yatra')
+    print(yatra, '================yatra')
     context = {
         'yatra': yatra,
     }
@@ -51,3 +54,30 @@ def daan(request):
         'barcode': barcode,
     }
     return render(request, 'daan.html', context)
+
+
+def jyotish_samadhan(request):
+    if request.method == 'POST':
+        form = request.POST
+        name = form.get('name')
+        dob = form.get('dob')
+        dob = datetime.strptime(dob, '%d/%m/%Y')
+        dob_place = form.get('dob_place')
+        dob_time = form.get('dob_time')
+        contact = form.get('mobile')
+        question = form.get('question')
+        obj = JyotishSamadhan.objects.create(name=name,
+                                             dob=dob,
+                                             dob_place=dob_place,
+                                             dob_time=dob_time,
+                                             contact=contact,
+                                             question=question,
+                                             )
+        if obj:
+            id = obj.id
+            status = 'sent your query successfully.'
+            context = {
+                'id': id,
+                'status': status
+            }
+            return JsonResponse(context)

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from homepage.models import LookupField,Gallery,Org,SangthanType,Sangthan,Post
+from .models import LookupField, Gallery, Org, SangthanType, Sangthan, Post
 
 # Register your models here.
 
@@ -10,4 +10,3 @@ admin.site.register(Gallery)
 admin.site.register(SangthanType)
 admin.site.register(Sangthan)
 admin.site.register(Post)
-

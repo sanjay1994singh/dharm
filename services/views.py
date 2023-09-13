@@ -1,8 +1,10 @@
+from datetime import datetime
+
 from django.http import JsonResponse
 from django.shortcuts import render
 from homepage.models import LookupField
-from datetime import datetime
-from .models import RajatShila, Rashi, DharmikAyojan, DharmSandesh, Place, JyotishSamadhan
+
+from .models import RajatShila, Rashi, DharmikAyojan, DharmSandesh, Place, JyotishSamadhan, BrajYatraDetails
 
 
 def jyotish(request):
@@ -41,12 +43,24 @@ def rajat_shila(request):
 
 def braj_yatra(request):
     yatra = Place.objects.all().order_by('-id')[:10]
-    print(yatra, '================yatra')
     context = {
         'yatra': yatra,
     }
     return render(request, 'braj_yatra.html', context)
 
+def braj_yatra_place(request, id):
+    yatra = BrajYatraDetails.objects.filter(place_id=id)
+    context = {
+        'yatra': yatra,
+    }
+    return render(request, 'braj_yatra_place.html', context)
+
+def temple_details(request, id):
+    yatra = BrajYatraDetails.objects.get(id=id)
+    context = {
+        'yatra': yatra,
+    }
+    return render(request, 'temple_details.html', context)
 
 def daan(request):
     barcode = LookupField.objects.get(code='BAR_CODE')

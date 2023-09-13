@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'account',
     'homepage',
     'services',
+    'karykram',
 ]
 
 MIDDLEWARE = [

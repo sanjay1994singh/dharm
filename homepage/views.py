@@ -59,18 +59,9 @@ def homepage(request):
         six_box1 = SixBox.objects.all()[:3]
         six_box2 = SixBox.objects.all()[3:6]
 
-        context = {'title_data': title_logo_data,
-                   'banner1': banner1,
-                   'about_data': about_data,
-                   'parichay_data': parichay_data,
-                   'services': services,
-                   'barcode': barcode,
-                   'shloka': shloka,
-                   'suchana': suchana,
-                   'tv': tv,
-                   'six_box1': six_box1,
-                   'six_box2': six_box2,
-                   }
+        context = {'title_data': title_logo_data, 'banner1': banner1, 'about_data': about_data,
+                   'parichay_data': parichay_data, 'services': services, 'barcode': barcode, 'shloka': shloka,
+                   'suchana': suchana, 'tv': tv, 'six_box1': six_box1, 'six_box2': six_box2, }
         return render(request, 'index.html', context)
 
 
@@ -192,7 +183,10 @@ def sangthan_list(request, id):
     title_logo_data = LookupField.objects.get(code='TITLE')
     post_ids = Post.objects.filter(type_id=id).values_list('id', flat=True)
     list_data = Sangthan.objects.filter(post_id__in=post_ids).order_by('id')
-    context = {'list_data': list_data, 'title_data': title_logo_data}
+    context = {'id': id,
+               'list_data': list_data,
+               'title_data': title_logo_data
+               }
     return render(request, 'sangthan_data_list.html', context)
 
 

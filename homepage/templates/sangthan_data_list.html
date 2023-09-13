@@ -10,6 +10,7 @@
         <div class="card mt-3 col-lg-3 text-center">
             <img alt="..." class="card-img-top" height="300" src="{% if list_data.image %}{{list_data.image.url}}{% endif %}">
             <div class="card-body">
+
                 <p>{{list_data.name}}</p>
 
                 {% if id != 1 %}
@@ -20,8 +21,10 @@
                 <p>{{list_data.address}}</p>
                 {% endif %}
 
-                {% if list_data.contact %}
-                <p>&nbsp; &nbsp;{{list_data.contact}}</p>
+                {% if id != 1 %}
+                    {% if list_data.contact %}
+                    <p>&nbsp; &nbsp;{{list_data.contact}}</p>
+                    {% endif %}
                 {% endif %}
 
             </div>

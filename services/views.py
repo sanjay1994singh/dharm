@@ -4,7 +4,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from homepage.models import LookupField
 
-from .models import RajatShila, Rashi, DharmikAyojan, DharmSandesh, Place, JyotishSamadhan, BrajYatraDetails
+from .models import RajatShila, Rashi, DharmikAyojan, DharmSandesh, Place, JyotishSamadhan, BrajYatraDetails, HelpLine
 
 
 def jyotish(request):
@@ -95,3 +95,10 @@ def jyotish_samadhan(request):
                 'status': status
             }
             return JsonResponse(context)
+
+def helpline(request):
+    helpline = HelpLine.objects.all()
+    context = {
+        'helpline': helpline,
+    }
+    return render(request, 'help_line.html', context)

@@ -1,5 +1,29 @@
 {% extends "navbar.html" %}
 
 {% block services %}
+<div class="container mt-5">
+    <h1 class="text-center">City-Based Helpline Numbers</h1>
 
+    <!-- Table to list helpline numbers by city -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">City</th>
+                <th scope="col">Name of person</th>
+                <th scope="col">Helpline Number</th>
+                <th scope="col">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+           {% for i in helpline %}
+            <tr>
+                <td>{{i.place}}</td>
+                <td>{{i.contact_person}}</td>
+                <td>{{i.mobile}}</td>
+                <td>{{i.desc}}</td>
+            </tr>
+           {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock services %}

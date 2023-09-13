@@ -7,38 +7,23 @@
         <h1 class="text-center" id="heading_id">संरक्षक</h1>
         {% endif %}
         {% for list_data in list_data %}
-        <div class="card mt-3 col-lg-3">
+        <div class="card mt-3 col-lg-3 text-center">
             <img alt="..." class="card-img-top" height="300" src="{% if list_data.image %}{{list_data.image.url}}{% endif %}">
             <div class="card-body">
-                <table>
-                    <tr>
-                        <td><h5></h5></td>
-                        <td><p>{{list_data.name}}</p></td>
-                    </tr>
-                    {% if id != 1 %}
-                    <tr>
-                        <td><h5>पद</h5></td>
-                        <td><p>{{list_data.post}}</p></td>
-                    </tr>
+                <p>{{list_data.name}}</p>
 
+                {% if id != 1 %}
+                <p>{{list_data.post}}</p>
+                {% endif %}
 
-                    {% if list_data.address %}
-                    <tr>
-                        <td><p>{{list_data.address}}</p></td>
-                    </tr>
-                    {% endif %}
+                {% if list_data.address %}
+                <p>{{list_data.address}}</p>
+                {% endif %}
 
-                    {% if list_data.contact %}
-                        {% if list_data.contact|length > 5 %}
-                        <tr>
-                            <td><h5>संपर्क</h5></td>
-                            <td><p>&nbsp; &nbsp;{{list_data.contact}}</p></td>
-                        </tr>
-                        {% endif %}
-                    {% endif %}
+                {% if list_data.contact %}
+                <p>&nbsp; &nbsp;{{list_data.contact}}</p>
+                {% endif %}
 
-                    {% endif %}
-                </table>
             </div>
         </div>
         {% endfor %}

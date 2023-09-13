@@ -11,7 +11,7 @@
             <img alt="..." class="card-img-top" height="300" src="{% if list_data.image %}{{list_data.image.url}}{% endif %}">
             <div class="card-body">
 
-                <p>{{list_data.name}}</p>
+                <p><strong>{{list_data.name}}</strong></p>
 
                 {% if id != 1 %}
                 <p>{{list_data.post}}</p>

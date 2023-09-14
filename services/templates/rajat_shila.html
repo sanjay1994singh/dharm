@@ -5,12 +5,12 @@
     <div class="row">
         {% for rajat in rajat %}
         <div class="row mb-2 mx-auto">
-            <div class="col-md-6">
+            <div class="col-md-12 mb-2">
                 <img alt="Product Image" class="img-fluid" src="{{rajat.image.url}}">
             </div>
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <h1>{{rajat.title}}</h1>
-                <p>{{rajat.desc}}</p>
+<!--                <p>{{rajat.desc}}</p>-->
             </div>
         </div>
         {% endfor %}

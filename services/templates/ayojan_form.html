@@ -3,28 +3,31 @@
 {% block services %}
 <div class="container">
     <div class="col-lg-6 text-center mx-auto p-4">
-        <h3 class="mb-4"><strong>धार्मिक आयोजन डिटेल फॉर्म</strong> </h3>
-        <div class="mb-2">
-            <input class="form-control" id="name" name="name" placeholder="Enter name" type="text">
-        </div>
-        <div class="mb-2">
-            <input class="form-control" id="email" name="email" placeholder="Enter email" type="text">
-        </div>
+        <h3 class="mb-4"><strong>धार्मिक आयोजन डिटेल फॉर्म</strong></h3>
+        <form action="" method="post">{% csrf_token %}
+            <div class="mb-2">
+                <input class="form-control" id="name" name="name" placeholder="Enter name" type="text">
+            </div>
+            <div class="mb-2">
+                <input class="form-control" id="email" name="email" placeholder="Enter email" type="text">
+            </div>
 
-        <div class="mb-2">
-            <input class="form-control" id="address" name="address" placeholder="Enter address" type="text">
-        </div>
+            <div class="mb-2">
+                <input class="form-control" id="address" name="address" placeholder="Enter address" type="text">
+            </div>
 
-        <div class="mb-4">
-            <input class="form-control" id="mobile" name="mobile" placeholder="Enter contact number"
-                   type="text">
-        </div>
+            <div class="mb-4">
+                <input class="form-control" id="mobile" name="mobile" placeholder="Enter contact number"
+                       type="text">
+            </div>
 
-        <div class="mb-2">
-            <button id="rzp-button1"  class="btn btn-success">Pay : {{amount}}</button>
+            <div class="mb-2">
+                <input type="submit" value="submit">
+                <!--            <button id="rzp-button1"  class="btn btn-success">Pay : {{amount}}</button>-->
 
-            <button class="btn btn-secondary" onclick="history.back()">Go back</button>
-        </div>
+                <button class="btn btn-secondary" onclick="history.back()">Go back</button>
+            </div>
+        </form>
 
     </div>
 </div>
@@ -35,81 +38,81 @@
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->
 
-  <script>
+<!--  <script>-->
 
-    var options = {
-      "key": "rzp_test_rZ0K5Es4kPAFv2", // Enter the Key ID generated from the Dashboard
-      "amount": "{{payment.amount}}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-      "currency": "INR",
-      "name": "Dharm Raksha Sangh",
-      "description": "We all are one",
-      "image": "https://example.com/your_logo",
-      "order_id": "{{payment.id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-      "handler": function (response) {
+<!--    var options = {-->
+<!--      "key": "rzp_test_rZ0K5Es4kPAFv2", // Enter the Key ID generated from the Dashboard-->
+<!--      "amount": "{{payment.amount}}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise-->
+<!--      "currency": "INR",-->
+<!--      "name": "Dharm Raksha Sangh",-->
+<!--      "description": "We all are one",-->
+<!--      "image": "https://example.com/your_logo",-->
+<!--      "order_id": "{{payment.id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1-->
+<!--      "handler": function (response) {-->
 
-        console.log(response);
+<!--        console.log(response);-->
 
-        var id = '{{id}}'
-        var url = '/services/ayojan_form/'+id+'/'
+<!--        var id = '{{id}}'-->
+<!--        var url = '/services/ayojan_form/'+id+'/'-->
 
-        var myObject = {
-          'razorpay_order_id': response.razorpay_order_id,
-          'razorpay_payment_id': response.razorpay_payment_id,
-          'razorpay_signature':response.razorpay_signature,
-          'price':'{{course.price}}',
-          'payment_status':'success',
-        }
+<!--        var myObject = {-->
+<!--          'razorpay_order_id': response.razorpay_order_id,-->
+<!--          'razorpay_payment_id': response.razorpay_payment_id,-->
+<!--          'razorpay_signature':response.razorpay_signature,-->
+<!--          'price':'{{course.price}}',-->
+<!--          'payment_status':'success',-->
+<!--        }-->
 
-        $.ajax({
-            url: url,
-            method: 'POST',
-            data: myObject,
-            success: function (response) {
-                var responseData = response;
-                if(responseData.msg == 'success'){
-                  window.location.href = '/'
-                }
-            },
-            error: function (xhr, status, error) {
-                // Handle error here
-                console.log(error);
-            }
-        });
+<!--        $.ajax({-->
+<!--            url: url,-->
+<!--            method: 'POST',-->
+<!--            data: myObject,-->
+<!--            success: function (response) {-->
+<!--                var responseData = response;-->
+<!--                if(responseData.msg == 'success'){-->
+<!--                  window.location.href = '/'-->
+<!--                }-->
+<!--            },-->
+<!--            error: function (xhr, status, error) {-->
+<!--                // Handle error here-->
+<!--                console.log(error);-->
+<!--            }-->
+<!--        });-->
 
-      },
-    };
+<!--      },-->
+<!--    };-->
 
-    var rzp1 = new Razorpay(options);
-    rzp1.on('payment.failed', function (response) {
-      alert(response.error.code);
-      alert(response.error.description);
-      alert(response.error.source);
-      alert(response.error.step);
-      alert(response.error.reason);
-      alert(response.error.metadata.order_id);
-      alert(response.error.metadata.payment_id);
-    });
+<!--    var rzp1 = new Razorpay(options);-->
+<!--    rzp1.on('payment.failed', function (response) {-->
+<!--      alert(response.error.code);-->
+<!--      alert(response.error.description);-->
+<!--      alert(response.error.source);-->
+<!--      alert(response.error.step);-->
+<!--      alert(response.error.reason);-->
+<!--      alert(response.error.metadata.order_id);-->
+<!--      alert(response.error.metadata.payment_id);-->
+<!--    });-->
 
-    document.getElementById('rzp-button1').onclick = function (e) {
-      var name = $('#name').val();
-      var email = $('#email').val();
-      var address = $('#address').val();
+<!--    document.getElementById('rzp-button1').onclick = function (e) {-->
+<!--      var name = $('#name').val();-->
+<!--      var email = $('#email').val();-->
+<!--      var address = $('#address').val();-->
 
 
-      if (name != ''){
-        alert('Please enter name')
-      }
-      else if (email != ''){
-        alert('Please enter email')
-      }
-      else if (address != ''){
-        alert('Please enter address')
-      }
-      else{
-          rzp1.open();
-          e.preventDefault();
-      }
-    }
-  </script>
+<!--      if (name != ''){-->
+<!--        alert('Please enter name')-->
+<!--      }-->
+<!--      else if (email != ''){-->
+<!--        alert('Please enter email')-->
+<!--      }-->
+<!--      else if (address != ''){-->
+<!--        alert('Please enter address')-->
+<!--      }-->
+<!--      else{-->
+<!--          rzp1.open();-->
+<!--          e.preventDefault();-->
+<!--      }-->
+<!--    }-->
+<!--  </script>-->
 {% endblock js %}
 

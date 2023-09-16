@@ -45,7 +45,7 @@ def rajat_shila(request):
 
 
 def braj_yatra(request):
-    yatra = Place.objects.all().order_by('-id')[:10]
+    yatra = Place.objects.all().order_by('id')[:10]
     context = {
         'yatra': yatra,
     }
@@ -118,16 +118,17 @@ def ayojan_form(request, id):
         email = form.get('email')
         address = form.get('address')
         mobile = form.get('mobile')
-        order_id = form.get('razorpay_order_id')
-        razorpay_signature = form.get('razorpay_signature')
-        payment_id = form.get('razorpay_payment_id')
+        # order_id = form.get('razorpay_order_id')
+        # razorpay_signature = form.get('razorpay_signature')
+        # payment_id = form.get('razorpay_payment_id')
         AyojanEnquiry.objects.create(mobile=mobile,
                                      email=email,
                                      address=address,
                                      fullname=fullname,
-                                     order_id=order_id,
-                                     transaction_id=razorpay_signature,
-                                     payment_id=payment_id)
+                                     # order_id=order_id,
+                                     # transaction_id=razorpay_signature,
+                                     # payment_id=payment_id
+                                     )
 
 
 
@@ -136,17 +137,17 @@ def ayojan_form(request, id):
         title_logo_data = LookupField.objects.get(code='TITLE')
         ayojan = DharmikAyojan.objects.get(id=id)
 
-        amount = ayojan.money
-        if not amount:
-            amount = 10
-        client = razorpay.Client(auth=(settings.RAZOR_KEY_ID, settings.RAZOR_KEY_SECRET))
-        payment = client.order.create({'amount': int(amount) * 100, 'currency': 'INR', 'payment_capture': '1'})
-        order_id = payment['id']
+        # amount = ayojan.money
+        # if not amount:
+        #     amount = 10
+        # client = razorpay.Client(auth=(settings.RAZOR_KEY_ID, settings.RAZOR_KEY_SECRET))
+        # payment = client.order.create({'amount': int(amount) * 100, 'currency': 'INR', 'payment_capture': '1'})
+        # order_id = payment['id']
 
         context = {
             'id': id,
             'title_data': title_logo_data, 'ayojan': ayojan,
-            'payment': payment,
-            'amount': amount
+            # 'payment': payment,
+            # 'amount': amount
         }
         return render(request, 'ayojan_form.html', context)

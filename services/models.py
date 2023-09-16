@@ -130,7 +130,7 @@ class AyojanEnquiry(models.Model):
     mobile = models.CharField(max_length=15, null=True, blank=True)
     email = models.EmailField(null=True, blank=True)
     address = models.TextField(null=True, blank=True)
-
+    query = models.TextField(null=True, blank=True)
     order_id = models.CharField(max_length=100, null=True, default='', blank=True)
     transaction_id = models.CharField(max_length=100, null=True, default='', blank=True)
     payment_id = models.CharField(max_length=100, null=True, default='', blank=True)

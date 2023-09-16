@@ -48,6 +48,7 @@ def braj_yatra(request):
     }
     return render(request, 'braj_yatra.html', context)
 
+
 def braj_yatra_place(request, id):
     yatra = BrajYatraDetails.objects.filter(place_id=id)
     context = {
@@ -55,12 +56,14 @@ def braj_yatra_place(request, id):
     }
     return render(request, 'braj_yatra_place.html', context)
 
+
 def temple_details(request, id):
     yatra = BrajYatraDetails.objects.get(id=id)
     context = {
         'yatra': yatra,
     }
     return render(request, 'temple_details.html', context)
+
 
 def daan(request):
     barcode = LookupField.objects.get(code='BAR_CODE')
@@ -96,9 +99,20 @@ def jyotish_samadhan(request):
             }
             return JsonResponse(context)
 
+
 def helpline(request):
     helpline = HelpLine.objects.all()
     context = {
         'helpline': helpline,
     }
     return render(request, 'help_line.html', context)
+
+
+def ayojan_form(request, id):
+    title_logo_data = LookupField.objects.get(code='TITLE')
+    ayojan = DharmikAyojan.objects.get(id=id)
+    context = {
+        'title_data': title_logo_data,
+        'ayojan': ayojan,
+    }
+    return render(request, 'ayojan_form.html', context)

@@ -4,30 +4,12 @@
 <div class="container">
     <div class="col-lg-8 mx-auto p-4">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-8 mx-auto">
                 <ul>
                     {% for ayojan in ayojan %}
-                    <li class="list_item ">{{ayojan.title}}</li>
+                    <a href="/services/ayojan_form/{{ayojan.id}}/"><p class="list_item ">{{ayojan.title}}</p></a>
                     {% endfor %}
                 </ul>
-            </div>
-            <div class="col-lg-4 p-4">
-                <div class="mb-2">
-                    <input class="form-control" id="name" name="name" placeholder="Enter name" type="text">
-                </div>
-                <div class="mb-2">
-                    <input class="form-control" id="email" name="email" placeholder="Enter email" type="text">
-                </div>
-
-                <div class="mb-2">
-                    <input class="form-control" id="address" name="address" placeholder="Enter address" type="text">
-                </div>
-
-                <div class="mb-2">
-                    <input class="form-control" id="mobile" name="mobile" placeholder="Enter contact number"
-                           type="text">
-                </div>
-
             </div>
         </div>
     </div>

@@ -15,4 +15,6 @@ urlpatterns = [
 
     path('jyotish_samadhan/', views.jyotish_samadhan, name='jyotish_samadhan'),
     path('helpline/', views.helpline, name='helpline'),
+
+    path('ayojan_form/<int:id>/', views.ayojan_form, name='ayojan_form'),
 ]

@@ -1,0 +1,29 @@
+{% extends "navbar.html" %}
+
+{% block services %}
+<div class="container">
+    <div class="col-lg-6 mx-auto p-4">
+        <div class="mb-2">
+            <input class="form-control" id="name" name="name" placeholder="Enter name" type="text">
+        </div>
+        <div class="mb-2">
+            <input class="form-control" id="email" name="email" placeholder="Enter email" type="text">
+        </div>
+
+        <div class="mb-2">
+            <input class="form-control" id="address" name="address" placeholder="Enter address" type="text">
+        </div>
+
+        <div class="mb-4">
+            <input class="form-control" id="mobile" name="mobile" placeholder="Enter contact number"
+                   type="text">
+        </div>
+
+        <div class="mb-2">
+            <button class="btn btn-success">Pay : {{ayojan.money}}</button>
+            <button class="btn btn-secondary" onclick="history.back()">Go back</button>
+        </div>
+
+    </div>
+</div>
+{% endblock services %}

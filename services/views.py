@@ -1,10 +1,13 @@
 from datetime import datetime
 
+import razorpay
+from django.conf import settings
 from django.http import JsonResponse
 from django.shortcuts import render
 from homepage.models import LookupField
 
-from .models import RajatShila, Rashi, DharmikAyojan, DharmSandesh, Place, JyotishSamadhan, BrajYatraDetails, HelpLine
+from .models import RajatShila, Rashi, DharmikAyojan, DharmSandesh, Place, JyotishSamadhan, BrajYatraDetails, HelpLine, \
+    AyojanEnquiry
 
 
 def jyotish(request):
@@ -109,10 +112,41 @@ def helpline(request):
 
 
 def ayojan_form(request, id):
-    title_logo_data = LookupField.objects.get(code='TITLE')
-    ayojan = DharmikAyojan.objects.get(id=id)
-    context = {
-        'title_data': title_logo_data,
-        'ayojan': ayojan,
-    }
-    return render(request, 'ayojan_form.html', context)
+    if request.method == 'POST':
+        form = request.POST
+        fullname = form.get('name')
+        email = form.get('email')
+        address = form.get('address')
+        mobile = form.get('mobile')
+        order_id = form.get('razorpay_order_id')
+        razorpay_signature = form.get('razorpay_signature')
+        payment_id = form.get('razorpay_payment_id')
+        AyojanEnquiry.objects.create(mobile=mobile,
+                                     email=email,
+                                     address=address,
+                                     fullname=fullname,
+                                     order_id=order_id,
+                                     transaction_id=razorpay_signature,
+                                     payment_id=payment_id)
+
+
+
+
+    else:
+        title_logo_data = LookupField.objects.get(code='TITLE')
+        ayojan = DharmikAyojan.objects.get(id=id)
+
+        amount = ayojan.money
+        if not amount:
+            amount = 10
+        client = razorpay.Client(auth=(settings.RAZOR_KEY_ID, settings.RAZOR_KEY_SECRET))
+        payment = client.order.create({'amount': int(amount) * 100, 'currency': 'INR', 'payment_capture': '1'})
+        order_id = payment['id']
+
+        context = {
+            'id': id,
+            'title_data': title_logo_data, 'ayojan': ayojan,
+            'payment': payment,
+            'amount': amount
+        }
+        return render(request, 'ayojan_form.html', context)

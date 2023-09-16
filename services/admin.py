@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .models import JyotishSamadhan, Service, Rashi, DharmSandesh, DharmikAyojan, RajatShila, BrajYatra, \
-    VastuUpay, HelpLine, BrajYatraDetails, Place, SixBox
+    VastuUpay, HelpLine, BrajYatraDetails, Place, SixBox, AyojanEnquiry
 
 # Register your models here.
 
@@ -17,3 +17,4 @@ admin.site.register(BrajYatraDetails)
 admin.site.register(JyotishSamadhan)
 admin.site.register(Place)
 admin.site.register(SixBox)
+admin.site.register(AyojanEnquiry)

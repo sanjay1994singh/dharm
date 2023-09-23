@@ -7,8 +7,6 @@
 
 <header class="jumbotron">
     <div class="fluid-container">
-        <!-- <h1>Welcome to our Charity Organization</h1> -->
-        <!-- <p>We strive to make a positive impact on the community.</p> -->
         <img alt="" class="banner_img mb-3" src="{{banner1.img.url}}">
     </div>
 </header>
@@ -41,18 +39,12 @@
                 {% for i in six_box1 %}
                 <a href="{{i.title}}" class=" mx-auto col-lg-3 m-1"><img class="img-fluid" src="{{i.image.url}}"/></a>
                 {% endfor %}
-<!--                <a href="/services/dharm_sandesh/" class="p-5 mx-auto col-lg-3 m-1 btn btn-primary">Dharm sandesh</a>-->
-<!--                <a href="/services/dharmik_ayojan/" class="p-5 mx-auto col-lg-3 m-1 btn btn-primary">Dharmik Ayojan</a>-->
-<!--                <a href="/services/rajat_shila/" class="p-5 mx-auto col-lg-3 m-1 btn btn-primary">Rajan Shila</a>-->
             </div>
 
             <div class="row">
                 {% for i in six_box2 %}
                 <a href="{{i.title}}" class=" mx-auto col-lg-3 m-1"><img class="img-fluid" src="{{i.image.url}}"/></a>
                 {% endfor %}
-<!--                <a href="/services/braj_yatra/" class="p-5 mx-auto col-lg-3 m-1 btn btn-primary">Braj Yatra</a>-->
-<!--                <a href="/services/jyotish/" class="p-5 mx-auto col-lg-3 m-1 btn btn-primary">Jyotish / Vaastu</a>-->
-<!--                <a href="/services/daan/" class="p-5 mx-auto col-lg-3 m-1 btn btn-primary">Daan</a>-->
             </div>
         </div>
 
@@ -79,7 +71,6 @@
                     <img alt="Service 1" class="card-img-top" height="300" src="{{parichay_data.img.url}}">
                     <div class="card-body">
                         <p class="card-title"><strong>{{parichay_data.title}}</strong></p>
-                        <!--               <p class="card-text" style="text-align: justify;">{{parichay_data.desc|slice:":255"}}</p>-->
                         <a href="/biography/{{parichay_data.id}}/">Read more</a>
                     </div>
                 </div>

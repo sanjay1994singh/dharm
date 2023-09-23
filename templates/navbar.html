@@ -361,7 +361,15 @@
         })
 
         function about_text_toggle(){
+
+            var read_text = $('#about_toggle').text();
+            if( read_text == 'read more'){
+                $('#about_toggle').text('read less');
+            }else {
+                $('#about_toggle').text('read more');
+            }
             $('#about_toggle_content').toggle();
+
         }
 
 

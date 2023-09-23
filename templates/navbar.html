@@ -255,7 +255,12 @@
 <section class="mt-4" id="about">
     <div class="container">
         <h2>हमारे बारे में </h2>
-        <h5 class="line-height" style="text-align: justify;">{{about_data.desc}}</h5>
+        <h5 class="line-height" style="text-align: justify;">{{about_data.title}}</h5>
+        <span id="about_toggle" onclick="about_text_toggle()" class="text-primary" style="cursor:pointer">
+            read more
+        </span>
+        <h5 id="about_toggle_content"  class="line-height" style="text-align: justify;">{{about_data.desc}}</h5>
+
     </div>
 </section>
 {% endif %}
@@ -346,6 +351,17 @@
 
 
 <script>
+
+        $(document).ready(function(){
+            $('#about_toggle_content').toggle();
+        })
+
+        function about_text_toggle(){
+            $('#about_toggle_content').toggle();
+        }
+
+
+
         $('#sangthan_ki_suchi').click(function(){
             $('#suchi_list').html('')
             var url = '/get_sangth/'

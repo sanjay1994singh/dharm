@@ -1,6 +1,31 @@
 {% extends "navbar.html" %}
 
 {% block css %}
+
+<style>
+    #mobile {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      #mobile {
+        display: block;
+      }
+    }
+
+
+    #desktop {
+    display: block; /* This is the default display style */
+  }
+
+  @media (max-width: 768px) {
+    #desktop {
+      display: none; /* Hide on screens with a width of 768px or less (adjust this value as needed) */
+    }
+  }
+
+</style>
+
 {% endblock css %}
 
 
@@ -86,41 +111,55 @@
 <!--    </div>-->
 <!--</section>-->
 
-<section class="py-5 bg-light desktop-crouser" id="main-body">
+<section class="py-5 bg-light desktop-crouser" id="desktop">
     <div class="container">
         <h2>हमारे स्तंभ</h2>
         <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner" id="carousel-inner">
 
                 <!-- First Slide -->
-                <div class="carousel-item active">
+                <div class="carousel-item active desktop">
                     <div class="row" id="1st_crousel">
-
                     </div>
                 </div>
 
-                <div class="carousel-item">
+                <div class="carousel-item desktop">
                     <div class="row" id="2nd_crousel">
 
                     </div>
                 </div>
 
-                <div class="carousel-item">
+                <div class="carousel-item desktop">
                     <div class="row" id="3rd_crousel">
                     </div>
                 </div>
-
             </div>
+        </div>
+    </div>
+</section>
 
-            <!-- Previous and Next Buttons -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+
+<section class="py-5 bg-light desktop-crouser" id="mobile">
+    <div class="container">
+        <h2>हमारे स्तंभ</h2>
+        <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" id="carousel-inner">
+                <div class="mobile">
+                    {% for parichay_data in parichay_data %}
+                    <div class="carousel-item mobile {% if forloop.counter == 1 %}active {% endif %}">
+                        <div class="col-md-3">
+                            <div class="card mb-4">
+                                <img alt="Service 1" class="card-img-top" height="300" src="{{parichay_data.img.url}}">
+                                <div class="card-body">
+                                    <p class="card-title"><strong>{{parichay_data.title}}</strong></p>
+                                    <a href="/biography/{{parichay_data.id}}/">Read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -254,6 +293,10 @@
             }
         });
     });
+
+
+
+
 </script>
 
 {% endblock js %}

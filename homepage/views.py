@@ -72,7 +72,9 @@ def harame_stambh(request):
     parichay_list = []
     for i in parichay_data:
         data_dict = {}
+        data_dict['id'] = i.id
         data_dict['image'] = i.img.url
+        data_dict['title'] = i.title
         parichay_list.append(data_dict)
 
     json_data = {

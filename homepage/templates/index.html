@@ -1,5 +1,14 @@
 {% extends "navbar.html" %}
 
+{% block css %}
+<!--<style>-->
+<!--    @media (max-width: 768px) {-->
+<!--        /* Hide the carousel on screens with a width of 768px or less */-->
+<!--        .desktop-crouser {-->
+<!--            display: none;-->
+<!--    }-->
+<!--</style>-->
+{% endblock css %}
 
 {% block main_banner%}
 
@@ -83,44 +92,46 @@
 <!--    </div>-->
 <!--</section>-->
 
-<section class="py-5 bg-light" id="main-body">
-<div class="container">
+<section class="py-5 bg-light desktop-crouser" id="main-body">
+    <div class="container">
         <h2>हमारे स्तंभ</h2>
-    <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner" id="carousel-inner">
+        <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" id="carousel-inner">
 
-            <!-- First Slide -->
-            <div class="carousel-item active">
-                <div class="row" id="1st_crousel">
+                <!-- First Slide -->
+                <div class="carousel-item active">
+                    <div class="row" id="1st_crousel">
 
+                    </div>
                 </div>
+
+                <div class="carousel-item">
+                    <div class="row" id="2nd_crousel">
+
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="row" id="3rd_crousel">
+                    </div>
+                </div>
+
             </div>
 
-            <div class="carousel-item">
-                <div class="row" id="2st_crousel">
-
-                </div>
-            </div>
-
-            <div class="carousel-item">
-                <div class="row" id="3st_crousel">
-                </div>
-            </div>
-
+            <!-- Previous and Next Buttons -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-
-        <!-- Previous and Next Buttons -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
     </div>
-</div>
 </section>
+
+
 {% endblock biography %}
 
 {% block services %}
@@ -198,6 +209,7 @@
                     var image = dict.image;
                     var title = dict.title;
                     var value = index;
+
                     if (index >= 4 && index < 8){
                         var html = ''
                         html += '<div class="col-md-3">'
@@ -210,7 +222,7 @@
                         html += '</div>'
                         html += '</div>'
 
-                        $('#2st_crousel').append(html)
+                        $('#2nd_crousel').append(html)
                     }
                     else if (index >= 8 && index < 12){
                         var html = ''
@@ -224,7 +236,7 @@
                         html += '</div>'
                         html += '</div>'
 
-                        $('#3st_crousel').append(html)
+                        $('#3rd_crousel').append(html)
                     }
                     if(index >=0 && index < 4){
                         var html = ''
@@ -253,6 +265,7 @@
             }
         });
     });
+
 
 
 

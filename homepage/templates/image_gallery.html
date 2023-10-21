@@ -1,0 +1,30 @@
+{% extends "navbar.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center">Image Gallery</h1>
+    <div class="row mx-auto p-4 border">
+        {% if image_gallery %}
+            <div class="col-md-12">
+                <div class="row">
+                    {% for image in image_gallery %}
+                        <div class="col-md-2">
+                            <a href="{{ image.img.url }}" data-lightbox="image-gallery" data-title="Image {{ forloop.counter }}">
+                                <img src="{{ image.img.url }}" class="img-thumbnail">
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% else %}
+            <h1 class="text-center">No images in Gallery</h1>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block js %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
+{% endblock js %}

@@ -12,6 +12,7 @@ urlpatterns = [
     path('add-gallery/', views.add_gallery, name='add_gallery'),
     path('gallery/', views.gallery, name='gallery'),
     path('photo-gallery/', views.photo_gallery, name='photo_gallery'),
+    path('image_folder/<int:id>/', views.image_folder, name='photo_gallery'),
     path('samachar-gallery/', views.samachar_gallery, name='photo_gallery'),
     path('viewPdf/', views.viewPdf, name='viewPdf'),
     path('sangthan/', views.sangthan_suchi, name='sangthan_suchi'),

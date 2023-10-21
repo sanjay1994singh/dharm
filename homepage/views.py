@@ -4,6 +4,7 @@ from django.shortcuts import redirect, render
 # from account.models import EnquiryDetails
 from homepage.models import LookupField, Gallery, SangthanType, Sangthan, Post
 from services.models import Service, SixBox
+from .models import ImageFolder, ImageGallery
 
 
 # Create your views here.
@@ -133,10 +134,17 @@ def viewPdf(request):
 
 def photo_gallery(request):
     title_logo_data = LookupField.objects.get(code='TITLE')
-    gallery = Gallery.objects.filter(code='image')
+    image_folder = ImageFolder.objects.all()
 
-    context = {'title_data': title_logo_data, 'gallery': gallery}
+    context = {'title_data': title_logo_data, 'image_folder': image_folder}
     return render(request, 'photo_gallery.html', context)
+
+def image_folder(request, id):
+    title_logo_data = LookupField.objects.get(code='TITLE')
+    image_gallery = ImageGallery.objects.filter(image_folder_id=id)
+    print(image_gallery,'=======================image_gallery')
+    context = {'title_data': title_logo_data, 'image_gallery': image_gallery}
+    return render(request, 'image_gallery.html', context)
 
 
 def samachar_gallery(request):

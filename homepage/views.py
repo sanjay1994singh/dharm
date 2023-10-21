@@ -59,11 +59,26 @@ def homepage(request):
         six_box1 = SixBox.objects.all()[:3]
         six_box2 = SixBox.objects.all()[3:6]
 
+
+
         context = {'title_data': title_logo_data, 'banner1': banner1, 'about_data': about_data,
                    'parichay_data': parichay_data, 'services': services, 'barcode': barcode, 'shloka': shloka,
                    'suchana': suchana, 'tv': tv, 'six_box1': six_box1, 'six_box2': six_box2, }
         return render(request, 'index.html', context)
 
+
+def harame_stambh(request):
+    parichay_data = LookupField.objects.filter(code='parichay')
+    parichay_list = []
+    for i in parichay_data:
+        data_dict = {}
+        data_dict['image'] = i.img.url
+        parichay_list.append(data_dict)
+
+    json_data = {
+        'parichay_data': parichay_list
+    }
+    return JsonResponse(json_data)
 
 def biography(request, id):
     title_logo_data = LookupField.objects.get(code='TITLE')

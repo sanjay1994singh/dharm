@@ -1,14 +1,8 @@
 {% extends "navbar.html" %}
 
 {% block css %}
-<!--<style>-->
-<!--    @media (max-width: 768px) {-->
-<!--        /* Hide the carousel on screens with a width of 768px or less */-->
-<!--        .desktop-crouser {-->
-<!--            display: none;-->
-<!--    }-->
-<!--</style>-->
 {% endblock css %}
+
 
 {% block main_banner%}
 
@@ -131,7 +125,6 @@
     </div>
 </section>
 
-
 {% endblock biography %}
 
 {% block services %}
@@ -252,23 +245,15 @@
                         html += '</div>'
 
                         $('#1st_crousel').append(html)
-
-
-
                     }
                     console.log('Image: ' + image + ', Value: ' + value);
                 });
-
             },
             error: function (error) {
                 console.log(error);
             }
         });
     });
-
-
-
-
 </script>
 
 {% endblock js %}

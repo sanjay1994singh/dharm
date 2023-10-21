@@ -194,28 +194,55 @@
                 console.log(data)
 
                 $.each(data.parichay_data, function (index, dict) {
+                    var id = dict.id;
                     var image = dict.image;
+                    var title = dict.title;
                     var value = index;
                     if (index >= 4 && index < 8){
                         var html = ''
-                        html += '<div class="col-md-2 mx-auto">'
-                        html += '<img src="'+image+'" alt="Image 1" class="img-fluid">'
+                        html += '<div class="col-md-3">'
+                        html += '<div class="card mb-4">'
+                        html += '<img alt="Service 1" class="card-img-top" height="300" src="'+image+'">'
+                        html += '<div class="card-body">'
+                        html += '<p class="card-title"><strong>'+title+'</strong></p>'
+                        html += '<a href="/biography/'+id+'/">Read more</a>'
                         html += '</div>'
+                        html += '</div>'
+                        html += '</div>'
+
                         $('#2st_crousel').append(html)
                     }
                     else if (index >= 8 && index < 12){
                         var html = ''
-                        html += '<div class="col-md-2 mx-auto">'
-                        html += '<img src="'+image+'" alt="Image 1" class="img-fluid">'
+                        html += '<div class="col-md-3">'
+                        html += '<div class="card mb-4">'
+                        html += '<img alt="Service 1" class="card-img-top" height="300" src="'+image+'">'
+                        html += '<div class="card-body">'
+                        html += '<p class="card-title"><strong>'+title+'</strong></p>'
+                        html += '<a href="/biography/'+id+'/">Read more</a>'
                         html += '</div>'
+                        html += '</div>'
+                        html += '</div>'
+
                         $('#3st_crousel').append(html)
                     }
                     if(index >=0 && index < 4){
                         var html = ''
-                        html += '<div class="col-md-2 mx-auto">'
-                        html += '<img src="'+image+'" alt="Image 1" class="img-fluid">'
+
+                        html += '<div class="col-md-3">'
+                        html += '<div class="card mb-4">'
+                        html += '<img alt="Service 1" class="card-img-top" height="300" src="'+image+'">'
+                        html += '<div class="card-body">'
+                        html += '<p class="card-title"><strong>'+title+'</strong></p>'
+                        html += '<a href="/biography/'+id+'/">Read more</a>'
                         html += '</div>'
+                        html += '</div>'
+                        html += '</div>'
+
                         $('#1st_crousel').append(html)
+
+
+
                     }
                     console.log('Image: ' + image + ', Value: ' + value);
                 });

@@ -104,24 +104,6 @@
 
             <div class="carousel-item">
                 <div class="row" id="3st_crousel">
-
-                </div>
-            </div>
-
-            <div class="carousel-item">
-                <div class="row">
-                    <div class="col-md-2 mx-auto">
-                        <img src="image1.jpg" alt="Image 5" class="img-fluid">
-                    </div>
-                    <div class="col-md-2 mx-auto">
-                        <img src="image2.jpg" alt="Image 6" class="img-fluid">
-                    </div>
-                    <div class="col-md-2 mx-auto">
-                        <img src="image3.jpg" alt="Image 7" class="img-fluid">
-                    </div>
-                    <div class="col-md-2 mx-auto">
-                        <img src="image4.jpg" alt="Image 8" class="img-fluid">
-                    </div>
                 </div>
             </div>
 
@@ -214,14 +196,14 @@
                 $.each(data.parichay_data, function (index, dict) {
                     var image = dict.image;
                     var value = index;
-                    if (index > 3 && index < 7){
+                    if (index >= 4 && index < 8){
                         var html = ''
                         html += '<div class="col-md-2 mx-auto">'
                         html += '<img src="'+image+'" alt="Image 1" class="img-fluid">'
                         html += '</div>'
                         $('#2st_crousel').append(html)
                     }
-                    else if (index > 7 && index < 11){
+                    else if (index >= 8 && index < 12){
                         var html = ''
                         html += '<div class="col-md-2 mx-auto">'
                         html += '<img src="'+image+'" alt="Image 1" class="img-fluid">'

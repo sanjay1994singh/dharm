@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container">
     <h1 class="text-center">Image Gallery</h1>
-    <div class="row mx-auto p-4 border">
+    <div class="row mx-auto p-4 border text-center">
         {% if image_folder %}
         {% for image_folder in image_folder %}
             <a class="" href="/image_folder/{{image_folder.id}}/">
@@ -11,6 +11,7 @@
                     {% if image_folder.image %}
                     <img src="{{image_folder.image.url}}" class="img-fluid" alt="image_folder.title">
                     {% endif %}
+                    <h3>{{image_folder.title}}</h3>
                 </div>
             </a>
         {% endfor %}

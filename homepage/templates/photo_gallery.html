@@ -6,14 +6,16 @@
     <div class="row mx-auto p-4 border text-center">
         {% if image_folder %}
         {% for image_folder in image_folder %}
+
+        <div class="col-md-2">
             <a class="" href="/image_folder/{{image_folder.id}}/">
-                <div class="col-md-2">
-                    {% if image_folder.image %}
-                    <img src="{{image_folder.image.url}}" class="img-fluid" alt="image_folder.title">
-                    {% endif %}
-                    <h3>{{image_folder.title}}</h3>
-                </div>
+                {% if image_folder.image %}
+                <img src="{{image_folder.image.url}}" class="img-fluid" alt="image_folder.title">
+                {% endif %}
+                <h3>{{image_folder.title}}</h3>
             </a>
+        </div>
+
         {% endfor %}
         {% else %}
         <h1 class="text-center">No images in Gallery </h1>
@@ -34,6 +36,7 @@
         event.preventDefault();
         $(this).ekkoLightbox();
     });
+
 
 </script>
 {% endblock js %}

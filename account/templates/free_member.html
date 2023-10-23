@@ -36,7 +36,7 @@
         </div>
         <div class="form-group">
             <label for="city">City</label>
-            <input class="form-control" id="city" name="city" placeholder="enter city" type="number">
+            <input class="form-control" id="city" name="city" placeholder="enter city" type="text">
         </div>
         <div class="form-group">
             <label for="district">District</label>
@@ -58,7 +58,6 @@
         <div class="form-group">
             <label for="gender">Gender</label>
             <select class="form-control" id="gender" name="gender">
-                <option value="">Select your gender</option>
                 {% for gender in gender_type %}
                     <option value="{{gender.id}}">{{gender.gender}}</option>
                 {% endfor %}

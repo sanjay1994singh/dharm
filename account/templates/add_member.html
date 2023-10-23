@@ -58,7 +58,6 @@
         <div class="form-group">
             <label for="gender">Gender</label>
             <select class="form-control" id="gender" name="gender">
-                <option value="">Select your gender</option>
                 {% for gender in gender_type %}
                     <option value="{{gender.id}}">{{gender.gender}}</option>
                 {% endfor %}

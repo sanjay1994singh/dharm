@@ -1,5 +1,42 @@
 {% extends "navbar.html" %}
 
+{% block css %}
+<style>/* CSS for improved aesthetics */
+.image-folder-link {
+    text-decoration: none;
+    color: #333; /* Text color */
+    display: block;
+    transition: transform 0.2s ease-in-out;
+}
+
+.image-folder-link:hover {
+    transform: scale(1.05); /* Scale up on hover for a subtle effect */
+}
+
+.image-folder-image {
+    max-width: 100%;
+    border: 1px solid #ddd; /* Add a border to the image */
+    border-radius: 4px; /* Rounded corners */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+
+.image-folder-title {
+    font-size: 18px; /* Adjust the font size */
+    margin-top: 8px; /* Increase top margin for spacing */
+    text-align: center; /* Center align the title */
+    background-color: #007bff; /* Background color for the title (e.g., blue) */
+    color: #fff; /* Text color for the title (white) */
+    padding: 5px; /* Add padding to the title */
+}
+
+.col-md-2 {
+    padding: 10px; /* Add some padding to the container */
+    text-align: center; /* Center align the content within the container */
+}
+
+</style>
+{% endblock css %}
+
 {% block content %}
 <div class="container">
     <h1 class="text-center">Image Gallery</h1>
@@ -8,13 +45,16 @@
         {% for image_folder in image_folder %}
 
         <div class="col-md-2">
-            <a class="" href="/image_folder/{{image_folder.id}}/">
+            <a class="image-folder-link" href="/image_folder/{{ image_folder.id }}/">
                 {% if image_folder.image %}
-                <img src="{{image_folder.image.url}}" class="" alt="image_folder.title" height="100">
+                    <img src="{{ image_folder.image.url }}" class="image-folder-image" alt="{{ image_folder.title }}" height="100">
                 {% endif %}
-                <h3>{{image_folder.title}}</h3>
             </a>
+            <h5 class="mt-2 image-folder-title with-background">{{ image_folder.title }}</h5>
         </div>
+
+
+
 
         {% endfor %}
         {% else %}

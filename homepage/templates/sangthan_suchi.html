@@ -41,33 +41,35 @@
 
 {% block js %}
     <script>
-        $('#sangthan').on('change', function(){
-            $('#post_name').html('')
-            var sangth_id = $(this).val();
-            var myObject = {
-              'sangth_id':sangth_id
-            }
-            var url = '/get_sangth_padname/'
-            $.ajax({
-                url: url,
-                method: 'GET',
-                data: myObject,
-                success: function (response) {
-                    var responseData = response.post_name;
-
-                    var count = 0
-                    for(let i of responseData){
-                        var html = '';
-                        html += '<option value="'+i['post_id']+'">'+i['post_name']+'</option>'
-                        $('#post_name').append(html)
-                    }
-                    console.log(count,'----count')
-                },
-                error: function (xhr, status, error) {
-                    // Handle error here
-                    console.log(error);
+        $(document).ready(function(){
+            $('#sangthan').on('change', function(){
+                $('#post_name').html('')
+                var sangth_id = $(this).val();
+                var myObject = {
+                  'sangth_id':sangth_id
                 }
-            });
+                var url = '/get_sangth_padname/'
+                $.ajax({
+                    url: url,
+                    method: 'GET',
+                    data: myObject,
+                    success: function (response) {
+                        var responseData = response.post_name;
+
+                        var count = 0
+                        for(let i of responseData){
+                            var html = '';
+                            html += '<option value="'+i['post_id']+'">'+i['post_name']+'</option>'
+                            $('#post_name').append(html)
+                        }
+                        console.log(count,'----count')
+                    },
+                    error: function (xhr, status, error) {
+                        // Handle error here
+                        console.log(error);
+                    }
+                });
+            })
         })
     </script>
 {% endblock js %}

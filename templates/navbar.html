@@ -17,7 +17,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.3.5/jquery.timepicker.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.3.5/jquery.timepicker.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
     <title>Dharm Raksha Sangh </title>
     <style>
@@ -106,6 +107,9 @@
         .bg_color{
             background-color:#7a2323;
         }
+
+
+
     </style>
 
     <style>
@@ -115,6 +119,9 @@
           width: 100%;
           z-index: 100;
         }
+
+
+
     </style>
 
     <style>
@@ -125,6 +132,9 @@
             z-index: 1000; /* Ensure the button is above other elements */
             cursor: pointer;
         }
+
+
+
     </style>
     {% block css %}
     {% endblock css %}
@@ -135,7 +145,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg_color text-white">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
-            <img alt="" height="40"  src="{{title_data.img.url}}"/><b class="text-light">{{title_data.title}}</b></a>
+            <img alt="" height="40" src="{{title_data.img.url}}"/><b class="text-light">{{title_data.title}}</b></a>
         <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
                 class="navbar-toggler"
                 data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
@@ -153,7 +163,8 @@
                     <a class="text-light nav-link fw-bold" href="#services">हमारे प्रकल्प</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a aria-expanded="false" class="text-light nav-link fw-bold dropdown-toggle" data-bs-toggle="dropdown" href="#"
+                    <a aria-expanded="false" class="text-light nav-link fw-bold dropdown-toggle"
+                       data-bs-toggle="dropdown" href="#"
                        id="navbarDropdown"
                        role="button">
                         कार्यक्रम
@@ -171,7 +182,8 @@
                     <a class="text-light nav-link fw-bold" href="/viewPdf/">व्रत एवं त्यौहार 2023-24</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a aria-expanded="false" class="text-light nav-link fw-bold dropdown-toggle" data-bs-toggle="dropdown" href="#"
+                    <a aria-expanded="false" class="text-light nav-link fw-bold dropdown-toggle"
+                       data-bs-toggle="dropdown" href="#"
                        id="navbarDropdown"
                        role="button">
                         मीडिया गैलरी
@@ -190,7 +202,8 @@
                     <a class="text-light nav-link fw-bold" href="/account/join-member/">ऑनलाइन सदस्यता</a>
                 </li>
                 <li class="nav-item">
-                    <a class="text-light nav-link fw-bold" data-bs-target="#exampleModal" data-bs-toggle="modal" href="return false;"
+                    <a class="text-light nav-link fw-bold" data-bs-target="#exampleModal" data-bs-toggle="modal"
+                       href="return false;"
                        id="sangthan_ki_suchi">संगठन की सूची</a>
                 </li>
                 <li class="nav-item">
@@ -201,7 +214,8 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a aria-expanded="false" class="text-light nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
+                    <a aria-expanded="false" class="text-light nav-link dropdown-toggle" data-bs-toggle="dropdown"
+                       href="#"
                        id="navbarDropdown"
                        role="button">
                         Privacy Policy
@@ -209,16 +223,20 @@
 
                     <ul aria-labelledby="navbarDropdown" class="dropdown-menu">
                         <li class="nav-item">
-                            <a class="dropdown-item fw-bold" target="_blank" href="/account/privacy-policy/">Privacy Policy</a>
+                            <a class="dropdown-item fw-bold" target="_blank" href="/account/privacy-policy/">Privacy
+                                Policy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="dropdown-item fw-bold" target="_blank" href="/account/terms-conditions/">Terms and Conditions</a>
+                            <a class="dropdown-item fw-bold" target="_blank" href="/account/terms-conditions/">Terms and
+                                Conditions</a>
                         </li>
                         <li class="nav-item">
-                            <a class="dropdown-item fw-bold" target="_blank" href="/account/cancellation-refund/">Cancellation and Refund</a>
+                            <a class="dropdown-item fw-bold" target="_blank" href="/account/cancellation-refund/">Cancellation
+                                and Refund</a>
                         </li>
                         <li class="nav-item">
-                            <a class="dropdown-item fw-bold" target="_blank" href="/account/shipping-delivery/">Shipping and Delivery</a>
+                            <a class="dropdown-item fw-bold" target="_blank" href="/account/shipping-delivery/">Shipping
+                                and Delivery</a>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
@@ -235,8 +253,8 @@
 </nav>
 <!-- this is main banner  -->
 
- {% block main_banner%}
- {% endblock main_banner%}
+{% block main_banner%}
+{% endblock main_banner%}
 
 
 <!--end main banner section -->
@@ -244,8 +262,8 @@
 
 {% endblock %}
 
- {% block tv %}
- {% endblock tv %}
+{% block tv %}
+{% endblock tv %}
 
 {% if shloka %}
 <!-- Slider -->
@@ -279,13 +297,13 @@
         <h2>हमारे बारे में </h2>
         <h5 class="line-height" style="text-align: justify;">{{about_data.title}}
 
-        <span id="about_toggle" onclick="about_text_toggle()" class="text-primary" style="cursor:pointer">
+            <span id="about_toggle" onclick="about_text_toggle()" class="text-primary" style="cursor:pointer">
             read more
         </span>
 
         </h5>
 
-        <h5 id="about_toggle_content"  class="line-height" style="text-align: justify;">{{about_data.desc}}</h5>
+        <h5 id="about_toggle_content" class="line-height" style="text-align: justify;">{{about_data.desc}}</h5>
 
     </div>
 </section>
@@ -309,25 +327,33 @@
 {% endblock content %}
 
 <!-- ---------------------------------------------------------- -->
-<!-- Button trigger modal -->
-<div class="d-flex sticky-button">
-    <a class="facebook-button m-2" href="https://www.facebook.com/dharmrakshasangha/followers" target="_blank">
-        <i class="blue-color fa fa-facebook-f facebook" style="font-size:24px"></i><br/><br/>
-    </a>
+<p class="text-center">Follow us</p>
+<div class="d-flex col-lg-2 mx-auto mt-2">
+    <div class="m-1 mx-auto">
+        <a class="facebook-button m-2" href="https://www.facebook.com/dharmrakshasangha/followers" target="_blank">
+            <i class="blue-color fa fa-facebook-f facebook" style="font-size:24px"></i><br/><br/>
+        </a>
+    </div>
 
-    <a class="facebook-button m-2" href="https://www.instagram.com/dharmrakshasangh2023/?igshid=NTc4MTIwNjQ2YQ=="
-       target="_blank">
-        <i class="fa fa-instagram" style="font-size:24px"></i><br/><br/>
-    </a>
+    <div class="m-1 mx-auto">
+        <a class="facebook-button m-2" href="https://www.instagram.com/dharmrakshasangh2023/?igshid=NTc4MTIwNjQ2YQ=="
+           target="_blank">
+            <i class="fa fa-instagram" style="font-size:24px"></i><br/><br/>
+        </a>
+    </div>
 
-    <a class="facebook-button m-2" href="https://www.youtube.com/@dharmrakshasangh" target="_blank">
-        <i class="fa fa-youtube-play" style="font-size:24px;color:red"></i></br><br/>
-    </a>
+    <div class="m-1 mx-auto">
+        <a class="facebook-button m-2" href="https://www.youtube.com/@dharmrakshasangh" target="_blank">
+            <i class="fa fa-youtube-play" style="font-size:24px;color:red"></i></br><br/>
+        </a>
+    </div>
 
-    <a class="facebook-button m-2" href="https://twitter.com/dharmraksha108?t=OxyMN1IZ2dFWxSwkEzi0KA&s=09" target="_blank">
-        <i class="blue-color fa fa-twitter" style="font-size:24px"></i><br/><br/>
-    </a>
-
+    <div class="m-1 mx-auto">
+        <a class="facebook-button m-2" href="https://twitter.com/dharmraksha108?t=OxyMN1IZ2dFWxSwkEzi0KA&s=09"
+           target="_blank">
+            <i class="blue-color fa fa-twitter" style="font-size:24px"></i><br/><br/>
+        </a>
+    </div>
 </div>
 
 <!-- Modal -->
@@ -367,10 +393,10 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
- <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
 
- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.3.5/jquery.timepicker.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
 <script>
 
@@ -426,6 +452,9 @@
         //   scrollY = window.scrollY;
         //   floatingButtonContainer.style.top = scrollY + window.innerHeight - 300 + 'px';
         // });
+
+
+
 
 </script>
 {% block js %}

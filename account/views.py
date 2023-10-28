@@ -6,6 +6,29 @@ from homepage.models import LookupField
 
 from .models import CustomUser, MemberType, Gender
 
+from django.http import HttpResponse
+from django.template.loader import get_template
+from xhtml2pdf import pisa
+
+def generate_pdf():
+    # Create a response object with the appropriate PDF headers
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="my_pdf.pdf"'
+
+    # Get the HTML template
+    template = get_template('free_member.html')
+
+    # Render the template with your data
+    context = {
+        'variable1': 'Value1',
+        'variable2': 'Value2',
+    }
+    html = template.render(context)
+
+    # Create a PDF object, and write the HTML to the PDF
+    pisa.CreatePDF(html, dest=response)
+
+    return response
 
 # Create your views here.
 
@@ -103,6 +126,7 @@ def free_member(request):
         gender = form.get('gender')
         id_number = form.get('id_number')
         free_member = form.get('free_member')
+        print(form, '====================form')
         obj = CustomUser.objects.create(name=name,
                                         email=email,
                                         phone=phone,
@@ -117,6 +141,9 @@ def free_member(request):
                                         member_type_id=free_member,
                                         id_number=id_number,
                                         )
+        if obj:
+            generate_pdf()
+
     else:
         title_logo_data = LookupField.objects.get(code='TITLE')
         banner1 = LookupField.objects.get(code='HOME_BANNER1')

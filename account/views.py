@@ -41,7 +41,7 @@ def add_member(request, id):
         order_id = form.get('razorpay_order_id')
         razorpay_signature = form.get('razorpay_signature')
         payment_id = form.get('razorpay_payment_id')
-        obj = CustomUser.objects.create(name=name,
+        obj = CustomUser.objects.create(fullname=name,
                                         email=email,
                                         phone=phone,
                                         address=address,
@@ -102,7 +102,7 @@ def free_member(request):
         id_number = form.get('id_number')
         free_member = form.get('free_member')
         print(form, '====================form')
-        obj = CustomUser.objects.create(name=name,
+        obj = CustomUser.objects.create(fullname=name,
                                         email=email,
                                         phone=phone,
                                         address=address,

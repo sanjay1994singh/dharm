@@ -89,6 +89,7 @@ def free_member(request):
     if request.method == 'POST':
         form = request.POST
         name = form.get('name')
+        image = request.FILES.get('image')
         email = form.get('email')
         phone = form.get('phone')
         address = form.get('address')
@@ -117,6 +118,8 @@ def free_member(request):
                                         id_number=id_number,
                                         )
         if obj:
+            obj.image = image
+
             return redirect('/')
 
     else:

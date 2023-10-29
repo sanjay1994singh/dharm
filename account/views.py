@@ -65,7 +65,7 @@ def add_member(request, id):
 
         member = MemberType.objects.get(id=id)
         mem_type = member.type
-        if mem_type == 'हितचिंतक':
+        if mem_type == 'हितचिंतक सदस्य':
             return redirect('/account/free-member/')
 
         member_type = MemberType.objects.all()
@@ -102,7 +102,6 @@ def free_member(request):
         gender = form.get('gender')
         id_number = form.get('id_number')
         free_member = form.get('free_member')
-        print(form, '====================form')
         obj = CustomUser.objects.create(fullname=name,
                                         email=email,
                                         mobile=phone,

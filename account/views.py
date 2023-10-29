@@ -41,6 +41,7 @@ def add_member(request, id):
         order_id = form.get('razorpay_order_id')
         razorpay_signature = form.get('razorpay_signature')
         payment_id = form.get('razorpay_payment_id')
+        image = request.FILES.get('image')
         obj = CustomUser.objects.create(fullname=name,
                                         email=email,
                                         phone=phone,
@@ -59,6 +60,8 @@ def add_member(request, id):
                                         payment_id=payment_id,
                                         )
         if obj:
+            obj.image = image
+            obj.save()
             return redirect('/')
     else:
         title_logo_data = LookupField.objects.get(code='TITLE')
@@ -120,7 +123,7 @@ def free_member(request):
                                         )
         if obj:
             obj.image = image
-
+            obj.save()
             return redirect('/')
 
     else:

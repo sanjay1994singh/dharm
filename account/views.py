@@ -71,7 +71,6 @@ def add_member(request, id):
         member_type = MemberType.objects.all()
         gender_type = Gender.objects.all()
         amount = member.price
-        print(gender_type,'=========================gender_type')
         client = razorpay.Client(auth=(settings.RAZOR_KEY_ID, settings.RAZOR_KEY_SECRET))
         payment = client.order.create({'amount': int(amount) * 100, 'currency': 'INR', 'payment_capture': '1'})
         order_id = payment['id']

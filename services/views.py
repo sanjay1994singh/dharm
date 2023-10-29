@@ -3,7 +3,7 @@ from datetime import datetime
 import razorpay
 from django.conf import settings
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from homepage.models import LookupField
 
 from .models import RajatShila, Rashi, DharmikAyojan, DharmSandesh, Place, JyotishSamadhan, BrajYatraDetails, HelpLine, \
@@ -122,15 +122,18 @@ def ayojan_form(request, id):
         # order_id = form.get('razorpay_order_id')
         # razorpay_signature = form.get('razorpay_signature')
         # payment_id = form.get('razorpay_payment_id')
-        AyojanEnquiry.objects.create(mobile=mobile,
-                                     email=email,
-                                     address=address,
-                                     fullname=fullname,
-                                     query=query,
-                                     # order_id=order_id,
-                                     # transaction_id=razorpay_signature,
-                                     # payment_id=payment_id
-                                     )
+        obj = AyojanEnquiry.objects.create(mobile=mobile,
+                                           email=email,
+                                           address=address,
+                                           fullname=fullname,
+                                           query=query,
+                                           # order_id=order_id,
+                                           # transaction_id=razorpay_signature,
+                                           # payment_id=payment_id
+                                           )
+        if obj:
+            return redirect('/')
+
 
 
 

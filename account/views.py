@@ -58,6 +58,8 @@ def add_member(request, id):
                                         transaction_id=razorpay_signature,
                                         payment_id=payment_id,
                                         )
+        if obj:
+            return redirect('/')
     else:
         title_logo_data = LookupField.objects.get(code='TITLE')
 
@@ -69,7 +71,7 @@ def add_member(request, id):
         member_type = MemberType.objects.all()
         gender_type = Gender.objects.all()
         amount = member.price
-
+        print(gender_type,'=========================gender_type')
         client = razorpay.Client(auth=(settings.RAZOR_KEY_ID, settings.RAZOR_KEY_SECRET))
         payment = client.order.create({'amount': int(amount) * 100, 'currency': 'INR', 'payment_capture': '1'})
         order_id = payment['id']

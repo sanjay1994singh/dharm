@@ -104,7 +104,7 @@ def free_member(request):
         print(form, '====================form')
         obj = CustomUser.objects.create(fullname=name,
                                         email=email,
-                                        phone=phone,
+                                        mobile=phone,
                                         address=address,
                                         pincode=pincode,
                                         city=city,

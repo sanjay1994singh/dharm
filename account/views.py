@@ -64,8 +64,8 @@ def add_member(request, id):
         title_logo_data = LookupField.objects.get(code='TITLE')
 
         member = MemberType.objects.get(id=id)
-        mem_type = member.type
-        if mem_type == 'हितचिंतक सदस्य':
+        mem_type = member.role
+        if mem_type == 'free':
             return redirect('/account/free-member/')
 
         member_type = MemberType.objects.all()

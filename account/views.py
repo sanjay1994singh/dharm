@@ -41,7 +41,7 @@ def add_member(request, id):
         order_id = form.get('razorpay_order_id')
         razorpay_signature = form.get('razorpay_signature')
         payment_id = form.get('razorpay_payment_id')
-        image = request.FILES.get('image')
+        image = request.FILES['image']
         obj = CustomUser.objects.create(fullname=name,
                                         email=email,
                                         phone=phone,
@@ -94,7 +94,7 @@ def free_member(request):
     if request.method == 'POST':
         form = request.POST
         name = form.get('name')
-        image = request.FILES.get('image')
+        image = request.FILES['image']
         email = form.get('email')
         phone = form.get('phone')
         address = form.get('address')

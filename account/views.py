@@ -65,6 +65,7 @@ def add_member(request, id):
 
         member = MemberType.objects.get(id=id)
         mem_type = member.role
+
         if mem_type == 'free':
             return redirect('/account/free-member/')
 
@@ -74,13 +75,14 @@ def add_member(request, id):
         client = razorpay.Client(auth=(settings.RAZOR_KEY_ID, settings.RAZOR_KEY_SECRET))
         payment = client.order.create({'amount': int(amount) * 100, 'currency': 'INR', 'payment_capture': '1'})
         order_id = payment['id']
-
+        mem_name = member.type
         context = {
             'title_data': title_logo_data,
             'payment': payment,
             'member_type': member_type,
             'member_price': amount,
             'gender_type': gender_type,
+            'mem_name': mem_name,
         }
         return render(request, 'add_member.html', context)
 

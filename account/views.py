@@ -110,7 +110,7 @@ def free_member(request):
                                         city=city,
                                         district=district,
                                         state=state,
-                                        country=country,
+                                        # country=country,
                                         dob=dob,
                                         gender_id=gender,
                                         member_type_id=free_member,

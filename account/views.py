@@ -126,6 +126,7 @@ def free_member(request):
 
         member_type = MemberType.objects.all()
         free_member = MemberType.objects.get(price__lt=1)
+        gender_type = Gender.objects.all()
         id = free_member.id
         context = {
             'title_data': title_logo_data,
@@ -133,6 +134,7 @@ def free_member(request):
             'barcode': barcode,
             'member_type': member_type,
             'free_member': id,
+            'gender_type': gender_type,
         }
         return render(request, 'free_member.html', context)
 

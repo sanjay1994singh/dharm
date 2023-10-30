@@ -122,6 +122,7 @@ def free_member(request):
                                         id_number=id_number,
                                         )
         if obj:
+            print(image, '==============image')
             obj.image = image
             obj.save()
             return redirect('/')

@@ -12,7 +12,7 @@
     
     <h2 class="text-center mt-2">हितचिंतक सदस्य</h2>
     <h2 class="text-center mt-2">Member Registration</h2>
-    <form id="registrationForm" method="post">{% csrf_token %}
+    <form id="registrationForm" method="post" enctype="multipart/form-data">{% csrf_token %}
         <input type="hidden" name="free_member" value="{{free_member}}">
         <div class="form-group">
             <label for="name">Name</label>

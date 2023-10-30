@@ -94,7 +94,7 @@ def free_member(request):
     if request.method == 'POST':
         form = request.POST
         name = form.get('name')
-        image = request.FILES['image']
+        image = request.FILES.get('image')
         email = form.get('email')
         phone = form.get('phone')
         address = form.get('address')

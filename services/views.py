@@ -62,6 +62,9 @@ def braj_yatra_place(request, id):
 
 def temple_details(request, id):
     yatra = BrajYatraDetails.objects.get(id=id)
+    print(yatra.other_img1)
+    print(yatra.other_img2)
+    print(yatra.other_img3)
     context = {
         'yatra': yatra,
     }

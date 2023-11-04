@@ -1,25 +1,49 @@
 {% extends "navbar.html" %}
 
-  {% block services %}
-  
-  <!-- Services Section -->
-  <section id="services" class="py-5 bg-light">
+{% block services %}
+
+<!-- Services Section -->
+<section id="services" class="py-5 bg-light">
     <div class="container text-center">
-      <h2><strong>{{yatra.temple_name}}</strong></h2>
-      <div class="row">
-        <div class="col-md-8 mx-auto">
-          <div class="card mb-4">
-            {% if yatra.image %}
-            <img src="{{yatra.image.url}}" class="card-img-top img-fluid" alt="Service 1">
-            {% endif %}
-            <div class="card-body">
-              <!-- <h5 class="card-title"><strong>{{services.name}}</strong></h5> -->
-               <p class="card-text" style="text-align: justify;">{{yatra.desc}}</p>
-               <button class="btn btn-info" onclick="history.back()">Go back</button>
+        <h2><strong>{{yatra.temple_name}}</strong></h2>
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <div class="card mb-4">
+                    <div class="row">
+                        {% if yatra.image %}
+                        <div class="col-lg-3">
+                            <img src="{{yatra.image.url}}" class="card-img-top img-fluid" alt="Service 1">
+                        </div>
+                        {% endif %}
+
+                        {% if yatra.other_img1 %}
+                        <div class="col-lg-3">
+                            <img src="{{yatra.other_img1.url}}" class="card-img-top img-fluid" alt="Service 1">
+                        </div>
+                        {% endif %}
+
+                        {% if yatra.other_img2 %}
+                        <div class="col-lg-3">
+                            <img src="{{yatra.other_img2.url}}" class="card-img-top img-fluid" alt="Service 1">
+                        </div>
+                        {% endif %}
+
+                        {% if yatra.other_img3 %}
+                        <div class="col-lg-3">
+                            <img src="{{yatra.other_img3.url}}" class="card-img-top img-fluid" alt="Service 1">
+                        </div>
+                        {% endif %}
+                    </div>
+
+
+                    <div class="card-body">
+                        <!-- <h5 class="card-title"><strong>{{services.name}}</strong></h5> -->
+                        <p class="card-text" style="text-align: justify;">{{yatra.desc}}</p>
+                        <button class="btn btn-info" onclick="history.back()">Go back</button>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </section>
-  {% endblock services %}
+</section>
+{% endblock services %}

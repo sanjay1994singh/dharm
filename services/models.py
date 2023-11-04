@@ -65,6 +65,9 @@ class BrajYatraDetails(models.Model):
     temple_name = models.CharField(max_length=500, null=True, blank=True)
     desc = models.TextField(null=True, blank=True)
     image = models.FileField(upload_to='braj_yatra', null=True, blank=True)
+    other_img1 = models.FileField(upload_to='braj_yatra', null=True, blank=True, default=None)
+    other_img2 = models.FileField(upload_to='braj_yatra', null=True, blank=True, default=None)
+    other_img3 = models.FileField(upload_to='braj_yatra', null=True, blank=True, default=None)
 
     def __str__(self):
         return self.temple_name

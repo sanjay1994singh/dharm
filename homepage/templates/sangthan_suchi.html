@@ -2,7 +2,7 @@
 {% block content %}
 <div class="container">
     <h2>Sangthan Suchi</h2>
-    <form id="registrationForm" method="post">{% csrf_token %}
+    <form id="registrationForm" method="post" enctype="multipart/form-data">{% csrf_token %}
         <div class="form-group mb-3">
             <label for="name">Name</label>
             <input class="form-control" id="name" name="name" placeholder="Enter your name" required type="text">

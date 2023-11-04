@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block form %}
+<div class="container">
+    <h1>Add Gallery Form</h1>
+    <form method="post" enctype="multipart/form-data">{% csrf_token %}
+        <div class="form-group">
+            <label>Image Folder:</label>
+            <select name="image_folder_id" id="image_folder_id" class="form-control">
+                {% for i in image_folder %}
+                <option value="{{i.id}}">{{i.title}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="files">Image for Gallery</label>
+            <input type="file" class="form-control" id="files" name="image_files" multiple>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock form %}

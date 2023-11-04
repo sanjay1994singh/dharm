@@ -60,8 +60,6 @@ def homepage(request):
         six_box1 = SixBox.objects.all()[:3]
         six_box2 = SixBox.objects.all()[3:6]
 
-
-
         context = {'title_data': title_logo_data, 'banner1': banner1, 'about_data': about_data,
                    'parichay_data': parichay_data, 'services': services, 'barcode': barcode, 'shloka': shloka,
                    'suchana': suchana, 'tv': tv, 'six_box1': six_box1, 'six_box2': six_box2, }
@@ -82,6 +80,7 @@ def harame_stambh(request):
         'parichay_data': parichay_list
     }
     return JsonResponse(json_data)
+
 
 def biography(request, id):
     title_logo_data = LookupField.objects.get(code='TITLE')
@@ -139,10 +138,11 @@ def photo_gallery(request):
     context = {'title_data': title_logo_data, 'image_folder': image_folder}
     return render(request, 'photo_gallery.html', context)
 
+
 def image_folder(request, id):
     title_logo_data = LookupField.objects.get(code='TITLE')
     image_gallery = ImageGallery.objects.filter(image_folder_id=id)
-    print(image_gallery,'=======================image_gallery')
+    print(image_gallery, '=======================image_gallery')
     context = {'title_data': title_logo_data, 'image_gallery': image_gallery}
     return render(request, 'image_gallery.html', context)
 
@@ -223,3 +223,23 @@ def contact(request):
         banner1 = ''
     context = {'title_data': title_logo_data, 'banner1': banner1, }
     return render(request, 'contact_us.html', context)
+
+
+def add_gallery_folder(request):
+    if request.method == 'POST':
+        form = request.POST
+        form1 = request.FILES
+        image_folder_id = form.get('image_folder_id')
+        image_files = form1.getlist('image_files')
+        try:
+            for i in range(len(image_files)):
+                ImageGallery.objects.create(image_folder_id=image_folder_id,
+                                            img=image_files[i])
+        except Exception as e:
+            print(e, '========e=========')
+        return redirect('/add_gallery_folder/')
+    image_folder = ImageFolder.objects.all()
+    context = {
+        'image_folder': image_folder
+    }
+    return render(request, 'add_folder_gallery.html', context)

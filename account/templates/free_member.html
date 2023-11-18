@@ -9,7 +9,7 @@
         </a>
         {% endfor %}
     </div>
-    
+
     <h2 class="text-center mt-2">हितचिंतक सदस्य</h2>
     <h2 class="text-center mt-2">Member Registration</h2>
     <form id="registrationForm" method="post" enctype="multipart/form-data">{% csrf_token %}
@@ -66,18 +66,73 @@
             <label for="gender">Gender</label>
             <select class="form-control" id="gender" name="gender">
                 {% for gender in gender_type %}
-                    <option value="{{gender.id}}">{{gender.gender}}</option>
+                <option value="{{gender.id}}">{{gender.gender}}</option>
                 {% endfor %}
             </select>
         </div>
         <div class="form-group">
             <label for="id_number">Aadhar Number</label>
-            <input class="form-control" id="id_number" name="id_number" placeholder="Enter Your Aadhar Number" type="text" maxlength="20">
+            <input class="form-control" id="id_number" name="id_number" placeholder="Enter Your Aadhar Number"
+                   type="text" maxlength="20">
         </div>
         <div class="form-group mt-3">
-            <center><input type="submit" class="btn btn-primary" value="Register Now"></center>
-           
+            <center><input type="button" class="btn btn-primary" id="register" value="Register Now"></center>
+
         </div>
     </form>
 </div>
 {% endblock content %}
+
+
+
+{% block js %}
+<script>
+   $(document).ready(function () {
+        $('#register').click(function (e) {
+
+            e.preventDefault();  // Prevent the form from submitting normally
+
+            var formData = $('#registrationForm').serialize();  // Serialize the form data
+
+            $.ajax({
+              url: '/account/free-member/',  // URL to the Django view
+              type: 'POST',
+              data: formData,
+              success: function (response) {
+                console.log(response.status,'----------status');
+                if(response.status == 1){
+                  Swal.fire({
+                    title: 'बधाई हो ',
+                    text: 'आपकी जानकारी हमें सफलता पूर्वक प्राप्त हो गई है। \n धर्म रक्षा संघ में आपका स्वागत है । \n आपको शीघ्र ही सदस्यता प्रमाण पत्र ऑनलाइन प्राप्त हो जाएगा।',
+                    icon: 'success',
+                    showCancelButton: false,
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'OK'
+                  }).then((result) => {
+                    window.location.href = '/my-courses/'
+                  });
+                }else{
+                  Swal.fire({
+                      title: 'Error',
+                      text: 'Something went wrong!',
+                      icon: 'error',
+                      confirmButtonColor: '#3085d6',
+                      confirmButtonText: 'OK'
+                  });
+                  return false;
+                }
+
+              },
+              error: function (xhr, errmsg, err) {
+                // Handle the error
+                console.log(xhr.status + ": " + xhr.responseText);
+
+                return false;
+              }
+
+            });
+        });
+  });
+
+</script>
+{% endblock js %}

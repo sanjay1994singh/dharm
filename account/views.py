@@ -1,5 +1,6 @@
 import razorpay
 from django.conf import settings
+from django.http import JsonResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
 from homepage.models import LookupField
@@ -123,10 +124,13 @@ def free_member(request):
                                         id_number=id_number,
                                         )
         if obj:
-            print(image, '==============image')
             obj.image = image
             obj.save()
-            return redirect('/')
+            status = 1
+            context = {
+                'status': status
+            }
+            return JsonResponse(context)
 
     else:
         title_logo_data = LookupField.objects.get(code='TITLE')

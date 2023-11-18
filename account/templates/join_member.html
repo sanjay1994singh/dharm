@@ -1,31 +1,50 @@
 {% extends "navbar.html" %}
 
- {% block main_banner%}
+{% block main_banner%}
 
-    {% if banner1.img %}
+{% if banner1.img %}
 
-    <header class="jumbotron">
-        <div class="fluid-container">
-            <!-- <h1>Welcome to our Charity Organization</h1> -->
-            <!-- <p>We strive to make a positive impact on the community.</p> -->
-            <img alt="" class="banner_img mb-3" height="250" src="{{banner1.img.url}}">
-        </div>
-    </header>
+<header class="jumbotron">
+    <div class="fluid-container">
+        <!-- <h1>Welcome to our Charity Organization</h1> -->
+        <!-- <p>We strive to make a positive impact on the community.</p> -->
+        <img alt="" class="banner_img mb-3" height="250" src="{{banner1.img.url}}">
+    </div>
+</header>
 
-    {% endif %}
+{% endif %}
 
- {% endblock main_banner%}
+{% endblock main_banner%}
 {% block content %}
 
-<div class="col-lg-8 mx-auto p-2">
+<div class="container mx-auto">
     <div class="row">
         {% for member in member_type %}
-        <div class="col-lg-4 m-1 text-center">
-        <a href="/account/add-member/{{member.id}}/">
-            <button class="btn btn-primary" type="button">{{member.type}} - {% if member.price != 0.00 %} वार्षिक शुल्क : {{member.price}} {% else %}निःशुल्क {% endif %}</button>
-        </a>
-        {% endfor %}
+        <div class="col-lg-4 mb-2 text-center">
+            <a href="/account/add-member/{{member.id}}/">
+                <button class="btn btn-primary" type="button">{{member.type}} - {% if member.price != 0.00 %} वार्षिक
+                    शुल्क : {{member.price}} {% else %}निःशुल्क {% endif %}
+                </button>
+            </a>
         </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4 mb-2 text-center">
+            <a href="/account/sadasya_list3">सक्रिय सदस्य</a>
+        </div>
+
+
+        <div class="col-lg-4 mb-2 text-center">
+            <a href="/account/sadasya_list2">साधारण सदस्य</a>
+        </div>
+
+        <div class="col-lg-4 mb-2 text-center">
+            <a href="/account/sadasya_list1">हितचिंतक सदस्य</a>
+        </div>
+
+
     </div>
 </div>
 {% endblock content %}

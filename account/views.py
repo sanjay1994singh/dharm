@@ -6,6 +6,7 @@ from homepage.models import LookupField
 
 from .models import CustomUser, MemberType, Gender
 
+
 def join_member(request):
     member_type = MemberType.objects.all()
 
@@ -150,12 +151,38 @@ def free_member(request):
 def privacy_policy(request):
     return render(request, 'privacy_policy.html')
 
+
 def terms_conditions(request):
     return render(request, 'term_conditions.html')
+
 
 def cancellation_refund(request):
     return render(request, 'cancelation_refund.html')
 
+
 def shipping_delivery(request):
     return render(request, 'shipping.html')
 
+
+def sadasya_list1(request):
+    free_cus = CustomUser.objects.filter(member_type__role='free')
+    context = {
+        'free_cus': free_cus
+    }
+    return render(request, 'sadasya_type1.html', context)
+
+
+def sadasya_list2(request):
+    free_cus = CustomUser.objects.filter(member_type=2)
+    context = {
+        'free_cus': free_cus
+    }
+    return render(request, 'sadasya_type2.html', context)
+
+
+def sadasya_list3(request):
+    free_cus = CustomUser.objects.filter(member_type__role=1)
+    context = {
+        'free_cus': free_cus
+    }
+    return render(request, 'sadasya_type2.html', context)

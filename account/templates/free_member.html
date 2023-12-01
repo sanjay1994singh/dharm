@@ -84,21 +84,21 @@
 {% endblock content %}
 
 
-
 {% block js %}
 <script>
    $(document).ready(function () {
         $('#register').click(function (e) {
+            e.preventDefault();
 
-            e.preventDefault();  // Prevent the form from submitting normally
-
-            var formData = $('#registrationForm').serialize();  // Serialize the form data
+            var formData = new FormData($('#registrationForm')[0]);
 
             $.ajax({
-              url: '/account/free-member/',  // URL to the Django view
-              type: 'POST',
-              data: formData,
-              success: function (response) {
+                url: '/account/free-member/',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
                 console.log(response.status,'----------status');
                 if(response.status == 1){
                   Swal.fire({
@@ -133,6 +133,7 @@
             });
         });
   });
+
 
 </script>
 {% endblock js %}

@@ -68,19 +68,19 @@ def add_member(request, id):
     else:
         title_logo_data = LookupField.objects.get(code='TITLE')
 
-        member = MemberType.objects.filter(id=id)
-        mem_type = member[0].role
+        member = MemberType.objects.get(id=id)
+        mem_type = member.role
 
         if mem_type == 'free':
             return redirect('/account/free-member/')
 
         member_type = MemberType.objects.all()
         gender_type = Gender.objects.all()
-        amount = member[0].price
+        amount = member.price
         client = razorpay.Client(auth=(settings.RAZOR_KEY_ID, settings.RAZOR_KEY_SECRET))
         payment = client.order.create({'amount': int(amount) * 100, 'currency': 'INR', 'payment_capture': '1'})
         order_id = payment['id']
-        mem_name = member[0].type
+        mem_name = member.type
         context = {
             'title_data': title_logo_data,
             'payment': payment,
@@ -138,7 +138,7 @@ def free_member(request):
         barcode = LookupField.objects.get(code='BAR_CODE')
 
         member_type = MemberType.objects.all()
-        free_member = MemberType.objects.get(price__lt=1)
+        free_member = MemberType.objects.get(roll='free')
         gender_type = Gender.objects.all()
         id = free_member.id
         context = {

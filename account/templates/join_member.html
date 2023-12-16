@@ -23,8 +23,6 @@
         {% if member.role == 'free' %}
         <div class="col-lg-4 mb-2 text-center">
             <a href="/account/add-member/{{member.id}}/">
-
-
                 <button class="btn btn-primary" type="button">{{member.type}} - {% if member.price != 0.00 %} वार्षिक
                     शुल्क : {{member.price}} {% else %}निःशुल्क {% endif %}
                 </button>

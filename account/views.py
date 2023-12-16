@@ -138,7 +138,7 @@ def free_member(request):
         barcode = LookupField.objects.get(code='BAR_CODE')
 
         member_type = MemberType.objects.all()
-        free_member = MemberType.objects.get(roll='free')
+        free_member = MemberType.objects.get(rol='free')
         gender_type = Gender.objects.all()
         id = free_member.id
         context = {

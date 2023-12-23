@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'homepage',
     'services',
     'karykram',
+    'sangthan_suchi',
 ]
 
 MIDDLEWARE = [

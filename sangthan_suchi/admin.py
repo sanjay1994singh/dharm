@@ -5,7 +5,6 @@ from .models import Pradesh, PradeshPadadhikari, DistrictPadadhikari, District, 
 admin.site.register(Pradesh)
 admin.site.register(PradeshPadadhikari)
 admin.site.register(District)
-
 admin.site.register(DistrictPadadhikari)
 admin.site.register(Nagar)
 admin.site.register(NagarPadadhikari)

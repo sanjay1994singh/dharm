@@ -1,0 +1,90 @@
+{% extends "navbar.html" %}
+
+{% block css %}
+
+<style>
+    #mobile {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      #mobile {
+        display: block;
+      }
+    }
+
+
+    #desktop {
+    display: block; /* This is the default display style */
+  }
+
+  @media (max-width: 768px) {
+    #desktop {
+      display: none; /* Hide on screens with a width of 768px or less (adjust this value as needed) */
+    }
+  }
+
+@media (max-width: 768px) {
+      .box-image {
+        padding: 20px;
+      }
+
+      .font_size{
+        font-size:18px;
+      }
+
+    }
+
+
+
+
+
+
+</style>
+
+{% endblock css %}
+
+{% block main_banner%}
+
+{% if banner1.img %}
+
+<header class="jumbotron">
+    <div class="fluid-container">
+        <img alt="" class="banner_img mb-3" src="{{banner1.img.url}}">
+    </div>
+</header>
+
+{% endif %}
+
+{% endblock main_banner%}
+
+
+{% block content %}
+<div class="col-lg-8 mx-auto p-5">
+    <div class="row">
+        {% for i in pradesh_adhikari %}
+        <div class="col-lg-3">
+            <img src="{{i.image.url}}" width="200" height="150">
+            <p>{{i.name}}</p>
+            <p>{{i.pad}}</p>
+            <p>{{i.address}}</p>
+            <p>{{i.contact}}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="col-lg-8 mx-auto">
+    <div class="row">
+        {% for i in district_list %}
+        <div class="col-lg-2">
+            <a href="/sangthan_suchi/district_list/{{i.id}}/">{{i.name}}</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
+
+{% block js %}
+
+{% endblock js %}

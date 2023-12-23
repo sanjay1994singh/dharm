@@ -432,6 +432,7 @@
                         html += '<p style="cursor:pointer;" onclick="view_sangthan_list('+i['type_id']+')" class="text-center list-group-item-success">'+i['type_name']+'</p>'
                         $('#suchi_list').append(html)
                     }
+                    $('#suchi_list').append('<p class="text-center list-group-item-success"><a href="/sangthan_suchi/">प्रदेश पदाधिकारी</a> </p>')
                 },
                 error: function (xhr, status, error) {
                     // Handle error here

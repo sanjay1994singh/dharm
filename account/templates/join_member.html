@@ -20,7 +20,6 @@
 <div class="container mx-auto">
     <div class="row">
         {% for member in member_type %}
-        {% if member.role == 'free' %}
         <div class="col-lg-4 mb-2 text-center">
             <a href="/account/add-member/{{member.id}}/">
                 <button class="btn btn-primary" type="button">{{member.type}} - {% if member.price != 0.00 %} वार्षिक
@@ -28,7 +27,6 @@
                 </button>
             </a>
         </div>
-        {% endif %}
         {% endfor %}
     </div>
 

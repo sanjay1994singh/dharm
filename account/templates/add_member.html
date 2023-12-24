@@ -91,7 +91,7 @@
 
   <script>
     var options = {
-      "key": "rzp_test_rZ0K5Es4kPAFv2", // Enter the Key ID generated from the Dashboard
+      "key": "rzp_live_0lEv3IcO7TT3bh", // Enter the Key ID generated from the Dashboard
       "amount": "{{payment.amount}}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
       "currency": "INR",
       "name": "Dharm Raksha Sangh",
@@ -155,29 +155,29 @@
       var dob = $('#dob').val();
       var id_number = $('#id_number').val();
 
-      if (name != ''){
+      if (name == ''){
         alert('Please enter name')
       }
-      else if (email != ''){
+      else if (email == ''){
         alert('Please enter email')
       }
-      else if (address != ''){
+      else if (address == ''){
         alert('Please enter address')
-      }else if (phone != ''){
+      }else if (phone == ''){
         alert('Please enter phone')
-      }else if (pincode != ''){
+      }else if (pincode == ''){
         alert('Please enter pincode')
-      }else if (city != ''){
+      }else if (city == ''){
         alert('Please enter city')
-      }else if (district != ''){
+      }else if (district == ''){
         alert('Please enter district')
-      }else if (state != ''){
+      }else if (state == ''){
         alert('Please enter state')
-      }else if (country != ''){
+      }else if (country == ''){
         alert('Please enter country')
-      }else if (dob != ''){
+      }else if (dob == ''){
         alert('Please enter dob')
-      }else if (id_number != ''){
+      }else if (id_number == ''){
         alert('Please enter id_number')
       }
       else{

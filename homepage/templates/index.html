@@ -190,6 +190,13 @@
 </section>
 {% endblock services %}
 
+
+{% block ads %}
+    {% for i in gallery_one %}
+    <img src="{{i.image.url}}" alt="" class="img-fluid">
+    {% endfor %}
+{% endblock ads %}
+
 {% block donet %}
 <div class="col-lg-8 text-center mx-auto" id="donate">
     <p class="mt-4">सहयोग राशी /Donate Now</p>

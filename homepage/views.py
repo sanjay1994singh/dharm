@@ -2,6 +2,7 @@ from account.models import EnquiryDetails
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 # from account.models import EnquiryDetails
+from advertisement.models import Advertisement, AdsType
 from homepage.models import LookupField, Gallery, SangthanType, Sangthan, Post
 from services.models import Service, SixBox
 from .models import ImageFolder, ImageGallery
@@ -59,10 +60,18 @@ def homepage(request):
 
         six_box1 = SixBox.objects.all()[:3]
         six_box2 = SixBox.objects.all()[3:6]
-
+        type_ad = AdsType.objects.filter(code='gallery_one')
+        if type_ad:
+            type_ad = type_ad[0].id
+            gallery_one = Advertisement.objects.filter(type_id=type_ad)
+            print(gallery_one, '==========gallery_one=============')
+        else:
+            gallery_one = ''
         context = {'title_data': title_logo_data, 'banner1': banner1, 'about_data': about_data,
                    'parichay_data': parichay_data, 'services': services, 'barcode': barcode, 'shloka': shloka,
-                   'suchana': suchana, 'tv': tv, 'six_box1': six_box1, 'six_box2': six_box2, }
+                   'suchana': suchana, 'tv': tv, 'six_box1': six_box1, 'six_box2': six_box2,
+                   'gallery_one': gallery_one
+                   }
         return render(request, 'index.html', context)
 
 

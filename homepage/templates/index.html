@@ -192,9 +192,11 @@
 
 
 {% block ads %}
-    {% for i in gallery_one %}
-    <img src="{{i.image.url}}" alt="" class="img-fluid">
-    {% endfor %}
+    <div class="container">
+        {% for i in gallery_one %}
+        <img src="{{i.image.url}}" alt="" width="225" height="225">
+        {% endfor %}
+    </div>
 {% endblock ads %}
 
 {% block donet %}

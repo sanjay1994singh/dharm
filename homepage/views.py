@@ -60,17 +60,23 @@ def homepage(request):
 
         six_box1 = SixBox.objects.all()[:3]
         six_box2 = SixBox.objects.all()[3:6]
-        type_ad = AdsType.objects.filter(code='gallery_one')
-        if type_ad:
-            type_ad = type_ad[0].id
-            gallery_one = Advertisement.objects.filter(type_id=type_ad)
-            print(gallery_one, '==========gallery_one=============')
+        type_ad1 = AdsType.objects.filter(code='gallery_one')
+        type_ad2 = AdsType.objects.filter(code='gallery_two')
+        if type_ad1:
+            gallery_one = Advertisement.objects.filter(type_id=type_ad1[0].id)
         else:
             gallery_one = ''
+
+        if type_ad2:
+            gallery_two = Advertisement.objects.filter(type_id=type_ad2[0].id)
+        else:
+            gallery_two = ''
+
         context = {'title_data': title_logo_data, 'banner1': banner1, 'about_data': about_data,
                    'parichay_data': parichay_data, 'services': services, 'barcode': barcode, 'shloka': shloka,
                    'suchana': suchana, 'tv': tv, 'six_box1': six_box1, 'six_box2': six_box2,
-                   'gallery_one': gallery_one
+                   'gallery_one': gallery_one,
+                   'gallery_two': gallery_two,
                    }
         return render(request, 'index.html', context)
 

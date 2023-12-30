@@ -192,10 +192,30 @@
 
 
 {% block ads %}
-    <div class="container">
-        {% for i in gallery_one %}
-        <img src="{{i.image.url}}" alt="" width="225" height="225">
-        {% endfor %}
+    <div class="container mx-auto">
+        <div class="row mb-4 mx-auto">
+            <div class="col-lg-8 mx-auto">
+                <div class="row mx-auto">
+                    {% for i in gallery_one %}
+                    <div class="col-lg-3 mx-auto">
+                        <img src="{{i.image.url}}" alt="" class="img-fluid">
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-4 mx-auto">
+            <div class="col-lg-8 mx-auto">
+                <div class="row mx-auto">
+                    {% for i in gallery_two %}
+                    <div class="col-lg-3 mx-auto">
+                        <img src="{{i.image.url}}" alt="" class="img-fluid">
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock ads %}
 

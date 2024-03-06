@@ -1,11 +1,51 @@
+import io
+
 import razorpay
 from django.conf import settings
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
 from homepage.models import LookupField
 
 from .models import CustomUser, MemberType, Gender
+from django.http import FileResponse, HttpResponse
+from django.template.loader import render_to_string
+from django.core.mail import EmailMessage
+from xhtml2pdf import pisa
+import io
+
+def generate_pdf_and_send_email():
+    # Render HTML template
+    back_image = LookupField.objects.get(code='back_image')
+    back_image = back_image.img.url
+    print(back_image, '=============back_image')
+    context = {
+        'data': 'data',
+        'back_image': back_image,
+    }
+    html_content = render_to_string('certificate.html', context)
+
+    # Convert HTML to PDF
+    result = io.BytesIO()
+    pdf = pisa.pisaDocument(io.BytesIO(html_content.encode("UTF-8")), result)
+    if not pdf.err:
+        # Prepare email
+        email = EmailMessage(
+            'Subject',
+            'Message Body',
+            'mrctherapy2023@gmail.com',
+            ['srbc500@gmail.com'],
+        )
+        email.attach('document.pdf', result.getvalue(), 'application/pdf')
+        email.send()
+        # Return the PDF as a response
+        response = FileResponse(io.BytesIO(result.getvalue()), as_attachment=True, filename='document.pdf')
+        return response
+    else:
+        return HttpResponse('Error generating PDF and sending email: {}'.format(pdf.err))
+
+
+
 
 
 def join_member(request):
@@ -124,7 +164,7 @@ def free_member(request):
                                         id_number=id_number,
                                         )
         if obj:
-            obj.image = image
+            generate_pdf_and_send_email()
             obj.save()
             status = 1
             context = {

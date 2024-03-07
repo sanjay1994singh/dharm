@@ -4,8 +4,8 @@ from . import views
 
 urlpatterns = [
     path('join-member/', views.join_member, name='join_member'),
-    path('add-member/<int:id>/', views.add_member, name='add_member'),
-    path('free-member/', views.free_member, name='free_member'),
+    path('add-member/<str:type>/', views.add_member, name='add_member'),
+    path('हितचिंतक-सदस्य/', views.free_member, name='free_member'),
 
     path('privacy-policy/', views.privacy_policy, name='privacy_policy'),
     path('terms-conditions/', views.terms_conditions, name='terms_conditions'),

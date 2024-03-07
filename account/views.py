@@ -65,7 +65,7 @@ def join_member(request):
     return render(request, 'join_member.html', context)
 
 
-def add_member(request, id):
+def add_member(request, type):
     if request.method == 'POST':
         form = request.POST
         name = form.get('name')
@@ -108,11 +108,11 @@ def add_member(request, id):
     else:
         title_logo_data = LookupField.objects.get(code='TITLE')
 
-        member = MemberType.objects.get(id=id)
+        member = MemberType.objects.get(type=type)
         mem_type = member.role
 
         if mem_type == 'free':
-            return redirect('/account/free-member/')
+            return redirect('/account/हितचिंतक-सदस्य/')
 
         member_type = MemberType.objects.all()
         gender_type = Gender.objects.all()

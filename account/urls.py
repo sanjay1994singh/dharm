@@ -15,4 +15,6 @@ urlpatterns = [
     path('sadasya_list1/', views.sadasya_list1, name='sadasya_list1'),
     path('sadasya_list2/', views.sadasya_list2, name='sadasya_list2'),
     path('sadasya_list3/', views.sadasya_list3, name='sadasya_list3'),
+
+    path('certificate_genrate/<int:id>/', views.certificate_genrate, name='certificate_genrate'),
 ]

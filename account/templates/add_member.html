@@ -87,7 +87,6 @@
 
 {% block js %}
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->
 
   <script>
     var options = {
@@ -119,7 +118,7 @@
             success: function (response) {
                 var responseData = response;
                 if(responseData.msg == 'success'){
-                  window.location.href = '/'
+                  window.location.href = '/account/certificate_genrate/'+response.id+'/'
                 }
             },
             error: function (xhr, status, error) {
@@ -144,43 +143,10 @@
 
     document.getElementById('rzp-button1').onclick = function (e) {
       var name = $('#name').val();
-      var email = $('#email').val();
-      var address = $('#address').val();
-      var phone = $('#phone').val();
-      var pincode = $('#pincode').val();
-      var city = $('#city').val();
-      var district = $('#district').val();
-      var state = $('#state').val();
-      var country = $('#country').val();
-      var dob = $('#dob').val();
-      var id_number = $('#id_number').val();
 
       if (name == ''){
         alert('Please enter name')
-      }
-      else if (email == ''){
-        alert('Please enter email')
-      }
-      else if (address == ''){
-        alert('Please enter address')
-      }else if (phone == ''){
-        alert('Please enter phone')
-      }else if (pincode == ''){
-        alert('Please enter pincode')
-      }else if (city == ''){
-        alert('Please enter city')
-      }else if (district == ''){
-        alert('Please enter district')
-      }else if (state == ''){
-        alert('Please enter state')
-      }else if (country == ''){
-        alert('Please enter country')
-      }else if (dob == ''){
-        alert('Please enter dob')
-      }else if (id_number == ''){
-        alert('Please enter id_number')
-      }
-      else{
+      }else{
           rzp1.open();
           e.preventDefault();
       }

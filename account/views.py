@@ -202,6 +202,7 @@ def add_member(request, type):
             'member_price': amount,
             'gender_type': gender_type,
             'mem_name': mem_name,
+            'type': type,
         }
         return render(request, 'add_member.html', context)
 

@@ -21,10 +21,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def certificate_genrate(request, id):
     back_image = LookupField.objects.get(code='back_image')  # Retrieve the back_image URL from your model
-    back_image = back_image.img.url
+    back_image = request.build_absolute_uri(back_image.img.url)
     obj = CustomUser.objects.get(id=id)
     name = obj.fullname
-    image = obj.image.url
+    image = request.build_absolute_uri(obj.image.url)
     member_type = obj.member_type.type
     context = {
         'back_image': back_image,

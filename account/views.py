@@ -222,6 +222,7 @@ def free_member(request):
         obj = CustomUser.objects.create(fullname=name,
                                         member_type_id=free_member,
                                         address=address,
+                                        mobile=mobile,
                                         city=city,
                                         district=district,
                                         state=state,

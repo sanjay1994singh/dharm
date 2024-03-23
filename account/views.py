@@ -144,37 +144,30 @@ def add_member(request, type):
     if request.method == 'POST':
         form = request.POST
         name = form.get('name')
-        email = form.get('email')
-        phone = form.get('phone')
+        mobile = form.get('mobile')
         address = form.get('address')
-        pincode = form.get('pincode')
         city = form.get('city')
         district = form.get('district')
         state = form.get('state')
         country = form.get('country')
-        dob = form.get('dob')
-        gender = form.get('gender')
-        id_number = form.get('id_number')
+        image = request.FILES.get('image')
         order_id = form.get('razorpay_order_id')
         razorpay_signature = form.get('razorpay_signature')
         payment_id = form.get('razorpay_payment_id')
-        image = request.FILES['image']
+        payment_status = form.get('payment_status')
+        price = form.get('price')
         obj = CustomUser.objects.create(fullname=name,
-                                        email=email,
-                                        phone=phone,
+                                        mobile=mobile,
                                         address=address,
-                                        pincode=pincode,
                                         city=city,
                                         district=district,
                                         state=state,
                                         country=country,
-                                        dob=dob,
-                                        gender_id=gender,
-                                        member_type_id=id,
-                                        id_number=id_number,
                                         order_id=order_id,
                                         transaction_id=razorpay_signature,
                                         payment_id=payment_id,
+                                        payment_status=payment_status,
+                                        price=price,
                                         )
         if obj:
             obj.image = image
@@ -302,3 +295,4 @@ def sadasya_list3(request):
         'free_cus': free_cus
     }
     return render(request, 'sadasya_type2.html', context)
+

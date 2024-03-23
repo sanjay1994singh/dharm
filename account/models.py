@@ -50,6 +50,7 @@ class CustomUser(models.Model):
     transaction_id = models.CharField(max_length=100, null=True, default='', blank=True)
     payment_id = models.CharField(max_length=100, null=True, default='', blank=True)
     payment_status = models.CharField(max_length=100, null=True, default='', blank=True)
+    price = models.CharField(max_length=100, null=True, default=0, blank=True)
 
     def __str__(self):
         return self.fullname

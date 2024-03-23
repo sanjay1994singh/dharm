@@ -217,12 +217,21 @@ def free_member(request):
     if request.method == 'POST':
         form = request.POST
         name = form.get('name')
+        mobile = form.get('mobile')
+        address = form.get('address')
+        city = form.get('city')
+        district = form.get('district')
+        state = form.get('state')
+        country = form.get('country')
         image = request.FILES.get('image')
-        email = form.get('email')
         free_member = form.get('free_member')
         obj = CustomUser.objects.create(fullname=name,
-                                        email=email,
                                         member_type_id=free_member,
+                                        address=address,
+                                        city=city,
+                                        district=district,
+                                        state=state,
+                                        country=country,
                                         )
         if obj:
             obj.image = image

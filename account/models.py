@@ -46,6 +46,7 @@ class CustomUser(models.Model):
     state = models.CharField(max_length=100, null=True, blank=True)
     id_number = models.CharField(max_length=30, null=True, blank=True)
     member_type = models.ForeignKey(MemberType, on_delete=models.CASCADE, null=True, blank=True, default='')
+    member_role = models.CharField(max_length=50, null=True, blank=True, default='')
     order_id = models.CharField(max_length=100, null=True, default='', blank=True)
     transaction_id = models.CharField(max_length=100, null=True, default='', blank=True)
     payment_id = models.CharField(max_length=100, null=True, default='', blank=True)

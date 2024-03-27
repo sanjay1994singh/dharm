@@ -50,11 +50,12 @@
             <label for="name">Country</label>
             <input class="form-control" id="country" name="country" placeholder="Enter Your district" required type="text">
         </div>
-        <input type="text" id="razorpay_order_id" name="razorpay_order_id">
-        <input type="text" id="razorpay_payment_id" name="razorpay_payment_id">
-        <input type="text" id="razorpay_signature" name="razorpay_signature">
-        <input type="text" id="price" name="price">
-        <input type="text" id="payment_status" name="payment_status">
+        <input type="text" value="" id="razorpay_order_id" name="razorpay_order_id">
+        <input type="text" value="" id="razorpay_payment_id" name="razorpay_payment_id">
+        <input type="text" value="" id="razorpay_signature" name="razorpay_signature">
+        <input type="text" value="" id="price" name="price">
+        <input type="text" value="" id="payment_status" name="payment_status">
+        <input type="text" value="{{mem_type_id}}" id="mem_type_id" name="mem_type_id">
 
         <div class="form-group mb-2">
             <label for="image">Upload Your Photo</label>
@@ -65,41 +66,58 @@
 
 </div>
 
-
 {% endblock content %}
-
 {% block js %}
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-
-  <script>
-
+<script>
     var options = {
-      "key": "rzp_live_0lEv3IcO7TT3bh",
-      "amount": "{{payment.amount}}",
-      "currency": "INR",
-      "name": "Dharm Raksha Sangh",
-      "description": "We all are one",
-      "image": "https://example.com/your_logo",
-      "order_id": "{{payment.id}}",
-      "handler": function (response) {
+        "key": "rzp_live_0lEv3IcO7TT3bh",
+        "amount": "{{payment.amount}}",
+        "currency": "INR",
+        "name": "Dharm Raksha Sangh",
+        "description": "We all are one",
+        "image": "https://example.com/your_logo",
+        "order_id": "{{payment.id}}",
+        "handler": function (response) {
+            console.log(response);
+            $('#razorpay_order_id').val(response.razorpay_order_id)
+            $('#razorpay_payment_id').val(response.razorpay_payment_id)
+            $('#razorpay_signature').val(response.razorpay_signature)
+            $('#price').val('{{payment.amount}}')
+            save_data(); // Call function to save form data
+        },
+    };
 
-        console.log(response);
-        var mem_type = '{{mem_name}}'
-        var url = '/account/add-member/'+mem_type+'/';
-
-        $('#razorpay_order_id').val(response.razorpay_order_id)
-        $('#razorpay_payment_id').val(response.razorpay_payment_id)
-        $('#razorpay_signature').val(response.razorpay_signature)
-        $('#price').val('{{payment.amount}}')
-
+    function save_data() {
+        var formData = new FormData($('#registrationForm')[0]);
         $.ajax({
-            url: url,
+            url: '/account/add_form_data/',
             method: 'POST',
-            data: myObject,
+            data: formData,
+            processData: false,
+            contentType: false,
             success: function (response) {
-                var responseData = response;
-                if(responseData.msg == 'success'){
-                  window.location.href = '/account/certificate_genrate/'+response.id+'/'
+                if (response.status == 1) {
+                    Swal.fire({
+                        title: 'बधाई हो ',
+                        text: 'आपकी जानकारी हमें सफलता पूर्वक प्राप्त हो गई है। \n धर्म रक्षा संघ में आपका स्वागत है । \n आपको शीघ्र ही सदस्यता प्रमाण पत्र ऑनलाइन प्राप्त हो जाएगा।',
+                        icon: 'success',
+                        showCancelButton: false,
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        window.location.href = '/account/certificate_genrate/' + response.id + '/'
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Error',
+                        text: 'Something went wrong!',
+                        icon: 'error',
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        location.reload();
+                    });
                 }
             },
             error: function (xhr, status, error) {
@@ -107,56 +125,63 @@
                 console.log(error);
             }
         });
-
-      },
-    };
+    }
 
     var rzp1 = new Razorpay(options);
     rzp1.on('payment.failed', function (response) {
-      alert(response.error.code);
-      alert(response.error.description);
-      alert(response.error.source);
-      alert(response.error.step);
-      alert(response.error.reason);
-      alert(response.error.metadata.order_id);
-      alert(response.error.metadata.payment_id);
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
     });
 
     document.getElementById('rzp-button1').onclick = function (e) {
         var name = $('#name').val();
 
-        if($('#name').val() == ''){
+        if ($('#name').val() == '') {
             alert('Please enter name.')
             return false;
         }
-        if($('#mobile').val() == ''){
+        if ($('#mobile').val() == '') {
             alert('Please enter mobile.')
             return false;
-        }if($('#city').val() == ''){
+        }
+        if ($('#city').val() == '') {
             alert('Please enter city.')
             return false;
-        }if($('#address').val() == ''){
+        }
+        if ($('#address').val() == '') {
             alert('Please enter address.')
             return false;
-        }if($('#city').val() == ''){
+        }
+        if ($('#city').val() == '') {
             alert('Please enter city.')
             return false;
-        }if($('#district').val() == ''){
+        }
+        if ($('#district').val() == '') {
             alert('Please enter district.')
             return false;
-        }if($('#state').val() == ''){
+        }
+        if ($('#state').val() == '') {
             alert('Please enter state.')
             return false;
-        }if($('#country').val() == ''){
+        }
+        if ($('#country').val() == '') {
             alert('Please enter country.')
             return false;
-        }if($('#image').val() == ''){
+        }
+        if ($('#image').val() == '') {
             alert('Please upload image.')
             return false;
-        }else{
-          rzp1.open();
-          e.preventDefault();
-      }
+        } else {
+            rzp1.open();
+            e.preventDefault();
+        }
     }
-  </script>
+</script>
 {% endblock js %}
+
+

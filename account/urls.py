@@ -5,6 +5,7 @@ from . import views
 urlpatterns = [
     path('join-member/', views.join_member, name='join_member'),
     path('add-member/<str:type>/', views.add_member, name='add_member'),
+    path('add_form_data/', views.add_form_data, name='add_form_data'),
     path('हितचिंतक-सदस्य/', views.free_member, name='free_member'),
 
     path('privacy-policy/', views.privacy_policy, name='privacy_policy'),

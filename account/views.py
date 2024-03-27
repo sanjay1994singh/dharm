@@ -141,8 +141,43 @@ def join_member(request):
 
 
 def add_member(request, type):
+    title_logo_data = LookupField.objects.get(code='TITLE')
+
+    member = MemberType.objects.get(type=type)
+    mem_type = member.role
+    mem_type_id = member.id
+
+    if mem_type == 'free':
+        return redirect('/account/हितचिंतक-सदस्य/')
+
+    member_type = MemberType.objects.all()
+    gender_type = Gender.objects.all()
+    amount = member.price
+    client = razorpay.Client(auth=(settings.RAZOR_KEY_ID, settings.RAZOR_KEY_SECRET))
+    payment = client.order.create({'amount': int(amount) * 100, 'currency': 'INR', 'payment_capture': '1'})
+    order_id = payment['id']
+    mem_name = member.type
+
+    context = {
+        'title_data': title_logo_data,
+        'payment': payment,
+        'order_id': order_id,
+        'member_type': member_type,
+        'member_price': amount,
+        'gender_type': gender_type,
+        'mem_name': mem_name,
+        'type': type,
+        'mem_type_id': mem_type_id,
+    }
+    print(order_id, '===order_id')
+    return render(request, 'add_member.html', context)
+
+
+def add_form_data(request):
     if request.method == 'POST':
         form = request.POST
+        mem_name = form.get('mem_name')
+        mem_type_id = form.get('mem_type_id')
         name = form.get('name')
         mobile = form.get('mobile')
         address = form.get('address')
@@ -168,6 +203,8 @@ def add_member(request, type):
                                         payment_id=payment_id,
                                         payment_status=payment_status,
                                         price=price,
+                                        member_role=mem_name,
+                                        member_type_id=mem_type_id
                                         )
         if obj:
             obj.image = image
@@ -179,33 +216,6 @@ def add_member(request, type):
                 'status': status
             }
             return JsonResponse(context)
-    else:
-        title_logo_data = LookupField.objects.get(code='TITLE')
-
-        member = MemberType.objects.get(type=type)
-        mem_type = member.role
-
-        if mem_type == 'free':
-            return redirect('/account/हितचिंतक-सदस्य/')
-
-        member_type = MemberType.objects.all()
-        gender_type = Gender.objects.all()
-        amount = member.price
-        client = razorpay.Client(auth=(settings.RAZOR_KEY_ID, settings.RAZOR_KEY_SECRET))
-        payment = client.order.create({'amount': int(amount) * 100, 'currency': 'INR', 'payment_capture': '1'})
-        order_id = payment['id']
-        mem_name = member.type
-        context = {
-            'title_data': title_logo_data,
-            'payment': payment,
-            'member_type': member_type,
-            'member_price': amount,
-            'gender_type': gender_type,
-            'mem_name': mem_name,
-            'type': type,
-        }
-        return render(request, 'add_member.html', context)
-
 
 def free_member(request):
     if request.method == 'POST':

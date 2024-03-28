@@ -42,12 +42,17 @@
 {% block main_banner%}
 
 {% if banner1.img %}
-
 <header class="jumbotron">
     <div class="fluid-container">
         <img alt="" class="banner_img mb-3" src="{{banner1.img.url}}">
     </div>
 </header>
+
+<div class="container text-center p-2">
+    <a href="https://mrccollege.com/accounts/register/" target="_blank">
+        <img alt="" class="img-fluid" src="{{mrc_add}}">
+    </a>
+</div>
 
 {% endif %}
 

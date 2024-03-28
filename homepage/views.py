@@ -42,6 +42,11 @@ def homepage(request):
         suchana = ''
         title_logo_data = LookupField.objects.get(code='TITLE')
         try:
+            mrc_add = LookupField.objects.get(code='mrc_add')
+            mrc_add = mrc_add.img.url
+        except:
+            mrc_add = ''
+        try:
             suchana = LookupField.objects.get(code='suchana')
         except:
             suchana = ''
@@ -77,6 +82,7 @@ def homepage(request):
                    'suchana': suchana, 'tv': tv, 'six_box1': six_box1, 'six_box2': six_box2,
                    'gallery_one': gallery_one,
                    'gallery_two': gallery_two,
+                   'mrc_add': mrc_add,
                    }
         return render(request, 'index.html', context)
 

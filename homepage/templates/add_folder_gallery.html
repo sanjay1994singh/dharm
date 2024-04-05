@@ -5,6 +5,7 @@
     <h1>Add Gallery Form</h1>
     <form method="post" enctype="multipart/form-data">{% csrf_token %}
         <div class="form-group">
+
             <label>Image Folder:</label>
             <select name="image_folder_id" id="image_folder_id" class="form-control">
                 {% for i in image_folder %}

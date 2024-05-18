@@ -1,1 +1,0 @@
-from Dharm_Raksha.wsgi import application

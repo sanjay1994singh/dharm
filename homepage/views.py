@@ -56,6 +56,10 @@ def homepage(request):
         except:
             tv = ''
 
+        try:
+            top_banner_image = LookupField.objects.get(code='top_banner_image')
+        except:
+            top_banner_image = ''
         banner1 = LookupField.objects.get(code='HOME_BANNER1')
         about_data = LookupField.objects.get(code='ABOUT')
         parichay_data = LookupField.objects.filter(code='parichay')
@@ -83,7 +87,9 @@ def homepage(request):
                    'gallery_one': gallery_one,
                    'gallery_two': gallery_two,
                    'mrc_add': mrc_add,
+                   'top_banner_image': top_banner_image,
                    }
+
         return render(request, 'index.html', context)
 
 

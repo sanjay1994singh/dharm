@@ -7,8 +7,8 @@ class LookupField(models.Model):
     title = models.CharField(max_length=1000)
     desc = models.TextField()
     date = models.DateField(auto_now_add=True)
-    img = models.ImageField(upload_to='lookup_img/', null=True)
-    pdf = models.FileField(upload_to='pdf', default=None, null=True)
+    img = models.ImageField(upload_to='lookup_img/', null=True, blank=True)
+    pdf = models.FileField(upload_to='pdf', default=None, null=True, blank=True)
 
     def __str__(self):
         return self.code

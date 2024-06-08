@@ -1,4 +1,18 @@
 {% extends 'navbar.html' %}
+{% block css %}
+<style>
+.custom-div {
+  background-color: #ffffff; /* Background color for the divs */
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-size: cover;
+  background-position: center;
+  position: relative; /* Add this line for absolute positioning of the icon */
+}
+</style>
+{% endblock css %}
 
 {% block content %}
 <!-- Content -->
@@ -8,7 +22,6 @@
         <div class="col-lg-4 col-md-6 col-xs-12">
             <div class="custom-div mb-4">
                 <p>{{ video.snippet.title }}</p>
-                <p>{{ video.snippet.description }}</p>
                 <div class="embed-responsive embed-responsive-4by3">
                     <div class="youtube-player" data-id="{{ video.id.videoId }}"></div>
                 </div>

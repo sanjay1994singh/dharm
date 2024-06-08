@@ -294,4 +294,17 @@ def videos_list(request):
     ).execute()
 
     videos = response.get('items', [])
-    return render(request, 'videos_list.html', {'videos': videos})
+
+    title_logo_data = LookupField.objects.get(code='TITLE')
+    try:
+        banner1 = LookupField.objects.get(code='sampark')
+    except:
+        banner1 = ''
+    context = {
+        'title_data': title_logo_data,
+        'banner1': banner1,
+        'videos': videos,
+    }
+
+
+    return render(request, 'videos_list.html', context)

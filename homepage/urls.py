@@ -1,7 +1,7 @@
 from django.urls import path
 
 from . import views
-
+# 8899956789
 urlpatterns = [
     path('', views.homepage, name='homepage'),
     path('harame_stambh/', views.harame_stambh, name='harame_stambh'),
@@ -22,4 +22,5 @@ urlpatterns = [
     path('sangthan_list/<int:id>/', views.sangthan_list, name='sangthan_list'),
 
     path('add_gallery_folder/', views.add_gallery_folder, name='add_gallery_folder'),
+    path('video-gallery/', views.videos_list, name='videos_list'),
 ]

@@ -284,7 +284,7 @@ def videos_list(request):
     youtube = build('youtube', 'v3', developerKey=api_key)
 
     # Get the latest videos from a specific channel (replace 'CHANNEL_ID' with your channel ID)
-    channel_id = 'UCH-cK1RIBzsbVlNnWDD0nHw'
+    channel_id = 'UCEU4cxBUEz60ye-NUz6gSAA'
     response = youtube.search().list(
         part='snippet',
         channelId=channel_id,

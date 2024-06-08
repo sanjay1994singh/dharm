@@ -286,25 +286,46 @@ def shipping_delivery(request):
 
 
 def sadasya_list1(request):
+    title_logo_data = LookupField.objects.get(code='TITLE')
+    try:
+        banner1 = LookupField.objects.get(code='sadasyata')
+    except:
+        banner1 = ''
     free_cus = CustomUser.objects.filter(member_type__role='free')
     context = {
-        'free_cus': free_cus
+        'free_cus': free_cus,
+        'title_data': title_logo_data,
+        'banner1': banner1,
     }
     return render(request, 'sadasya_type1.html', context)
 
 
 def sadasya_list2(request):
+    title_logo_data = LookupField.objects.get(code='TITLE')
+    try:
+        banner1 = LookupField.objects.get(code='sadasyata')
+    except:
+        banner1 = ''
     free_cus = CustomUser.objects.filter(member_type=2)
     context = {
-        'free_cus': free_cus
+        'free_cus': free_cus,
+        'title_data': title_logo_data,
+        'banner1': banner1,
     }
     return render(request, 'sadasya_type2.html', context)
 
 
 def sadasya_list3(request):
+    title_logo_data = LookupField.objects.get(code='TITLE')
+    try:
+        banner1 = LookupField.objects.get(code='sadasyata')
+    except:
+        banner1 = ''
     free_cus = CustomUser.objects.filter(member_type__role=1)
     context = {
-        'free_cus': free_cus
+        'free_cus': free_cus,
+        'title_data': title_logo_data,
+        'banner1': banner1,
     }
     return render(request, 'sadasya_type2.html', context)
 

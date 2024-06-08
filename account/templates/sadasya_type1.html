@@ -1,18 +1,50 @@
 {% extends "navbar.html" %}
+{% block css %}
+<style>
+    .card-img-top {
+<!--        object-fit: cover;-->
+        border-top-left-radius: calc(.25rem - 1px);
+        border-top-right-radius: calc(.25rem - 1px);
+    }
+    .card {
+        border-radius: 15px;
+    }
+    .card-body {
+        padding: 1.25rem;
+    }
+    .card-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+    .card-text {
+        font-size: 0.9rem;
+        color: #6c757d;
+    }
+</style>
+
+{% endblock css %}
+
 {% block content %}
-<div class="container row">
-    {% for i in free_cus %}
-    <div class="col-lg-3 p-4">
-        {% if i.image %}
-        <img src="{{i.image.url}}" class="img-fluid" alt="">
-        {% endif %}
-        <p>Name: {{i.fullname}}</p>
-        <p>Mobile: {{i.mobile}}</p>
-        <p>Address: {{i.address}}</p>
-        <p>Member: {{i.member_type}}</p>
+<div class="container">
+    <div class="row p-5">
+        {% for i in free_cus %}
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card h-100 shadow-sm">
+                {% if i.image %}
+                <img src="{{i.image.url}}" class="card-img-top" alt="{{i.fullname}}" height="200">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{i.fullname}}</h5>
+                    <p class="card-text"><strong>Mobile:</strong> {{i.mobile}}</p>
+                    <p class="card-text"><strong>Address:</strong> {{i.address}}</p>
+                    <p class="card-text"><strong>Member:</strong> {{i.member_type}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
+
 {% endblock content %}
 
 {% block js %}

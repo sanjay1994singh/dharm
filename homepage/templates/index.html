@@ -3,23 +3,22 @@
 {% block css %}
 
 <style>
-    #mobile {
+    #mobile, #ads_mobile {
       display: none;
     }
 
     @media (max-width: 768px) {
-      #mobile {
+      #mobile, #ads_mobile {
         display: block;
       }
     }
 
-
-    #desktop {
+    #desktop, #ads_desktop {
     display: block; /* This is the default display style */
   }
 
   @media (max-width: 768px) {
-    #desktop {
+    #desktop , #ads_desktop{
       display: none; /* Hide on screens with a width of 768px or less (adjust this value as needed) */
     }
   }
@@ -190,7 +189,7 @@
 
 
 {% block ads %}
-    <div class="container mt-5">
+    <div class="container mt-5" id="ads_desktop">
         <h2>विज्ञापन</h2>
         <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
@@ -213,19 +212,28 @@
             </div>
         </div>
     </div>
-    <div class="container mx-auto">
-        <div class="row mb-4 mx-auto">
-            <div class="col-lg-8 mx-auto">
-                <div class="row mx-auto">
-                    {% for i in gallery_two %}
-                    <div class="col-lg-3 mx-auto p-2">
-                        <img src="{{i.image.url}}" alt="" class="img-fluid">
+
+    <section class="py-5 bg-light desktop-crouser" id="ads_mobile">
+    <div class="container">
+        <h2>विज्ञापन</h2>
+        <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" id="carousel-inner">
+                <div class="mobile">
+                    {% for gallery_one in gallery_one %}
+                    <div class="carousel-item mobile {% if forloop.counter == 1 %}active {% endif %}">
+                        <div class="col-md-3">
+                            <div class="card mb-4">
+                                <img alt="Service 1" class="card-img-top img-fluid"  src="{{gallery_one.image.url}}">
+                            </div>
+                        </div>
                     </div>
                     {% endfor %}
                 </div>
             </div>
         </div>
     </div>
+
+</section>
 {% endblock ads %}
 
 {% block donet %}

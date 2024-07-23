@@ -150,9 +150,18 @@ def gallery(request):
     return render(request, 'new_gallery.html', context)
 
 
-def viewPdf(request):
+def viewPdf1(request):
     try:
-        patrika = LookupField.objects.get(code='patrika')
+        patrika = LookupField.objects.get(code='patrika1')
+        pdf_file_path = str(patrika.pdf.url)
+        return redirect(pdf_file_path)
+    except Exception as e:
+        print(e, '------------------e')
+
+
+def viewPdf2(request):
+    try:
+        patrika = LookupField.objects.get(code='patrika2')
         pdf_file_path = str(patrika.pdf.url)
         return redirect(pdf_file_path)
     except Exception as e:
@@ -305,6 +314,5 @@ def videos_list(request):
         'banner1': banner1,
         'videos': videos,
     }
-
 
     return render(request, 'videos_list.html', context)

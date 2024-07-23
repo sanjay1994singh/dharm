@@ -74,6 +74,7 @@ def homepage(request):
         type_ad2 = AdsType.objects.filter(code='gallery_two')
         if type_ad1:
             gallery_one = Advertisement.objects.filter(type_id=type_ad1[0].id)
+            chunked_products = [gallery_one[i:i + 5] for i in range(0, len(gallery_one), 5)]
         else:
             gallery_one = ''
 
@@ -87,6 +88,7 @@ def homepage(request):
                    'suchana': suchana, 'tv': tv, 'six_box1': six_box1, 'six_box2': six_box2,
                    'gallery_one': gallery_one,
                    'gallery_two': gallery_two,
+                   'chunked_products': chunked_products,
                    'mrc_add': mrc_add,
                    'top_banner_image': top_banner_image,
                    }

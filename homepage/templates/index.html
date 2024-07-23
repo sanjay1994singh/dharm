@@ -197,14 +197,14 @@
 
 
 {% block ads %}
- <div class="container mt-5">
+    <div class="container mt-5">
         <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 {% for chunk in chunked_products %}
                 <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                    <div class="row w-100">
+                    <div class="row">
                         {% for product in chunk %}
-                        <div class="col-12 col-md-6 col-lg-3">
+                        <div class="col">
                             <img src="{{ product.image.url }}" class="d-block w-100" alt="{{ product.name }}">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>{{ product.name }}</h5>
@@ -225,6 +225,19 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
+        </div>
+    </div>
+    <div class="container mx-auto">
+        <div class="row mb-4 mx-auto">
+            <div class="col-lg-8 mx-auto">
+                <div class="row mx-auto">
+                    {% for i in gallery_two %}
+                    <div class="col-lg-3 mx-auto p-2">
+                        <img src="{{i.image.url}}" alt="" class="img-fluid">
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </div>
 {% endblock ads %}

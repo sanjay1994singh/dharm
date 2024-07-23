@@ -134,6 +134,34 @@
     </div>
 </section>
 
+
+<section class="py-5 bg-light desktop-crouser" id="mobile">
+    <div class="container">
+        <h2>हमारे स्तंभ</h2>
+        <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" id="carousel-inner">
+                <div class="mobile">
+                    {% for parichay_data in parichay_data %}
+                    <div class="carousel-item mobile {% if forloop.counter == 1 %}active {% endif %}">
+                        <div class="col-md-3">
+                            <div class="card mb-4">
+                                <img alt="Service 1" class="card-img-top" height="300" src="{{parichay_data.img.url}}">
+                                <div class="card-body">
+                                    <p class="card-title"><strong>{{parichay_data.title}}</strong></p>
+                                    <a href="/biography/{{parichay_data.id}}/">Read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
 {% endblock biography %}
 
 {% block services %}

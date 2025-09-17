@@ -172,7 +172,7 @@ def viewPdf2(request):
 
 def photo_gallery(request):
     title_logo_data = LookupField.objects.get(code='TITLE')
-    image_folder = ImageFolder.objects.all()
+    image_folder = ImageFolder.objects.all().order_by('-id')
 
     context = {'title_data': title_logo_data, 'image_folder': image_folder}
     return render(request, 'photo_gallery.html', context)
@@ -188,7 +188,7 @@ def image_folder(request, id):
 
 def samachar_gallery(request):
     title_logo_data = LookupField.objects.get(code='TITLE')
-    gallery = Gallery.objects.filter(code='samachar')
+    gallery = Gallery.objects.filter(code='samachar').order_by('-id')
 
     context = {'title_data': title_logo_data, 'gallery': gallery}
 

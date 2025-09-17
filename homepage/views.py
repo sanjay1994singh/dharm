@@ -7,7 +7,7 @@ from homepage.models import LookupField, Gallery, SangthanType, Sangthan, Post
 from services.models import Service, SixBox
 from .models import ImageFolder, ImageGallery
 from googleapiclient.discovery import build
-
+from django.db.models import F
 
 # Create your views here.
 
@@ -244,7 +244,11 @@ def get_sangth(request):
 def sangthan_list(request, id):
     title_logo_data = LookupField.objects.get(code='TITLE')
     post_ids = Post.objects.filter(type_id=id).values_list('id', flat=True)
-    list_data = Sangthan.objects.filter(post_id__in=post_ids).order_by('id')
+    # list_data = Sangthan.objects.filter(post_id__in=post_ids).order_by('position')
+    list_data = (
+        Sangthan.objects.filter(post_id__in=post_ids)
+        .order_by(F('position').asc(nulls_last=True), 'id')
+    )
     context = {'id': id,
                'list_data': list_data,
                'title_data': title_logo_data

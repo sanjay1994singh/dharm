@@ -68,7 +68,7 @@ class Post(models.Model):
 class Sangthan(models.Model):
     name = models.CharField(max_length=100, null=True)
     image = models.ImageField(upload_to='sangthan_image')
-    position = models.IntegerField(null=True)
+    position = models.IntegerField(null=True, blank=True)
     post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True, default=1)
     address = models.TextField()
     contact = models.CharField(max_length=20, null=True)

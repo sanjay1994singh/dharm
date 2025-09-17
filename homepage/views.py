@@ -179,7 +179,7 @@ def photo_gallery(request):
 
 def image_folder(request, id):
     title_logo_data = LookupField.objects.get(code='TITLE')
-    image_gallery = ImageGallery.objects.filter(image_folder_id=id)
+    image_gallery = ImageGallery.objects.filter(image_folder_id=id).order_by('-id')
     context = {'title_data': title_logo_data, 'image_gallery': image_gallery}
     return render(request, 'image_gallery.html', context)
 
